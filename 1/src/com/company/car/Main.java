@@ -1,9 +1,9 @@
-package com.company;
+package com.company.car;
 
 public class Main {
 
     public static void main(String[] args) {
-        Car sedan = new com.company.Car("red");
+        Car sedan = new Car("red");
 
         sedan.setColor("orange");
         System.out.println("Car: " + sedan.getColor());

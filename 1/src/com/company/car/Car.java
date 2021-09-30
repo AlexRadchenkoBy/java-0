@@ -1,4 +1,4 @@
-package com.company;
+package com.company.car;
 
 public class Car {
     private String color;
