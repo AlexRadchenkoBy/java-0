@@ -5,6 +5,10 @@ public class House {
     private String color2;
     private String color3;
 
+    public House(String color1) {
+        this.color1 = color1;
+    }
+
     public House(String anyColor1, String anyColor2, String anyColor3) {
         color1 = anyColor1;
         color2 = anyColor2;
