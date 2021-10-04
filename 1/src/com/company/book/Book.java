@@ -10,7 +10,7 @@ package com.company.book;
 //           прочитать заданное количество страниц,
 //           узнать прочитана ли книга или нет,
 //           узнать является ли владельцем книги по имени
-//           !!! вырвать страницу.
+//           вырвать страницу.
 public class Book {
     private String name;
     private String authorName;
@@ -31,32 +31,35 @@ public class Book {
         this.ownerName = ownerName;
     }
 
+    public int getPageRead() {
+        return pageRead;
+    }
+
     public void readOnePage() {
-        pageRead = pageRead + 1;
+        readPages(1);
     }
 
     public void readAllPage() {
         pageRead = pageNumber;
     }
 
-    public void readPage(int pages) {
-        pageRead = pageRead + pages;
+    public void readPages(int pages) {
+        if (!isFinished()) {
+            pageRead = pageRead + pages;
+        }
     }
 
     public boolean isFinished() {
-        if (pageRead == pageNumber) {
-            return true;
-        } else {
-            return false;
-        }
+        return pageRead == pageNumber;
     }
 
     public boolean isOwner(String name) {
-        if (ownerName == name) {
-            return true;
-        } else {
-            return false;
-        }
+        return ownerName == name;
+    }
+
+    public void removeOnePage() {
+        pageNumber = pageNumber - 1;
+        pageRead = pageRead - 1;
     }
 
 }
