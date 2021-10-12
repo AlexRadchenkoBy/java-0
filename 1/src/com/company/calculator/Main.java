@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Calculator calculator = new Calculator();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -24,39 +23,35 @@ public class Main {
                     System.out.println("Выберите число от 1 до 4");
                 } else {
                     System.out.println("Введите числа a и b: ");
-
-                    while (!scanner.hasNextDouble()) {
-                        System.out.println("Введите число");
-                        scanner.next();
-                    }
-                    double a = scanner.nextDouble();
-
-                    while (!scanner.hasNextDouble()) {
-                        System.out.println("Введите число");
-                        scanner.next();
-                    }
-                    double b = scanner.nextDouble();
-
-                    double result = 0;
-                    if (userChoice == 1) {
-                        result = calculator.add(a, b);
-                    }
-                    if (userChoice == 2) {
-                        result = calculator.subtract(a, b);
-                    }
-                    if (userChoice == 3) {
-                        result = calculator.multiply(a, b);
-                    }
-                    if (userChoice == 4) {
-                        result = calculator.divide(a, b);
-                    }
-                    System.out.println(result);
+                    System.out.println(calculate(scanner, userChoice));
                 }
             } else {
                 scanner.next();
                 System.out.println("Введите целое число.");
             }
         }
+    }
+
+    private static double calculate(Scanner scanner, int userChoice) {
+        return chooseAction(userChoice, getNumber(scanner), getNumber(scanner));
+    }
+
+    private static double getNumber(Scanner scanner) {
+        while (!scanner.hasNextDouble()) {
+            System.out.println("Введите число");
+            scanner.next();
+        }
+        return scanner.nextDouble();
+    }
+
+    private static double chooseAction(int userChoice, double a, double b) {
+        return switch(userChoice) {
+            case 1 -> Calculator.add(a, b);
+            case 2 -> Calculator.subtract(a, b);
+            case 3 -> Calculator.multiply(a, b);
+            case 4 -> Calculator.divide(a, b);
+            default -> 0;
+        };
     }
 
 }
