@@ -15,5 +15,11 @@ public class Book {
         return pages;
     }
 
+    public String getTitle() {
+        return title;
+    }
 
+    public String getAuthorName() {
+        return authorName;
+    }
 }
