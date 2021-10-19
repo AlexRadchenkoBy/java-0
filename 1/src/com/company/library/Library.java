@@ -1,12 +1,28 @@
 package com.company.library;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Library {
     private ArrayList<Book> books;
+    private ArrayList<Visitor> visitors;
 
     public Library(ArrayList<Book> bookList) {
         books = bookList;
+    }
+
+    public void giveBook(Visitor visitor, Book book) {
+        visitor.addBook(book);
+        books.remove(book);
+    }
+
+    public void addVisitor(String name, String surname) {
+        Visitor visitor = new Visitor(surname, name, UUID.randomUUID().toString());
+        visitors.add(visitor);
+    }
+
+    public int getVisitorAmount() {
+        return visitors.size();
     }
 
     public int getBookAmount() {
