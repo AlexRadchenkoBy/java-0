@@ -16,6 +16,11 @@ public class Library {
         books.remove(book);
     }
 
+    public void takeBook(Visitor visitor, Book book) {
+        books.add(book);
+        visitor.removeBook(book);
+    }
+
     public void addVisitor(String name, String surname) {
         Visitor visitor = new Visitor(surname, name, UUID.randomUUID().toString());
         visitors.add(visitor);
@@ -58,5 +63,22 @@ public class Library {
         }
         return booksByTitle;
     }
+
+    public ArrayList<Book> findBooksWithMaxPages() {
+        ArrayList<Book> booksWithMaxPages = new ArrayList<>();
+        int maxPages = 0;
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getPages() > maxPages) {
+                maxPages = books.get(i).getPages();
+            }
+        }
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getPages() == maxPages) {
+                booksWithMaxPages.add(books.get(i));
+            }
+        }
+        return booksWithMaxPages;
+    }
+
 
 }
