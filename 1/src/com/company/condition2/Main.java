@@ -11,7 +11,7 @@ public class Main {
         {
             int num = getRandomInt(0, 100);
             System.out.printf("#1: %s%n", num);
-            int a  = num % 2;
+            int a = num % 2;
             if (a == 0) {
                 System.out.println("четное число");
             } else {
@@ -80,6 +80,82 @@ public class Main {
                 System.out.println(b);
             } else {
                 System.out.println(c);
+            }
+        }
+        //8 Вывести в консоль большую переменную
+        {
+            int a = getRandomInt(0, 100);
+            int b = getRandomInt(0, 100);
+            System.out.printf("#8: %s, %s%n", a, b);
+            if (a > b) {
+                System.out.println(a);
+            } else {
+                System.out.println(b);
+            }
+        }
+        //9 Определить равны ли переменный a и b и вести ответ "yes" если равны, или "no" если не равны
+        {
+            int a = getRandomInt(0, 1);
+            int b = getRandomInt(0, 1);
+            System.out.printf("#9: %s, %s%n", a, b);
+            if (a == b) {
+                System.out.println("yes");
+            } else {
+                System.out.println("no");
+            }
+        }
+        //10 Определить a является однозначным(1), или двухзначным(2), или трехзначным(3). Вывести, то что в скобках
+        {
+            int a = getRandomInt(0, 999);
+            System.out.printf("#10: %s%n", a);
+            if (a < 10) {
+                System.out.println(1);
+            } else if (a < 100) {
+                System.out.println(2);
+            } else if (a < 1000) {
+                System.out.println(3);
+            }
+        }
+        //11 Определить a делится на 3 нацело или нет. Если да, то вывести "Yes"
+        {
+            int a = getRandomInt(0, 999);
+            System.out.printf("#11: %s%n", a);
+            int num = a % 3;
+            if (num == 0) {
+                System.out.println("Yes");
+            }
+        }
+        //12 Определить a делится на 5 нацело или нет. Если нет, то вывести "No"
+        {
+            int a = getRandomInt(0, 999);
+            System.out.printf("#12: %s%n", a);
+            int num = a % 5;
+            if (num != 0) {
+                System.out.println("No");
+            }
+        }
+        //13 Вывести на экран ответ "Yes", если год является високосным.
+        //   Обычно каждый год, который делится на 4, - это високосный год, кроме лет столетий (делящихся на 100).
+        //   Но среди последних год, делящихся на 400, также считается високосным.
+        {
+            int year = getRandomInt(0, 2110);
+            System.out.printf("#13: %s%n", year);
+            int num1 = year % 4;
+            int num2 = year % 100;
+            int num3 = year % 400;
+            if ((num1 == 0 || num3 == 0) && num2 != 0) {
+                System.out.println("Yes");
+            }
+        }
+        //14 Если a меньше b, то вывести их сумму, иначе - разность первого и второго
+        {
+            int a = getRandomInt(0, 100);
+            int b = getRandomInt(0, 100);
+            System.out.printf("#14: %s, %s%n", a, b);
+            if (a < b) {
+                System.out.println(a + b);
+            } else {
+                System.out.println(a - b);
             }
         }
     }
