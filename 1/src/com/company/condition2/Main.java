@@ -158,7 +158,79 @@ public class Main {
                 System.out.println(a - b);
             }
         }
+        //15 есть число a.
+        //Программа должна ответить, четным или нечетным является это число, делится ли оно на 3 и делится ли оно на 6.
+        {
+            int a = getRandomInt(0, 100);
+            System.out.printf("#15: %s%n", a);
+            int num = a % 2;
+            int subtraction1 = a % 3;
+            int subtraction2 = a % 6;
+            if (num == 0) {
+                System.out.println("четное");
+            } else {
+                System.out.println("нечетное");
+            }
+            if (subtraction1 == 0) {
+                System.out.println("число а делится на 3");
+            }
+            if (subtraction2 == 0) {
+                System.out.println("число а делится на 6");
+            }
+        }
+        //16 Угадать название числа. Необходимо показать его название на экран. (рандомное число  от 1 до 5)
+        {
+            int a = getRandomInt(1, 5);
+            System.out.printf("#16: %s%n", a);
+            if (a == 1) {
+                System.out.println("one");
+            }
+            if (a == 2) {
+                System.out.println("two");
+            }
+            if (a == 3) {
+                System.out.println("three");
+            }
+            if (a == 4) {
+                System.out.println("four");
+            }
+            if (a == 5) {
+                System.out.println("five");
+            }
+            switch (a) {
+                case 1:
+                    System.out.println("one");
+                    break;
+                case 2:
+                    System.out.println("two");
+                    break;
+                case 3:
+                    System.out.println("three");
+                    break;
+                case 4:
+                    System.out.println("four");
+                    break;
+                case 5:
+                    System.out.println("five");
+                    break;
+            }
+        }
+        //17 Если переменная a больше 2-х и меньше 11-ти, или переменная b больше или равна 6-ти и меньше 14-ти,
+        // то выведите "Yes", в противном случае выведите "No".  (a  от 0 до 15, b от 0 до 20)
+        {
+            int a = getRandomInt(0, 15);
+            int b = getRandomInt(0, 20);
+            System.out.printf("#17: %s, %s%n", a, b);
+            if ((a > 2 && a < 11) || (b >= 6 && b < 14)) {
+                System.out.println("yes");
+            } else {
+                System.out.println("no");
+            }
+        }
     }
+
+
+
 
     public static int getRandomInt(int min, int max) {
         Random random = new Random();
