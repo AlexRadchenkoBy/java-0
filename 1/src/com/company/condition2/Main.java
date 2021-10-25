@@ -231,12 +231,29 @@ public class Main {
         {
             int a = getRandomInt(0, 15);
             System.out.printf("#18: %s%n", a);
+            if (a > 0 && a < 5) {
+                System.out.println("yes");
+            } else {
+                System.out.println("no");
+            }
         }
         //19 В переменной month лежит какое-то число из интервала от 1 до 12.
         //Определите в какую пору года попадает этот месяц (зима, лето, весна, осень).
         {
             int month = getRandomInt(1, 12);
             System.out.printf("#19: %s%n", month);
+            if (month == 12 || month == 1 || month == 2) {
+                System.out.println("зима");
+            }
+            if (month == 3 || month == 4 || month == 5) {
+                System.out.println("весна");
+            }
+            if (month == 6 || month == 7 || month == 8) {
+                System.out.println("лето");
+            }
+            if (month == 9 || month == 10 || month == 11) {
+                System.out.println("осень");
+            }
         }
         //20 Если переменная a равна или меньше 1, а переменная b больше или равна 3,
         // то выведите сумму этих переменных, иначе выведите их разность (результат вычитания).
@@ -244,21 +261,72 @@ public class Main {
             int a = getRandomInt(0, 5);
             int b = getRandomInt(0, 10);
             System.out.printf("#20: %s, %s%n", a, b);
+            if (a <= 1 && b >= 3) {
+                System.out.println(a + b);
+            } else {
+                System.out.println(a - b);
+            }
         }
         //21 Переведи стобалльную оценку mark в пятибалльную. И выведи эту оценку в консоль.
         {
             int mark = getRandomInt(0, 100);
             System.out.printf("#21: %s%n", mark);
+            if (mark >= 0 && mark <= 20) {
+                System.out.println(1);
+            }
+            if (mark >= 21 && mark <= 40) {
+                System.out.println(2);
+            }
+            if (mark >= 41 && mark <= 60) {
+                System.out.println(3);
+            }
+            if (mark >= 61 && mark <= 80) {
+                System.out.println(4);
+            }
+            if (mark >= 81 && mark <= 100) {
+                System.out.println(5);
+            }
         }
         //22 Вычислить стоимость покупки с учётом скидки: при покупке товара на сумму больше 1000 рублей
-        // предоставляется скидка 15%.Вычислить стоимость покупки с учётом скидки:
-        // при покупке товара на сумму больше 1000 рублей предоставляется скидка 15%.
+        // предоставляется скидка 15%.
         {
             int purchase = getRandomInt(995, 1005);
             System.out.printf("#22: %s%n", purchase);
+            if (purchase > 1000) {
+                System.out.println(purchase * 0.85);
+            } else {
+                System.out.println(purchase);
+            }
+        }
+        //23 В переменной day лежит какое-то число из интервала от 1 до 30.
+        //Определите в какую декаду месяца попадает день (1, 2, 3).
+        {
+            int day = getRandomInt(1, 30);
+            System.out.printf("#23: %s%n", day);
+            if (day >= 1 && day <= 10) {
+                System.out.println("первая декада");
+            } else if (day >= 11 && day <= 20) {
+                System.out.println("вторая декада");
+            } else {
+                System.out.println("третья декада");
+            }
+        }
+        //24 если значение a не true, вывести true, иначе false
+        {
+            boolean a = getRandomBoolean();
+            System.out.printf("#24: %s%n", a);
+            if (!a) {
+                System.out.println(true);
+            } else {
+                System.out.println(false);
+            }
         }
     }
 
+    public static boolean getRandomBoolean() {
+        Random random = new Random();
+        return random.nextBoolean();
+    }
 
     public static int getRandomInt(int min, int max) {
         Random random = new Random();
