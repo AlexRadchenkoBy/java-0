@@ -10,36 +10,74 @@ public class Main {
         {
             System.out.println("#1");
             int[] array = getRandomArray();
+            for (int i =  0; i < array.length; i++) {
+                System.out.println(array[i]);
+            }
         }
         //2 тоже самое, что и в #1 используя while
         {
             System.out.println("#2");
             int[] array = getRandomArray();
+            int i = 0;
+            while (i < array.length) {
+                System.out.println(array[i]);
+                i++;
+            }
         }
         //3 вывести в консоль элементы массива (одна страка все элементы массива) используя for
         {
             System.out.println("#3");
             int[] array = getRandomArray();
+            for (int i = 0; i < array.length; i++) {
+                System.out.print(array[i] + " ");
+            }
+            System.out.println();
         }
         //4 вывести в консоль только отрицательные элементы массива (одна страка все элементы массивы) используя for
         {
             System.out.println("#4");
             int[] array = getRandomArray();
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] < 0) {
+                    System.out.print(array[i] + " ");
+                }
+            }
+            System.out.println();
         }
         //5 вывести в консоль только положительный элементы массива (одна страка все элементы массивы) используя while
         {
             System.out.println("#5");
             int[] array = getRandomArray();
+            int i = 0;
+            while (i < array.length) {
+                if (array[i] > 0) {
+                    System.out.print(array[i] + " ");
+                }
+                i++;
+            }
+            System.out.println();
         }
         //6 удвоить все элементы массива и вывести в консоль элементы (одна страка все элементы массивы) используя for
         {
             System.out.println("#6");
             int[] array = getRandomArray();
+            for (int i = 0; i  < array.length; i++) {
+                int multiply = array[i] * 2;
+                System.out.print(multiply + " ");
+            }
+            System.out.println();
         }
         //7 утроить все элементы массива и вывести в консоль элементы (одна страка все элементы массивы) используя while
         {
             System.out.println("#7");
             int[] array = getRandomArray();
+            int i = 0;
+            while (i < array.length) {
+                int multiply = array[i] * 3;
+                System.out.print(multiply + " ");
+                i++;
+            }
+            System.out.println();
         }
         //8 вывести в консоль нечетные элементы массива (одна страка все элементы массива) используя for
         {
