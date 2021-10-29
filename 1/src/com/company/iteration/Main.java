@@ -233,6 +233,64 @@ public class Main {
         {
             System.out.println("#21");
         }
+        //22 вывести в консоль элементы массива используя foreach(почитать в интернете про это)
+        {
+            System.out.println("#22");
+            int[] array = getRandomArray();
+        }
+        //23 заменить все отрицательные элементы массива на положительные и вывести в консоль элементы массива
+        {
+            System.out.println("#23");
+            int[] array = getRandomArray();
+        }
+        //24 вывести в консоль первую половину массива
+        {
+            System.out.println("#24");
+            int[] array = getRandomArray();
+        }
+        //25 Необходимо написать программу, которая бы вывела в консоль звездочки как на картинке ниже
+        // * * * * *
+        // *   *   *
+        // *   *   *
+        // * * * * *
+        {
+            System.out.println("#25");
+        }
+        //26 вывести в консоль наибольший элемент массива используя while
+        {
+            System.out.println("#26");
+            int[] array = getRandomArray();
+        }
+        //27 вывести в консоль наименший элемент массива используя for
+        {
+            System.out.println("#27");
+            int[] array = getRandomArray();
+        }
+        //28 вывести в консоль сумму всех элементов массива
+        {
+            System.out.println("#28");
+            int[] array = getRandomArray();
+        }
+        //29 вывести в консоль сумму отрицательных элементов массива
+        {
+            System.out.println("#29");
+            int[] array = getRandomArray();
+        }
+        //30 вывести в консоль только первый положительный элемент массива используя while
+        {
+            System.out.println("30");
+            int[] array = getRandomArray();
+        }
+        //31 вывести в консоль только паследний положительный элемент массива используя for
+        {
+            System.out.println("31");
+            int[] array = getRandomArray();
+        }
+        //32 вывести в консоль только первый отрицательный элемент массива используя foreach
+        {
+            System.out.println("32");
+            int[] array = getRandomArray();
+        }
     }
 
     public static int[] getRandomArray() {
