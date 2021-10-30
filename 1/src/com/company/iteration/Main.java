@@ -232,6 +232,16 @@ public class Main {
         // То есть числа Фибоначчи - это 1  1  2  3  5  8  13  21  34  55  89  и т.д.
         {
             System.out.println("#21");
+            int a = 1;
+            int b = 1;
+            int c = 0;
+            System.out.print(a + " " + b + " ");
+            for (int i = 3; i <= 11; i++) {
+                c = a + b;
+                a = b;
+                b = c;
+                System.out.print(c + " ");
+            }
         }
         //22 вывести в консоль элементы массива используя foreach(почитать в интернете про это)
         {
