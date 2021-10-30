@@ -247,6 +247,10 @@ public class Main {
         {
             System.out.println("#22");
             int[] array = getRandomArray();
+            for (int i: array) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
         }
         //23 заменить все отрицательные элементы массива на положительные и вывести в консоль элементы массива
         {
@@ -257,6 +261,13 @@ public class Main {
         {
             System.out.println("#24");
             int[] array = getRandomArray();
+            for (int i = 0; i < array.length; i++) {
+                int divide = array[i] / 2;
+                if (divide ==) {
+                    System.out.print(array[i] + " ");
+                }
+            }
+            System.out.println();
         }
         //25 Необходимо написать программу, которая бы вывела в консоль звездочки как на картинке ниже
         // * * * * *
