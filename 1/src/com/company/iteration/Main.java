@@ -247,7 +247,7 @@ public class Main {
         {
             System.out.println("#22");
             int[] array = getRandomArray();
-            for (int i: array) {
+            for (int i : array) {
                 System.out.print(i + " ");
             }
             System.out.println();
@@ -256,16 +256,18 @@ public class Main {
         {
             System.out.println("#23");
             int[] array = getRandomArray();
+            for (int i = 0; i < array.length; i++) {
+                int a = Math.abs(array[i]);
+                System.out.print(a + " ");
+            }
+            System.out.println();
         }
         //24 вывести в консоль первую половину массива
         {
             System.out.println("#24");
             int[] array = getRandomArray();
-            for (int i = 0; i < array.length; i++) {
-                int divide = array[i] / 2;
-                if (divide ==) {
-                    System.out.print(array[i] + " ");
-                }
+            for (int i = 0; i < array.length / 2; i++) {
+                System.out.print(array[i] + " ");
             }
             System.out.println();
         }
@@ -276,11 +278,29 @@ public class Main {
         // * * * * *
         {
             System.out.println("#25");
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 5; j++) {
+                    if ((i == 0 || i == 3) || (j == 0 || j == 2 || j == 4)) {
+                        System.out.print("* ");
+                    } else {
+                        System.out.print("  ");
+                    }
+
+                }
+                System.out.println();
+            }
         }
         //26 вывести в консоль наибольший элемент массива используя while
         {
             System.out.println("#26");
             int[] array = getRandomArray();
+            int i = 0;
+            while (i < array.length) {
+                int max = Math.max(array.);
+                    System.out.print(max + " ");
+                i++;
+            }
+            System.out.println();
         }
         //27 вывести в консоль наименший элемент массива используя for
         {
