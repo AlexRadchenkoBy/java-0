@@ -295,32 +295,61 @@ public class Main {
             System.out.println("#26");
             int[] array = getRandomArray();
             int i = 0;
+            int max = array[i];
             while (i < array.length) {
-                int max = Math.max(array.);
-                    System.out.print(max + " ");
+                if (array[i] > max) {
+                    max = array[i];
+                }
                 i++;
             }
-            System.out.println();
+            System.out.println(max);
         }
         //27 вывести в консоль наименший элемент массива используя for
         {
             System.out.println("#27");
             int[] array = getRandomArray();
+            int min = array[0];
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] < min) {
+                    min = array[i];
+                }
+            }
+            System.out.println(min);
         }
         //28 вывести в консоль сумму всех элементов массива
         {
             System.out.println("#28");
             int[] array = getRandomArray();
+            int sum = 0;
+            for (int i = 0; i < array.length; i++) {
+                sum = sum + array[i];
+            }
+            System.out.println(sum);
         }
         //29 вывести в консоль сумму отрицательных элементов массива
         {
             System.out.println("#29");
             int[] array = getRandomArray();
+            int sum = 0;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] < 0) {
+                    sum = sum + array[i];
+                }
+            }
+            System.out.println(sum);
         }
         //30 вывести в консоль только первый положительный элемент массива используя while
         {
             System.out.println("30");
             int[] array = getRandomArray();
+            int i = 0;
+            while (i < array.length) {
+                if (array[i] > 0) {
+                    System.out.println(array[i]);
+                    break;
+                }
+                i++;
+            }
         }
         //31 вывести в консоль только паследний положительный элемент массива используя for
         {
