@@ -355,11 +355,71 @@ public class Main {
         {
             System.out.println("31");
             int[] array = getRandomArray();
+            for (int i = array.length - 1; i >= 0; i--) {
+                if (array[i] > 0) {
+                    System.out.println(array[i]);
+                    break;
+                }
+            }
         }
         //32 вывести в консоль только первый отрицательный элемент массива используя foreach
         {
             System.out.println("32");
             int[] array = getRandomArray();
+            for (int i : array) {
+                if (i < 0) {
+                    System.out.println(i);
+                    break;
+                }
+            }
+        }
+        //33 Отсартировать массив по убыванию при помощи пузырьковой сортировки
+        {
+            System.out.println("33");
+            int[] array = getRandomArray();
+            boolean isSorted = false;
+            int temp;
+            while (!isSorted) {
+                isSorted = true;
+                for (int i = 0; i < array.length - 1; i++) {
+                    if (array[i] < array[i + 1]) {
+                        isSorted = false;
+                        temp = array[i];
+                        array[i] = array[i + 1];
+                        array[i + 1] = temp;
+                    }
+                }
+            }
+            for (int i = 0; i < array.length; i++) {
+                System.out.print(array[i] + " ");
+            }
+            System.out.println();
+        }
+        //34 Отсартировать массив по возростанию при помощи пузырьковой сортировки и использовать только циклы while
+        {
+            System.out.println("34");
+            int[] array = getRandomArray();
+            boolean isSorted = false;
+            int temp;
+            while (!isSorted) {
+                isSorted = true;
+                int i = 0;
+                while (i < array.length - 1) {
+                    if (array[i] > array[i + 1]) {
+                        isSorted = false;
+                        temp = array[i];
+                        array[i] = array[i + 1];
+                        array[i + 1] = temp;
+                    }
+                    i++;
+                }
+            }
+            int i = 0;
+            while (i < array.length) {
+                System.out.print(array[i] + " ");
+                i++;
+            }
+            System.out.println();
         }
     }
 
