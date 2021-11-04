@@ -425,11 +425,36 @@ public class Main {
         {
             System.out.println("#35");
             int[] array = getRandomArray();
+            for (int i = 0; i < array.length; i++) {
+                int current = array[i];
+                int j = i;
+                while (j > 0 && array[j - 1] > 0) {
+                    array[j] = array[j - 1];
+                    j--;
+                }
+                array[j] = current;
+                System.out.print(array[j] + " ");
+            }
+            System.out.println();
         }
         //36 Отсортировать массив по возростанию при помощи Сортировка выбором
         {
             System.out.println("#36");
             int[] array = getRandomArray();
+            for (int i = 0; i < array.length; i++) {
+                int pos = i;
+                int min = array[i];
+                for (int j = i + 1; j < array.length; j++) {
+                    if (array[j] < min) {
+                        pos = j;
+                        min = array[j];
+                    }
+                }
+                array[pos] = array[i];
+                array[i] = min;
+                System.out.print(array[i] + " ");
+            }
+            System.out.println();
         }
         //37 Отсортировать массив по возростанию при помощи Шейкерная сортировка
         {
