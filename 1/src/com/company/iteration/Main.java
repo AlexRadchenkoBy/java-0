@@ -433,7 +433,9 @@ public class Main {
                     j--;
                 }
                 array[j] = current;
-                System.out.print(array[j] + " ");
+            }
+            for (int i = 0; i < array.length; i++) {
+                System.out.print(array[i] + " ");
             }
             System.out.println();
         }
@@ -452,7 +454,9 @@ public class Main {
                 }
                 array[pos] = array[i];
                 array[i] = min;
-                System.out.print(array[i] + " ");
+            }
+            for (int i = 0; i < array.length; i++) {
+                    System.out.print(array[i] + " ");
             }
             System.out.println();
         }
@@ -460,14 +464,67 @@ public class Main {
         {
             System.out.println("#37");
             int[] array = getRandomArray();
+            int temp;
+            int left = 0;
+            int right = array.length - 1;
+            while (left <= right) {
+                for (int i = right; i > left; i--) {
+                    if (array[i - 1] > array[i]) {
+                        temp = array[i];
+                        array[i] = array[i - 1];
+                        array[i - 1] = temp;
+                    }
+                }
+                left++;
+                for (int i = left; i < right; i++) {
+                    if (array[i] > array[i + 1]) {
+                        temp = array[i];
+                        array[i] = array[i + 1];
+                        array[i + 1] = temp;
+                    }
+                }
+                right--;
+            }
+            for (int i = 0; i < array.length; i++) {
+                System.out.print(array[i] + " ");
+            }
+            System.out.println();
         }
         //38 Отсортировать массив, положительные по убыванию, отрицательные по вострастанию (использовать любые сортировки)
         // пример:
         // неотсортированный массив: 1 -1 12 123 -45 2 -43
         // отсортированный массив:   123 12 2 1 -1 -43 -45
+        // -- создать два массива один с положительными числами и второй отрицательными;
+        // -- отсортировать массивы нужным (любым удобным) способом;
+        // -- соединить два отсортированных массива;
+        // -- вывести результат в консоль.
         {
             System.out.println("#38");
             int[] array = getRandomArray();
+            int[] positiveArray = new int[array.length];
+            int[] negativeArray = new int[array.length];
+            int nextPositiveIndex = 0;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] > 0) {
+                    positiveArray[nextPositiveIndex] = array[i];
+                    nextPositiveIndex++;
+                }
+            }
+            for (int i = 0; i < positiveArray.length; i++) {
+                System.out.print(positiveArray[i] + " ");
+            }
+            System.out.println();
+            int nextNegativeIndex = 0;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] < 0) {
+                    negativeArray[nextNegativeIndex] = array[i];
+                    nextNegativeIndex++;
+                }
+            }
+            for (int i = 0; i < negativeArray.length; i++) {
+                System.out.print(negativeArray[i] + " ");
+            }
+            System.out.println();
         }
         //39 Отсортировать массив, положительные по убыванию, отрицательные по вострастанию (использовать 2 разные сортировки для положительных и отрицательных)
         // пример:
