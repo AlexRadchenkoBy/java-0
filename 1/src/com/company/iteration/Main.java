@@ -428,7 +428,7 @@ public class Main {
             for (int i = 0; i < array.length; i++) {
                 int current = array[i];
                 int j = i;
-                while (j > 0 && array[j - 1] > 0) {
+                while (j > 0 && array[j - 1] > current) {
                     array[j] = array[j - 1];
                     j--;
                 }
@@ -456,7 +456,7 @@ public class Main {
                 array[i] = min;
             }
             for (int i = 0; i < array.length; i++) {
-                    System.out.print(array[i] + " ");
+                System.out.print(array[i] + " ");
             }
             System.out.println();
         }
@@ -493,7 +493,7 @@ public class Main {
         //38 Отсортировать массив, положительные по убыванию, отрицательные по вострастанию (использовать любые сортировки)
         // пример:
         // неотсортированный массив: 1 -1 12 123 -45 2 -43
-        // отсортированный массив:   123 12 2 1 -1 -43 -45
+        // отсортированный массив:   123 12 2 1 -45 -43 -1
         // -- создать два массива один с положительными числами и второй отрицательными;
         // -- отсортировать массивы нужным (любым удобным) способом;
         // -- соединить два отсортированных массива;
@@ -523,6 +523,47 @@ public class Main {
             }
             for (int i = 0; i < negativeArray.length; i++) {
                 System.out.print(negativeArray[i] + " ");
+            }
+            System.out.println();
+            // сортируем массив с положительными элементами по убыванию
+            for (int i = 0; i < positiveArray.length; i++) {
+                int current = positiveArray[i];
+                int j = i;
+                while (j > 0 && positiveArray[j - 1] < current) {
+                    positiveArray[j] = positiveArray[j - 1];
+                    j--;
+                }
+                positiveArray[j] = current;
+            }
+            for (int i = 0; i < positiveArray.length; i++) {
+                System.out.print(positiveArray[i] + " ");
+            }
+            System.out.println();
+            // сортируем массив с отрицательными элементами по убыванию
+            for (int i = 0; i < negativeArray.length; i++) {
+                int current = negativeArray[i];
+                int j = i;
+                while (j > 0 && negativeArray[j - 1] > current) {
+                    negativeArray[j] = negativeArray[j - 1];
+                    j--;
+                }
+                negativeArray[j] = current;
+            }
+            for (int i = 0; i < negativeArray.length; i++) {
+                System.out.print(negativeArray[i] + " ");
+            }
+            System.out.println();
+            // соединяем два массива вместе
+            int[] sortedArray = new int[array.length];
+            for (int i = 0; i < sortedArray.length; i++) {
+                if (positiveArray[i] > 0) {
+                    sortedArray[i] = positiveArray[i];
+                } else {
+                    sortedArray[i] = negativeArray[i];
+                }
+            }
+            for (int i = 0; i < sortedArray.length; i++) {
+                System.out.print(sortedArray[i] + " ");
             }
             System.out.println();
         }
