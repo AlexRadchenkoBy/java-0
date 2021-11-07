@@ -555,11 +555,17 @@ public class Main {
             System.out.println();
             // соединяем два массива вместе
             int[] sortedArray = new int[array.length];
-            for (int i = 0; i < sortedArray.length; i++) {
-                if (positiveArray[i] > 0) {
-                    sortedArray[i] = positiveArray[i];
-                } else {
-                    sortedArray[i] = negativeArray[i];
+            int startedNegativeIndex = 0;
+            for (int j = 0; j < positiveArray.length; j++) {
+                if (positiveArray[j] > 0) {
+                    sortedArray[j] = positiveArray[j];
+                    startedNegativeIndex++;
+                }
+            }
+            for (int k = 0; k < negativeArray.length; k++) {
+                if (negativeArray[k] < 0) {
+                    sortedArray[startedNegativeIndex] = negativeArray[k];
+                    startedNegativeIndex++;
                 }
             }
             for (int i = 0; i < sortedArray.length; i++) {
@@ -570,15 +576,31 @@ public class Main {
         //39 Отсортировать массив, положительные по убыванию, отрицательные по вострастанию (использовать 2 разные сортировки для положительных и отрицательных)
         // пример:
         // неотсортированный массив: 1 -1 12 123 -45 2 -43
-        // отсортированный массив:   123 12 2 1 -1 -43 -45
+        // отсортированный массив:   123 12 2 1 -45 -43 -1
         {
             System.out.println("#39");
             int[] array = getRandomArray();
+
         }
-        //40 Посчитать сколько среди элементов массива положительных, отрицательных и нулевых значений. Вывести на экран посчитанное количество.
+        //40 Посчитать сколько среди элементов массива положительных, отрицательных и нулевых значений.
+        // Вывести на экран посчитанное количество.
         {
             System.out.println("#40");
             int[] array = getRandomArray();
+            int positiveCounter = 0;
+            int negativeCounter = 0;
+            int zeroCounter = 0;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] > 0) {
+                    positiveCounter++;
+                } else if (array[i] < 0) {
+                    negativeCounter++;
+                } else if (array[i] == 0) {
+                    zeroCounter++;
+                }
+            }
+            System.out.print(positiveCounter + " " + negativeCounter+ " " + zeroCounter);
+            System.out.println();
         }
         //41 вывести номер минимального по модулю элемента массива
         {
