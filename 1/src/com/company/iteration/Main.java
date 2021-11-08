@@ -606,12 +606,34 @@ public class Main {
         {
             System.out.println("#41");
             int[] array = getRandomArray();
+            int num = array[0];
+            int minIndex = 0;
+            for (int i = 1; i < array.length; i++) {
+                if (Math.abs(array[i]) < Math.abs(num)) {
+                    num = array[i];
+                    minIndex = i;
+                }
+            }
+            System.out.println(minIndex);
         }
-        //42 вывести номер минимального по модулю элемента массива
+        //42 вывести номер элемента массива, который является вторым по большинству.
         {
             System.out.println("#42");
             int[] array = getRandomArray();
+            int firstMaxElement = array[0];
+            int secondMaxElement = array[1];
+            int maxIndex = 0;
+            int temp;
+            if (secondMaxElement > firstMaxElement || firstMaxElement > secondMaxElement) {
+                temp = firstMaxElement;
+                firstMaxElement = secondMaxElement;
+                secondMaxElement = temp;
+            }
+            for (int i = 2; i < array.length; i++) {
+            }
+            System.out.println(firstMaxElement + " " + secondMaxElement);
         }
+
         //43 Сумма элементов массива, расположенных после первого отрицательного
         {
             System.out.println("#43");
