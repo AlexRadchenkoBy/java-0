@@ -622,20 +622,26 @@ public class Main {
             int[] array = getRandomArray();
             int firstMaxElement = array[0];
             int secondMaxElement = array[1];
-            int maxIndex = 0;
+            int firstMaxIndex = 0;
+            int secondMaxIndex = 1;
             if (array[0] < array[1]) {
                 firstMaxElement = array[1];
                 secondMaxElement = array[0];
+                firstMaxIndex = 1;
+                secondMaxIndex = 0;
             }
             for (int i = 2; i < array.length; i++) {
-                if (firstMaxElement > array[i]) {
-
-                }
-                if (secondMaxElement < array[i]) {
+                if (firstMaxElement < array[i]) {
+                    secondMaxElement = firstMaxElement;
+                    firstMaxElement = array[i];
+                    secondMaxIndex = firstMaxIndex;
+                    firstMaxIndex = i;
+                } else if (secondMaxElement < array[i]) {
                     secondMaxElement = array[i];
+                    secondMaxIndex = i;
                 }
             }
-            System.out.println(firstMaxElement + " " + secondMaxElement + " ");
+            System.out.println(firstMaxElement + " " + secondMaxElement + " " + secondMaxIndex);
         }
 
         //43 Сумма элементов массива, расположенных после первого отрицательного
