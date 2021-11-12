@@ -599,7 +599,7 @@ public class Main {
                     zeroCounter++;
                 }
             }
-            System.out.print(positiveCounter + " " + negativeCounter+ " " + zeroCounter);
+            System.out.print(positiveCounter + " " + negativeCounter + " " + zeroCounter);
             System.out.println();
         }
         //41 вывести номер минимального по модулю элемента массива
@@ -644,10 +644,22 @@ public class Main {
             System.out.println(firstMaxElement + " " + secondMaxElement + " " + secondMaxIndex);
         }
 
-        //43 Сумма элементов массива, расположенных после первого отрицательного
+        //43 Сумма элементов массива, расположенных после второго положительного
         {
             System.out.println("#43");
             int[] array = getRandomArray();
+            boolean firstNegativeFound = false;
+            int sum = 0;
+            for (int i = 0; i < array.length; i++) {
+                if (!firstNegativeFound && array[i] < 0) {
+                    firstNegativeFound = true;
+                    continue;
+                }
+                if (firstNegativeFound) {
+                    sum = sum + array[i];
+                }
+            }
+            System.out.println(sum);
         }
         //44 Удаление отрицательных элементов массива, и вывести эементы ЭТОГО НОВОГО МАССИВА (то есть по итогу у тебя получится новый массив без отрицательных элементов)
         {
