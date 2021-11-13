@@ -648,14 +648,16 @@ public class Main {
         {
             System.out.println("#43");
             int[] array = getRandomArray();
-            boolean firstNegativeFound = false;
+            int positiveElementCounter = 0;
             int sum = 0;
             for (int i = 0; i < array.length; i++) {
-                if (!firstNegativeFound && array[i] < 0) {
-                    firstNegativeFound = true;
-                    continue;
+                if (array[i] > 0) {
+                    positiveElementCounter++;
+                    if (positiveElementCounter == 2) {
+                        continue;
+                    }
                 }
-                if (firstNegativeFound) {
+                if (positiveElementCounter >= 2) {
                     sum = sum + array[i];
                 }
             }
