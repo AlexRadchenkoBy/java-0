@@ -667,6 +667,24 @@ public class Main {
         {
             System.out.println("#44");
             int[] array = getRandomArray();
+            int notNegativeElementCounter = 0;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] >= 0) {
+                    notNegativeElementCounter++;
+                }
+            }
+            int nextIndex = 0;
+            int[] array2 = new int[notNegativeElementCounter];
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] >= 0) {
+                    array2[nextIndex] = array[i];
+                    nextIndex++;
+                }
+            }
+            for (int i = 0; i < array2.length; i++) {
+                System.out.print(array2[i] + " ");
+            }
+            System.out.println();
         }
         //45 Сжать массив, удалив элементы, принадлежащие интервалу [-10; 100] (то есть по итогу у тебя получится новый массив без этих [-10; 100] элементов)
         // пример:
@@ -675,6 +693,24 @@ public class Main {
         {
             System.out.println("#45");
             int[] array = getRandomArray();
+            int elementCounter = 0;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] < -10 || array[i] > 100) {
+                    elementCounter++;
+                }
+            }
+            int nextIndex = 0;
+            int[] array2 = new int[elementCounter];
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] < -10 || array[i] > 100) {
+                    array2[nextIndex] = array[i];
+                    nextIndex++;
+                }
+            }
+            for (int i = 0; i < array2.length; i++) {
+                System.out.print(array2[i] + " ");
+            }
+            System.out.println();
         }
         //46 Заполнить массив случайными числами от 100 до 1000 и вывести этот массив
         {
