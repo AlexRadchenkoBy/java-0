@@ -712,9 +712,21 @@ public class Main {
             }
             System.out.println();
         }
-        //46 Заполнить массив случайными числами от 100 до 1000 и вывести этот массив
+        //46 Заполнить массив случайными числами от 100 до 1000 и случайной длинной от 5 до 10 и вывести этот массив.
         {
             System.out.println("#46");
+            int a = 5;
+            int b = 10;
+            int random_number = (int) (Math.random() * (10 - 5) + 5);
+            int[] array = new int[random_number];
+
+            for (int i = 0; i < array.length; i++) {
+                array[i] = getRandomInt(100, 1000);
+            }
+            for (int i = 0; i < array.length; i++) {
+                System.out.print(array[i] + " ");
+            }
+            System.out.println();
         }
         //47 Разложить положительные и отрицательные числа по разным массивам
         {
