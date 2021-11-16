@@ -715,13 +715,12 @@ public class Main {
         //46 Заполнить массив случайными числами от 100 до 1000 и случайной длинной от 5 до 10 и вывести этот массив.
         {
             System.out.println("#46");
-            int a = 5;
-            int b = 10;
-            int random_number = (int) (Math.random() * (10 - 5) + 5);
-            int[] array = new int[random_number];
+            int randomNumber = (int) (Math.random() * (10 - 5) + 5);
+            int[] array = new int[randomNumber];
 
             for (int i = 0; i < array.length; i++) {
-                array[i] = getRandomInt(100, 1000);
+                int randomNumber2 = (int) (Math.random() * (1000 - 100) + 100);
+                array[i] = randomNumber2;
             }
             for (int i = 0; i < array.length; i++) {
                 System.out.print(array[i] + " ");
@@ -732,6 +731,43 @@ public class Main {
         {
             System.out.println("#47");
             int[] array = getRandomArray();
+            int positiveElementCounter = 0;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] > 0) {
+                    positiveElementCounter++;
+                }
+            }
+            int nextPositiveIndex = 0;
+            int[] positiveArray = new int[positiveElementCounter];
+            for (int i =0; i < array.length; i++) {
+                if (array[i] > 0) {
+                    positiveArray[nextPositiveIndex] = array[i];
+                    nextPositiveIndex++;
+                }
+            }
+            for (int i = 0; i < positiveArray.length; i++) {
+                System.out.print(positiveArray[i] + " ");
+            }
+            System.out.println();
+
+            int negativeElementCounter = 0;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] < 0) {
+                    negativeElementCounter++;
+                }
+            }
+            int nextNegativeIndex = 0;
+            int[] negativeArray = new int[negativeElementCounter];
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] < 0) {
+                    negativeArray[nextNegativeIndex] = array[i];
+                    nextNegativeIndex++;
+                }
+            }
+            for (int i = 0; i < negativeArray.length; i++) {
+                System.out.print(negativeArray[i] + " ");
+            }
+            System.out.println();
         }
         //48 вывести максимальный из элементов массива с четными индексами
         {
