@@ -514,6 +514,7 @@ public class Main {
                 System.out.print(positiveArray[i] + " ");
             }
             System.out.println();
+
             int nextNegativeIndex = 0;
             for (int i = 0; i < array.length; i++) {
                 if (array[i] < 0) {
@@ -573,13 +574,55 @@ public class Main {
             }
             System.out.println();
         }
-        //39 Отсортировать массив, положительные по убыванию, отрицательные по вострастанию (использовать 2 разные сортировки для положительных и отрицательных)
+        //39 Отсортировать массив, положительные по убыванию, отрицательные по возрастанию
+        // (использовать 2 разные сортировки для положительных и отрицательных)
         // пример:
         // неотсортированный массив: 1 -1 12 123 -45 2 -43
         // отсортированный массив:   123 12 2 1 -45 -43 -1
         {
             System.out.println("#39");
             int[] array = getRandomArray();
+            int[] positiveArray = new int[array.length];
+            int[] negativeArray = new int[array.length];
+            int nextPositiveIndex = 0;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] > 0) {
+                    positiveArray[nextPositiveIndex] = array[i];
+                    nextPositiveIndex++;
+                }
+            }
+            for (int i = 0; i < positiveArray.length; i++) {
+                System.out.print(positiveArray[i] + " ");
+            }
+            System.out.println();
+
+            int nextNegativeIndex = 0;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] < 0) {
+                    negativeArray[nextNegativeIndex] = array[i];
+                    nextNegativeIndex++;
+                }
+            }
+            for (int i = 0; i < negativeArray.length; i++) {
+                System.out.print(negativeArray[i] + " ");
+            }
+            System.out.println();
+
+            // сортируем массив с положительными элементами по убыванию
+            for (int i = 0; i < positiveArray.length; i++) {
+                int current = positiveArray[i];
+                int j = i;
+                while (j > 0 && positiveArray[j - 1] < current) {
+                    positiveArray[j] = positiveArray[j - 1];
+                    j--;
+                }
+                positiveArray[j] = current;
+            }
+            for (int i = 0; i < positiveArray.length; i++) {
+                System.out.print(positiveArray[i] + " ");
+            }
+            System.out.println();
+
 
         }
         //40 Посчитать сколько среди элементов массива положительных, отрицательных и нулевых значений.
@@ -773,11 +816,28 @@ public class Main {
         {
             System.out.println("#48");
             int[] array = getRandomArray();
+            int maxElement = array[0];
+            int maxEvenIndex = 0;
+            for (int i = 0; i < array.length; i = i + 2) {
+                if (array[i] > maxElement) {
+                    maxElement = array[i];
+                    maxEvenIndex = i;
+                }
+            }
+            System.out.println("Максимальный элемент массива " + maxElement + " " + "Его номер " + maxEvenIndex);
         }
         //49 вывести сумму четных положительных элементов массива
         {
             System.out.println("#49");
             int[] array = getRandomArray();
+            int sumEvenPositiveElement = 0;
+            for (int i = 0; i < array.length; i++) {
+                int divide = array[i] % 2;
+                if (divide == 0) {
+                    sumEvenPositiveElement = sumEvenPositiveElement + array[i];
+                }
+            }
+            System.out.println("Сумма четных положительных элементов равна " + sumEvenPositiveElement);
         }
         //50 Заполнить массив случайными числами от 0 до 200
         // создать новый массив из созданного и заполнить его только четными элементами, которые ты возьмешь из первого массива
