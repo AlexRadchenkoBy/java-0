@@ -623,7 +623,43 @@ public class Main {
             }
             System.out.println();
 
+            // сортируем массив с отрицательными элементами по возрастанию
+            for (int i = 0; i < negativeArray.length; i++) {
+                int pos = i;
+                int min = negativeArray[i];
+                for (int j = i + 1; j < negativeArray.length; j++) {
+                    if (negativeArray[j] < min) {
+                        pos = j;
+                        min = negativeArray[j];
+                    }
+                }
+                negativeArray[pos] = negativeArray[i];
+                negativeArray[i] = min;
+            }
+            for (int i = 0; i < negativeArray.length; i++) {
+                System.out.print(negativeArray[i] + " ");
+            }
+            System.out.println();
 
+            // соединяем массивы вместе
+            int[] sortedArray = new int[array.length];
+            int startedNegativeIndex = 0;
+            for (int j = 0; j < positiveArray.length; j++) {
+                if (positiveArray[j] > 0) {
+                    sortedArray[j] = positiveArray[j];
+                    startedNegativeIndex++;
+                }
+            }
+            for (int k = 0; k < negativeArray.length; k++) {
+                if (negativeArray[k] < 0) {
+                    sortedArray[startedNegativeIndex] = negativeArray[k];
+                    startedNegativeIndex++;
+                }
+            }
+            for (int i = 0; i < sortedArray.length; i++) {
+                System.out.print(sortedArray[i] + " ");
+            }
+            System.out.println();
         }
         //40 Посчитать сколько среди элементов массива положительных, отрицательных и нулевых значений.
         // Вывести на экран посчитанное количество.
@@ -839,11 +875,57 @@ public class Main {
             }
             System.out.println("Сумма четных положительных элементов равна " + sumEvenPositiveElement);
         }
-        //50 Заполнить массив случайными числами от 0 до 200
-        // создать новый массив из созданного и заполнить его только четными элементами, которые ты возьмешь из первого массива
+        //50 Заполнить массив случайными числами от 0 до 200, длинна массива 10
+        // создать новый массив из созданного и заполнить его только четными элементами,
+        // которые ты возьмешь из первого массива
         // отсортировать второй массив по убыванию
         {
             System.out.println("#50");
+            // создаем массив и заполняем его случайными числами
+            int[] array = new int[10];
+            for (int i = 0; i < array.length; i++) {
+                int randomNumber = (int) (Math.random() * 200);
+                array[i] = randomNumber;
+            }
+            for (int i = 0; i < array.length; i++) {
+                System.out.print(array[i] + " ");
+            }
+            System.out.println();
+            // создаем новый массив и заполняем его четными элементами
+            int evenElementCounter = 0;
+            for (int i = 0; i < array.length; i++) {
+                int divide = array[i] % 2;
+                if (divide == 0) {
+                    evenElementCounter++;
+                }
+            }
+            int nextEvenIndex = 0;
+            int[] array2 = new int[evenElementCounter];
+            for (int i = 0; i < array.length; i++) {
+                int divide = array[i] % 2;
+                if (divide == 0) {
+                    array2[nextEvenIndex] = array[i];
+                    nextEvenIndex++;
+                }
+            }
+            for (int i = 0; i < array2.length; i++) {
+                System.out.print(array2[i] + " ");
+            }
+            System.out.println();
+            // сортируем массив по убыванию
+            for (int i = 0; i < array2.length; i++) {
+                int current = array2[i];
+                int j = i;
+                while (j > 0 && array2[j - 1] < current) {
+                    array2[j] = array2[j - 1];
+                    j--;
+                }
+                array2[j] = current;
+            }
+            for (int i = 0; i < array2.length; i++) {
+                System.out.print(array2[i] + " ");
+            }
+            System.out.println();
         }
     }
 
