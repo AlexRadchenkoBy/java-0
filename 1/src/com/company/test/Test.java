@@ -2,7 +2,7 @@ package com.company.test;
 
 public class Test {
     public static void main(String[] args) {
-        doTask4();
+        doTask5();
     }
 
     public static void doTask1() {
@@ -39,14 +39,38 @@ public class Test {
 
     public static void doTask4() {
         int angle1 = 45;
-        int angle2 = 100;
+        int angle2 = 60;
         int angle3 = 180 - (angle1 + angle2);
-        if (angle1 + angle2 < 180 && angle1 == 90 || angle2 == 90 || angle3 == 90) {
-            System.out.println("Треугольник существует " + "Прямой треугольник");
-        } else {
-            System.out.println("Треугольник существует " + "Не прямой треугольник");
+        if (angle1 + angle2 < 180) {
+            System.out.println("Треугольник существует ");
+            if (angle1 == 90 || angle2 == 90 || angle3 == 90) {
+                System.out.println("Прямой треугольник");
+            } else {
+                System.out.println("Не прямой треугольник");
             }
+        } else {
+            System.out.println("Треугольник не существует");
         }
     }
+
+    // - сгенерировать 4 случайных числа (a, b, c, d);
+    // - найти минимальное число из a, b и из c, d;
+    // - найти максимальное число из двух полученных чисел;
+    // - вывести максимальное число.
+    public static void doTask5() {
+        // генерируем четыре случайных числа.
+        int[] array1 = new int[4];
+        for (int i = 0; i < array1.length; i++) {
+            array1[i] = (int) (Math.random() * (20 - 1) + 1);
+        }
+        // находим минимальное число из а, b и из c, d.
+        int min1 = Math.min(array1[0], array1[1]);
+        int min2 = Math.min(array1[2], array1[3]);
+        // находим максимальное число из двух чисел.
+        int maxNumber = Math.max(min1, min2);
+        System.out.println(maxNumber);
+    }
+}
+
 
 
