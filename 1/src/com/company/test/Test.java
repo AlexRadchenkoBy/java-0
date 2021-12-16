@@ -1,8 +1,10 @@
 package com.company.test;
 
+import java.util.Scanner;
+
 public class Test {
     public static void main(String[] args) {
-        doTask5();
+        doTask6();
     }
 
     public static void doTask1() {
@@ -69,6 +71,23 @@ public class Test {
         // находим максимальное число из двух чисел.
         int maxNumber = Math.max(min1, min2);
         System.out.println(maxNumber);
+    }
+
+    public static void doTask6() {
+        for (; ; ) {
+            System.out.println("Введите любое целое положительное число");
+            Scanner scanner = new Scanner(System.in);
+            int anyPositiveInteger = -1;
+            if (scanner.hasNextInt() && (anyPositiveInteger = scanner.nextInt()) > 0) {
+                int sumNumber = 0;
+                for (int i = 1; i <= anyPositiveInteger; i++) {
+                    sumNumber = sumNumber + i;
+                }
+                System.out.println("Cумма чисел равна " + sumNumber);
+            } else {
+                System.out.println("Вводите только целые положительные числа ");
+            }
+        }
     }
 }
 
