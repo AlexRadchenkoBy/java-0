@@ -1,10 +1,11 @@
 package com.company.test;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
-        doTask6();
+        doTask9();
     }
 
     public static void doTask1() {
@@ -89,6 +90,45 @@ public class Test {
             }
         }
     }
+
+    public static void doTask7() {
+        int sumNumbersSquares = 0;
+        for (int i = 1; i <= 100; i++) {
+            sumNumbersSquares = sumNumbersSquares + (i * i);
+        }
+        System.out.println(sumNumbersSquares);
+    }
+
+    public static void doTask8() {
+        for (int i = 1; i <= 127; i++) {
+            System.out.println(i + " " + (char) i);
+        }
+    }
+
+    public static void doTask9() {
+        int[] array = new int[2];
+        int number1 = 45;
+        int number2 = 65;
+        int n1 = 0;
+        int n2 = 0;
+        for (int i = number1; i != 0; array[i /= 10]++) {
+            array[0] = i % 10;
+
+            System.out.println(array[0]);
+       // }
+       // System.out.println("n1 " + n1);
+        //for (int i = number2; i != 0; i /= 10) {
+          //  n2 = i % 10;
+          //  System.out.println(n2);
+      //  }
+       // if (n1 == n2) {
+        //    System.out.println(true);
+       // } else {
+         //   System.out.println(false);
+        }
+        System.out.println(Arrays.toString(array));
+    }
+
 }
 
 
