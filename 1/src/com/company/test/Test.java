@@ -105,30 +105,47 @@ public class Test {
         }
     }
 
+    // - ввести два числа содержащие одинаковые цифрыЖ
+    // - создать массив, который будет содержать цифры первого числа;
+    // - разложить число на цифры и записать полученные цифры в массив;
+    // - сделать тоже самое со вторым числом;
+    // - сравнить два массива на наличие одинаковых чисел;
+    // - вывести одинаковые числа в консоль.
     public static void doTask9() {
-        int[] array = new int[2];
+        int currentNumberOne = 0;
         int number1 = 45;
-        int number2 = 65;
-        int n1 = 0;
-        int n2 = 0;
-        for (int i = number1; i != 0; array[i /= 10]++) {
-            array[0] = i % 10;
-
-            System.out.println(array[0]);
-       // }
-       // System.out.println("n1 " + n1);
-        //for (int i = number2; i != 0; i /= 10) {
-          //  n2 = i % 10;
-          //  System.out.println(n2);
-      //  }
-       // if (n1 == n2) {
-        //    System.out.println(true);
-       // } else {
-         //   System.out.println(false);
+        for (int i = number1; i != 0; i /= 10) {
+            currentNumberOne++;
         }
-        System.out.println(Arrays.toString(array));
-    }
+        int[] array1 = new int[currentNumberOne];
 
+        for (int i = number1, j = 0; i != 0; i /= 10, j++) {
+            array1[j] = i % 10;
+        }
+
+        int currentNumberTwo = 0;
+        int number2 = 65;
+        for (int i = number2; i != 0; i /= 10) {
+            currentNumberTwo++;
+        }
+        int[] array2 = new int[currentNumberTwo];
+
+        for (int i = number2, k = 0; i != 0; i /= 10, k++) {
+            array2[k] = i % 10;
+        }
+        System.out.println(Arrays.toString(array1));
+        System.out.println(Arrays.toString(array2));
+        for (int i = 0; array1.length <= 2; i++) {
+            int a = array1[i];
+
+            for (int j = 0; array2.length <= 2; j++) {
+                int b = array2[j];
+                if (a == b) {
+                    System.out.println(a + " " + b);
+                }
+            }
+        }
+    }
 }
 
 
