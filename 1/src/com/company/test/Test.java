@@ -112,38 +112,42 @@ public class Test {
     // - сравнить два массива на наличие одинаковых чисел;
     // - вывести одинаковые числа в консоль.
     public static void doTask9() {
-        int currentNumberOne = 0;
-        int number1 = 45;
-        for (int i = number1; i != 0; i /= 10) {
-            currentNumberOne++;
-        }
-        int[] array1 = new int[currentNumberOne];
+        for (; ; ) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Введите первое число ");
+            int currentNumberOne = 0;
+            int number1 = scanner.nextInt();
+            for (int i = number1; i != 0; i /= 10) {
+                currentNumberOne++;
+            }
+            int[] array1 = new int[currentNumberOne];
 
-        for (int i = number1, j = 0; i != 0; i /= 10, j++) {
-            array1[j] = i % 10;
-        }
+            for (int i = number1, j = 0; i != 0; i /= 10, j++) {
+                array1[j] = i % 10;
+            }
+            System.out.println("Введите второе число ");
+            int currentNumberTwo = 0;
+            int number2 = scanner.nextInt();
+            for (int i = number2; i != 0; i /= 10) {
+                currentNumberTwo++;
+            }
+            int[] array2 = new int[currentNumberTwo];
 
-        int currentNumberTwo = 0;
-        int number2 = 65;
-        for (int i = number2; i != 0; i /= 10) {
-            currentNumberTwo++;
-        }
-        int[] array2 = new int[currentNumberTwo];
+            for (int i = number2, k = 0; i != 0; i /= 10, k++) {
+                array2[k] = i % 10;
+            }
+            System.out.print("Общие числа: ");
+            for (int i = 0; i < array1.length - 1; i++) {
+                int a = array1[i];
 
-        for (int i = number2, k = 0; i != 0; i /= 10, k++) {
-            array2[k] = i % 10;
-        }
-        System.out.println(Arrays.toString(array1));
-        System.out.println(Arrays.toString(array2));
-        for (int i = 0; array1.length <= 2; i++) {
-            int a = array1[i];
-
-            for (int j = 0; array2.length <= 2; j++) {
-                int b = array2[j];
-                if (a == b) {
-                    System.out.println(a + " " + b);
+                for (int j = 0; j < array2.length - 1; j++) {
+                    int b = array2[j];
+                    if (a == b) {
+                        System.out.print(a + " ");
+                    }
                 }
             }
+            System.out.println();
         }
     }
 }
