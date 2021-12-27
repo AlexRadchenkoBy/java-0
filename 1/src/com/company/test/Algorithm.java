@@ -3,8 +3,9 @@ package com.company.test;
 public class Algorithm {
 
     public static void main(String[] args) {
-        doTask2();
+        doTask3();
     }
+
     public static void doTask1() {
         // - инициализировать число Z;
         // - создать массив случайных нецелых чисел;
@@ -12,25 +13,20 @@ public class Algorithm {
         // - подсчитать количество замен;
         // - вывести результат в консоль.
 
-        double counterElement = 0;
+        int counterElement = 0;
         double z = 16.3421573;
         double[] array = new double[7];
         for (int i = 0; i < array.length; i++) {
-            array[i] = (double) (Math.random() * (40.0 - 1.0) + 1.0);
+            array[i] = Math.random() * (40.0 - 1.0) + 1.0;
             System.out.print(array[i] + " ");
         }
         System.out.println();
         for (int i = 0; i < array.length; i++) {
             if (array[i] > z) {
                 counterElement++;
-            }
-            if (array[i] > z) {
                 array[i] = z;
             }
             System.out.print(array[i] + " ");
-            if (array[i] > z) {
-                counterElement++;
-            }
         }
         System.out.println();
         System.out.println(counterElement + " ");
@@ -44,11 +40,11 @@ public class Algorithm {
 
         double[] array = new double[12];
         for (int i = 0; i < array.length; i++) {
-            array[i] = ((double) (Math.random() * 201) - 100);
+            array[i] = (Math.random() * 201) - 100;
         }
-        double positiveCounter = 0;
-        double negativeCounter = 0;
-        double zeroCounter = 0;
+        int positiveCounter = 0;
+        int negativeCounter = 0;
+        int zeroCounter = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] > 0) {
                 positiveCounter++;
@@ -61,5 +57,43 @@ public class Algorithm {
         System.out.print(positiveCounter + " " + negativeCounter + " " + zeroCounter);
         System.out.println();
     }
+
+    public static void doTask3() {
+        // - создать массив случайных нецелых чисел;
+        // - определить наименьшее и наибольшее число в данном массиве;
+        // - поменять их местами;
+        // - вывести результат в консоль.
+
+        double[] array = new double[7];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = (Math.random() * 21) - 10;
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+        double temp;
+        double maxElement = array[0];
+        double minElement = array[0];
+        int maxIndex = 0;
+        int minIndex = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > maxElement) {
+                maxIndex = i;
+                maxElement = array[i];
+            } else if (array[i] < minElement) {
+                minIndex = i;
+                minElement = array[i];
+            }
+                temp = array[minIndex];
+                array[minIndex] = array[maxIndex];
+                array[maxIndex] = temp;
+        }
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+    }
 }
+
+
+
+
 
