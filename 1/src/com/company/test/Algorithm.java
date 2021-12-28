@@ -3,7 +3,7 @@ package com.company.test;
 public class Algorithm {
 
     public static void main(String[] args) {
-        doTask3();
+        doTask5();
     }
 
     public static void doTask1() {
@@ -83,12 +83,54 @@ public class Algorithm {
                 minIndex = i;
                 minElement = array[i];
             }
-                temp = array[minIndex];
-                array[minIndex] = array[maxIndex];
-                array[maxIndex] = temp;
         }
+        temp = array[minIndex];
+        array[minIndex] = array[maxIndex];
+        array[maxIndex] = temp;
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + " ");
+        }
+    }
+
+    public static void doTask4() {
+        // - создать массив целлых чисел;
+        // _ сравнить элемент массива с его индексом;
+        // - если элемент больше своего индекса вывести его в консоль.
+
+        int[] array = new int[7];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = (int) (Math.random() * (10 - 1) + 1);
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > i) {
+                System.out.print(array[i] + " ");
+            }
+        }
+    }
+
+    public static void doTask5() {
+        // - создать массив целых чисел;
+        // - удалить из массива каждый второй элемент;
+        // - создать новый массив;
+        // - записать в новый массив полученный результат;
+        // - вывести новый массив в консоль.
+        int[] array = new int[10];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = (int) (Math.random() * (20 - 1) + 1);
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+        int[] array2 = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            array2[i] = array[i];
+        }
+        for (int i = 0; i < array2.length; i++) {
+        int divide = i % 2;
+        if (divide == 0) {
+            System.out.print(array2[i] + " ");
+        }
         }
     }
 }
