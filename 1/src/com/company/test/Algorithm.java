@@ -117,20 +117,29 @@ public class Algorithm {
         // - записать в новый массив полученный результат;
         // - вывести новый массив в консоль.
         int[] array = new int[10];
+        int firstElementCounter = 0;
         for (int i = 0; i < array.length; i++) {
             array[i] = (int) (Math.random() * (20 - 1) + 1);
             System.out.print(array[i] + " ");
         }
         System.out.println();
-        int[] array2 = new int[array.length];
         for (int i = 0; i < array.length; i++) {
-            array2[i] = array[i];
+            int divide = i % 2;
+            if (divide == 0) {
+                firstElementCounter++;
+            }
+        }
+        int firstIndex = 0;
+        int[] array2 = new int[firstElementCounter];
+        for (int i = 0; i < array.length; i++) {
+            int divide = i % 2;
+            if (divide == 0) {
+                array2[firstIndex] = array[i];
+                firstIndex++;
+            }
         }
         for (int i = 0; i < array2.length; i++) {
-        int divide = i % 2;
-        if (divide == 0) {
             System.out.print(array2[i] + " ");
-        }
         }
     }
 }
