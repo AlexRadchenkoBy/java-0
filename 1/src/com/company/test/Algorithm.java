@@ -129,13 +129,13 @@ public class Algorithm {
                 firstElementCounter++;
             }
         }
-        int firstIndex = 0;
+        int array2Index = 0;
         int[] array2 = new int[firstElementCounter];
         for (int i = 0; i < array.length; i++) {
             int divide = i % 2;
             if (divide == 0) {
-                array2[firstIndex] = array[i];
-                firstIndex++;
+                array2[array2Index] = array[i];
+                array2Index++;
             }
         }
         for (int i = 0; i < array2.length; i++) {
