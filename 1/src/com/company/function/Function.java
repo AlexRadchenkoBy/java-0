@@ -6,5 +6,10 @@ public class Function {
        Helper helper = new Helper();
        double square = helper.getsHexagon(4);
        System.out.println(square);
+
+       int a = (int) (Math.random() * (20 - 1) + 1);
+       int b = (int) (Math.random() * (20 - 1) + 1);
+       int c = (int) (Math.random() * (20 - 1) + 1);
+       boolean primes = helper.getsPrimeNumbers(a, b, c);
     }
 }
