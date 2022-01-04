@@ -28,4 +28,20 @@ public class Helper {
                 || (getNod(b, a) == 1 && getNod(b, c) == 1)
                 || (getNod(c, a) == 1 && getNod(c, b) == 1);
     }
+
+    public int getSumFactorial(int[] array) {
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            sum = sum + getFactorial(array[i]);
+        }
+        return sum;
+    }
+
+    public int getFactorial(int number) {
+        int result = 1;
+        for (int i = 1; i <= number; i++) {
+            result = result * i;
+        }
+        return result;
+    }
 }

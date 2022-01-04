@@ -4,6 +4,7 @@ public class Function {
 
     public static void main(String[] args) {
        Helper helper = new Helper();
+       int[] array = {0, 1, 2, 3};
        double square = helper.getHexagonSquare(4);
        System.out.println(square);
 
@@ -15,5 +16,10 @@ public class Function {
 
        int Nod = helper.getNod(25, 14);
         System.out.println(Nod);
+
+        int sumFactorial = helper.getSumFactorial(array);
+        System.out.println(sumFactorial);
+
+        System.out.println(helper.getFactorial(3));
     }
 }
