@@ -44,4 +44,16 @@ public class Helper {
         }
         return result;
     }
+
+    public String getRepeatStr(String string, int counter) {
+        String result = "";
+        for (int i = 0; i < counter - 1; i++) {
+            result = result + string;
+        }
+        return result;
+    }
+
+    public int getSquareQuadrangle(int x, int y, int z, int t) {
+
+    }
 }

@@ -4,7 +4,7 @@ public class Function {
 
     public static void main(String[] args) {
        Helper helper = new Helper();
-       int[] array = {0, 1, 2, 3};
+       int[] array = {1, 3, 5, 7, 9};
        double square = helper.getHexagonSquare(4);
        System.out.println(square);
 
@@ -21,5 +21,8 @@ public class Function {
         System.out.println(sumFactorial);
 
         System.out.println(helper.getFactorial(3));
+
+        String repeatStr = helper.getRepeatStr("Hello", 5);
+        System.out.print(repeatStr);
     }
 }
