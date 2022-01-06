@@ -26,7 +26,11 @@ public class Function {
         System.out.print(repeatStr);
         System.out.println();
 
-        double squareQuadrangle = helper.getSquareQuadrangle(2, 4, 5, 3);
+        double squareQuadrangle = helper.getSquareQuadrangle(4, 4, 5, 5);
         System.out.println(squareQuadrangle);
+
+
+        int arrayOfNumber = helper.getArrayOfNumbers(12);
+        System.out.print(arrayOfNumber + " ");
     }
 }

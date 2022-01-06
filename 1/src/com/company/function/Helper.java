@@ -54,16 +54,23 @@ public class Helper {
     }
 
     public double getSquareQuadrangle(int x, int y, int z, int t) {
-        double sQuare = 0;
-        double pQuare = 0;
-    if ((x == y) && (z == t)) {
-        sQuare = x * x;
-    } else if (x == z && y == t) {
-        sQuare = x * y;
-    } else if (x != z && y != t && x != y && z != t && x != t && y != z) {
-        pQuare = (x + y + z + t) / 2;
-        sQuare = Math.sqrt((pQuare - x) * (pQuare - y) * (pQuare - z) * (pQuare - t));
+        double semiPerimeter = (x + y + z + t) / 2;
+        return  Math.sqrt((semiPerimeter - x) * (semiPerimeter - y) * (semiPerimeter - z) * (semiPerimeter - t));
     }
-    return sQuare;
+
+    public int getArrayOfNumbers(int numberN) {
+        int currentNumberN = 0;
+        for (; ; ) {
+            for (int i = numberN; i != 0; i /= 10) {
+                currentNumberN++;
+            }
+
+            int[] arrayN = new int[currentNumberN];
+
+            for (int i = numberN, j = 0; i != 0; i /= 10, j++) {
+                arrayN[j] = i % 10;
+                return arrayN[j];
+            }
+        }
     }
 }
