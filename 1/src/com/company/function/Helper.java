@@ -53,7 +53,17 @@ public class Helper {
         return result;
     }
 
-    public int getSquareQuadrangle(int x, int y, int z, int t) {
-
+    public double getSquareQuadrangle(int x, int y, int z, int t) {
+        double sQuare = 0;
+        double pQuare = 0;
+    if ((x == y) && (z == t)) {
+        sQuare = x * x;
+    } else if (x == z && y == t) {
+        sQuare = x * y;
+    } else if (x != z && y != t && x != y && z != t && x != t && y != z) {
+        pQuare = (x + y + z + t) / 2;
+        sQuare = Math.sqrt((pQuare - x) * (pQuare - y) * (pQuare - z) * (pQuare - t));
+    }
+    return sQuare;
     }
 }

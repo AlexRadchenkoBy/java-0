@@ -24,5 +24,9 @@ public class Function {
 
         String repeatStr = helper.getRepeatStr("Hello", 5);
         System.out.print(repeatStr);
+        System.out.println();
+
+        double squareQuadrangle = helper.getSquareQuadrangle(2, 4, 5, 3);
+        System.out.println(squareQuadrangle);
     }
 }
