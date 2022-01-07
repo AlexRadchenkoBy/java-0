@@ -30,7 +30,10 @@ public class Function {
         System.out.println(squareQuadrangle);
 
 
-        int arrayOfNumber = helper.getArrayOfNumbers(12);
-        System.out.print(arrayOfNumber + " ");
+        int[] arrayOfNumber = helper.getArrayOfNumbers(456);
+        for (int i = 0; i < arrayOfNumber.length; i++) {
+            System.out.print(arrayOfNumber[i] + " ");
+        }
+
     }
 }

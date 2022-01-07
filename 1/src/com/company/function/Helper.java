@@ -58,19 +58,21 @@ public class Helper {
         return  Math.sqrt((semiPerimeter - x) * (semiPerimeter - y) * (semiPerimeter - z) * (semiPerimeter - t));
     }
 
-    public int getArrayOfNumbers(int numberN) {
-        int currentNumberN = 0;
-        for (; ; ) {
+    public int[] getArrayOfNumbers(int numberN) {
+        int amountOfDigits = 0;
             for (int i = numberN; i != 0; i /= 10) {
-                currentNumberN++;
+                amountOfDigits++;
             }
 
-            int[] arrayN = new int[currentNumberN];
+            int[] digits = new int[amountOfDigits];
 
-            for (int i = numberN, j = 0; i != 0; i /= 10, j++) {
-                arrayN[j] = i % 10;
-                return arrayN[j];
+            for (int i = numberN, j = 0; i != 0; i = i / 10, j++) {
+                digits[j] = i % 10;
             }
-        }
+            return digits;
+    }
+
+    public int getWereMoreNumbers(int number1, int number2) {
+
     }
 }
