@@ -34,6 +34,9 @@ public class Function {
         for (int i = 0; i < arrayOfNumber.length; i++) {
             System.out.print(arrayOfNumber[i] + " ");
         }
+        System.out.println();
 
+        int wereMoreNumber = helper.isFirstNumberMore(13454, 1245673);
+        System.out.println(wereMoreNumber);
     }
 }

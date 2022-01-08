@@ -59,20 +59,31 @@ public class Helper {
     }
 
     public int[] getArrayOfNumbers(int numberN) {
-        int amountOfDigits = 0;
-            for (int i = numberN; i != 0; i /= 10) {
-                amountOfDigits++;
-            }
-
-            int[] digits = new int[amountOfDigits];
-
-            for (int i = numberN, j = 0; i != 0; i = i / 10, j++) {
-                digits[j] = i % 10;
-            }
-            return digits;
+        int[] digits = new int[calcDigits(numberN)];
+        for (int i = numberN, j = 0; i != 0; i = i / 10, j++) {
+            digits[j] = i % 10;
+        }
+        return digits;
     }
 
-    public int getWereMoreNumbers(int number1, int number2) {
+    public int isFirstNumberMore(int number1, int number2) {
+        int comparisonCode = 0;
+        int amountOfDigitsNumberOne = calcDigits(number1);
+        int amountOfDigitsNumberTwo = calcDigits(number2);
 
+        if (amountOfDigitsNumberOne > amountOfDigitsNumberTwo) {
+             comparisonCode = 1;
+        } else if (amountOfDigitsNumberOne < amountOfDigitsNumberTwo) {
+            comparisonCode = -1;
+        }
+        return comparisonCode;
+    }
+
+    public int calcDigits(int number) {
+        int amountOfDigits = 0;
+        for (int i = number; i != 0; i /= 10) {
+            amountOfDigits++;
+        }
+        return amountOfDigits;
     }
 }
