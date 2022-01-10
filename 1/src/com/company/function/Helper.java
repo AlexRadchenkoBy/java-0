@@ -86,4 +86,23 @@ public class Helper {
         }
         return amountOfDigits;
     }
+
+    public int[] getArrayNumbers(int number) {
+        int[] arrayNumbers = new int[(2 * number - number) + 1];
+        for (int i = 0, currentNumber = number; i < arrayNumbers.length; i++, currentNumber++) {
+            arrayNumbers[i] = currentNumber;
+            System.out.println(arrayNumbers[i]);
+        }
+
+        return arrayNumbers;
+    }
+
+    public int[] getArrayTwinNumbers(int number) {
+        int[] arrayNumbersTwin = new int[(2 * number - number) + 1];
+        for (int i = 0; i < arrayNumbersTwin.length; i++) {
+            arrayNumbersTwin[0] = getArrayNumbers(number)[i];
+            arrayNumbersTwin[1] = getArrayNumbers(number)[i + 2];
+        }
+        return arrayNumbersTwin;
+    }
 }
