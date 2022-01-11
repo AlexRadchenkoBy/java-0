@@ -87,22 +87,50 @@ public class Helper {
         return amountOfDigits;
     }
 
-    public int[] getArrayNumbers(int number) {
+    public int[] getTwins(int number) {
+        int[] numbers = buildArray(number);
+        int[] twins = new int[(2 * number - number) + 1];
+        int currentPrime = 0;
+        int currentTwinsIndex = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            if (currentPrime == 0 && isPrime(numbers[i])) {
+                currentPrime = numbers[i];
+                continue;
+            }
+            if (isPrime(numbers[i])) {
+                if (currentPrime + 2 == numbers[i]) {
+                    twins[currentTwinsIndex] = currentPrime;
+                    twins[currentTwinsIndex + 1] = numbers[i];
+                    currentTwinsIndex += 2;
+                    currentPrime = 0;
+                } else {
+                    currentPrime = numbers[i];
+                }
+            }
+        }
+        return cutZeros(twins);
+    }
+
+    public int[] buildArray(int number) {
         int[] arrayNumbers = new int[(2 * number - number) + 1];
         for (int i = 0, currentNumber = number; i < arrayNumbers.length; i++, currentNumber++) {
             arrayNumbers[i] = currentNumber;
-            System.out.println(arrayNumbers[i]);
         }
-
         return arrayNumbers;
     }
 
-    public int[] getArrayTwinNumbers(int number) {
-        int[] arrayNumbersTwin = new int[(2 * number - number) + 1];
-        for (int i = 0; i < arrayNumbersTwin.length; i++) {
-            arrayNumbersTwin[0] = getArrayNumbers(number)[i];
-            arrayNumbersTwin[1] = getArrayNumbers(number)[i + 2];
+    public boolean isPrime(int number) {
+        boolean isPrime = true;
+        for (int i = 2; i <= number / 2; i++) {
+            if (number % i == 0) {
+                isPrime = false;
+                break;
+            }
         }
-        return arrayNumbersTwin;
+        return isPrime;
+    }
+
+    public int[] cutZeros(int[] array) {
+
     }
 }

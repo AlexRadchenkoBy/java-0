@@ -39,8 +39,9 @@ public class Function {
         int wereMoreNumber = helper.isFirstNumberMore(13454, 1245673);
         System.out.println(wereMoreNumber);
 
-        helper.getArrayNumbers(5);
-
-
+        int[] twins = helper.getTwins(5);
+        for (int i = 0; i < twins.length; i++) {
+            System.out.print(twins[i] + " ");
+        }
     }
 }
