@@ -131,6 +131,19 @@ public class Helper {
     }
 
     public int[] cutZeros(int[] array) {
-
+        int currentElementWithoutZero = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != 0) {
+                currentElementWithoutZero++;
+            }
+        }
+        int[] arrayWithoutZeros = new int[currentElementWithoutZero];
+        for (int i = 0, j = 0; i < array.length; i++) {
+            if (array[i] != 0) {
+                arrayWithoutZeros[j] = array[i];
+                j++;
+            }
+        }
+        return arrayWithoutZeros;
     }
 }
