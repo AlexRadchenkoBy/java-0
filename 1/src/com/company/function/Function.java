@@ -43,5 +43,12 @@ public class Function {
         for (int i = 0; i < twins.length; i++) {
             System.out.print(twins[i] + " ");
         }
+        System.out.println();
+
+        int[] r = helper.digitSequence(3);
+        for (int i = 0; i < r.length; i++) {
+            System.out.print(r[i] + " ");
+        }
     }
+
 }

@@ -146,4 +146,13 @@ public class Helper {
         }
         return arrayWithoutZeros;
     }
+    // - создать функцию;
+    // -
+    public int[] digitSequence(int numberN) {
+        int[] receivedNumbers = new int[(int) (9 * Math.pow(10, numberN - 1))];
+        for (int i = 0, number = (int) Math.pow(10, numberN - 1); i < receivedNumbers.length; i++, number++) {
+            receivedNumbers[i] = number;
+        }
+        return receivedNumbers;
+    }
 }
