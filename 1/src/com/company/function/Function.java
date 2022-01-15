@@ -49,6 +49,13 @@ public class Function {
         for (int i = 0; i < r.length; i++) {
             System.out.print(r[i] + " ");
         }
+        System.out.println();
+
+        int[] arr = {123, 234, 543, 237};
+        int[] j = helper.lookingForSequence(arr);
+        for (int i = 0; i < j.length; i++) {
+            System.out.print(j[i] + " ");
+        }
     }
 
 }

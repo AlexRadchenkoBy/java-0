@@ -146,13 +146,32 @@ public class Helper {
         }
         return arrayWithoutZeros;
     }
-    // - создать функцию;
-    // -
+    // - найти количество n-значных чисел для создания массива;
+    // - создать массив n-значных чисел;
+    // - разбить n-значные числа на цифры и записать в новый массив те которые идут по возрастанию;
     public int[] digitSequence(int numberN) {
         int[] receivedNumbers = new int[(int) (9 * Math.pow(10, numberN - 1))];
         for (int i = 0, number = (int) Math.pow(10, numberN - 1); i < receivedNumbers.length; i++, number++) {
             receivedNumbers[i] = number;
         }
-        return receivedNumbers;
+        return lookingForSequence(receivedNumbers);
+    }
+
+    public int[] lookingForSequence(int[] arraySequence) {
+        int[] increasingNumbers = new int[arraySequence.length];
+        for (int i = 0; i < arraySequence.length; i++) {
+            int[] digits = getArrayOfNumbers(arraySequence[i]);
+            boolean isDecreasing = true;
+            for (int j = 0; j < digits.length - 1; j++) {
+                if (digits[j] <= digits[j + 1]) {
+                    isDecreasing = false;
+                    break;
+                }
+            }
+            if (isDecreasing) {
+                increasingNumbers[i] = arraySequence[i];
+            }
+        }
+        return cutZeros(increasingNumbers);
     }
 }
