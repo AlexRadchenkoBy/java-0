@@ -160,18 +160,39 @@ public class Helper {
     public int[] lookingForSequence(int[] arraySequence) {
         int[] increasingNumbers = new int[arraySequence.length];
         for (int i = 0; i < arraySequence.length; i++) {
-            int[] digits = getArrayOfNumbers(arraySequence[i]);
-            boolean isDecreasing = true;
-            for (int j = 0; j < digits.length - 1; j++) {
-                if (digits[j] <= digits[j + 1]) {
-                    isDecreasing = false;
-                    break;
-                }
-            }
-            if (isDecreasing) {
+            if (isIncreasing(arraySequence[i])) {
                 increasingNumbers[i] = arraySequence[i];
             }
         }
         return cutZeros(increasingNumbers);
+    }
+
+    public boolean isIncreasing(int number) {
+        int[] digits = getArrayOfNumbers(number);
+        boolean isIncreasing = true;
+        for (int j = 0; j < digits.length - 1; j++) {
+            if (digits[j] <= digits[j + 1]) {
+                isIncreasing = false;
+                break;
+            }
+        }
+        return isIncreasing;
+    }
+    // - ввести любое целое число( желательно двузначное и больше);
+    // - разложить число на цифры;
+    // - записать получившийся результат в массив;
+    // - сложить полученные цифры числа и сохранить результат;
+    // - из первоначального числа вычетать полученную сумму его цифр пока не получим нуль.
+    // - посчитать количество таких операций;
+    public int sumOfDigits(int number) {
+        int[] digits = getArrayOfNumbers(number);
+        int sumNumbers = 0;
+        for (int i = 0; i < digits.length; i++) {
+            sumNumbers = sumNumbers + digits[i];
+            for (int j = number; j <= 0; j++) {
+
+            }
+        }
+        return sumNumbers ;
     }
 }
