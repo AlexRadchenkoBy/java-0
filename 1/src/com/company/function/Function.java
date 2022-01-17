@@ -51,8 +51,9 @@ public class Function {
         }
         System.out.println();
 
-        int k = helper.sumOfDigits(123);
-            System.out.print(k + " ");
+        int k = helper.findEventCount(123);
+                System.out.print(k + " ");
+
 
     }
 
