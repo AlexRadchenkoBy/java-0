@@ -51,7 +51,7 @@ public class Function {
         }
         System.out.println();
 
-        int k = helper.findEventCount(123);
+        int k = helper.amountOfDeductions(78);
                 System.out.print(k + " ");
 
 

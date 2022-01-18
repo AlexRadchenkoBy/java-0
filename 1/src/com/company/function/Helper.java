@@ -184,62 +184,34 @@ public class Helper {
     // - сложить полученные цифры числа и сохранить результат;
     // - из результата вычетать полученную сумму его цифр пока не получим нуль.
     // - посчитать количество таких операций;
-   // public int sumOfDigits(int number) {
-       // int[] digits = getArrayOfNumbers(number);
-        //int sumNumbers = 0;
-        //int substract = 0;
-       // for (int i = 0; i < digits.length; i++) {
-         //   sumNumbers = sumNumbers + digits[i];
-         //   int amountOperations = 0;
-         //   for (int j = number; substract <= 0; j++) {
-         //       substract = number - sumNumbers;
-         //  }
-       // }
-      //  return substract ;
-   // }
-
-    public int findEventCount(int number) {
-        int eventCounter = 0;
-
-        while (number > 0) {
-            int digitsSum = findDigitsSum(number);
-            number -= digitsSum;
-            eventCounter++;
+     public int amountOfDeductions(int number) {
+        int counterDeduction = 0;
+        for (int i = number; number > 0; i++) {
+            int sumDigits = getSumDigits(number);
+            number = number - sumDigits;
+            counterDeduction++;
         }
-
-        return eventCounter;
+        return counterDeduction;
     }
 
-    public int findDigitsSum(int number) {
-        int digitsSum = 0;
-        int[] digits = getNumberDigits(number);
-
+    public int getSumDigits( int number) {
+        int sumDigits = 0;
+        int[]digits = Numberdigits(number);
         for (int i = 0; i < digits.length; i++) {
-            digitsSum += digits[i];
+            sumDigits = sumDigits + digits[i];
         }
-
-        return digitsSum;
+        return sumDigits;
     }
 
-    public int findNumberLength(int number) {
-        int numberLength = 0;
-
-        while (number != 0) {
-            numberLength++;
-            number /= 10;
-        }
-        return numberLength;
+    public int getNumberlenth(int number) {
+        int numberlenth = calcDigits(number);
+        return numberlenth;
     }
 
-    public int[] getNumberDigits(int number) {
-        int numberLength = findNumberLength(number);
-        int[] numberDigits = new int[numberLength];
-
-        for (int i = 1; i <= numberLength; i++) {
-            int digit = (int) (number / Math.pow(10, i - 1)) % 10;
-            numberDigits[numberLength - i] = digit;
-        }
-
-        return numberDigits;
+    public int[] Numberdigits(int number) {
+        int[] numberlenth = getArrayOfNumbers(number);
+        return numberlenth;
     }
 }
+
+
