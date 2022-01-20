@@ -51,10 +51,14 @@ public class Function {
         }
         System.out.println();
 
-        int k = helper.amountOfDeductions(78);
+        int k = helper.amountOfDeductions(123);
                 System.out.print(k + " ");
+                System.out.println();
 
+        String transformer = helper.transformation("перевести в заглавные буквы");
+            System.out.print(transformer + " ");
 
     }
+
 
 }

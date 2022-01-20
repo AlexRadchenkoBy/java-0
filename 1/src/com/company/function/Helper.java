@@ -196,22 +196,25 @@ public class Helper {
 
     public int getSumDigits( int number) {
         int sumDigits = 0;
-        int[]digits = Numberdigits(number);
+        int[]digits = getArrayOfNumbers(number);;
         for (int i = 0; i < digits.length; i++) {
             sumDigits = sumDigits + digits[i];
         }
         return sumDigits;
     }
 
-    public int getNumberlenth(int number) {
-        int numberlenth = calcDigits(number);
-        return numberlenth;
+    // - Напишите функцию, которая преобразует входную строку в верхний регистр
+    public String transformation(String inputString) {
+        String translate = inputString.toUpperCase();
+        return translate;
     }
 
-    public int[] Numberdigits(int number) {
-        int[] numberlenth = getArrayOfNumbers(number);
-        return numberlenth;
-    }
+    // Камень ножницы Бумага. Давайте играть! Вы должны вернуть, какой игрок выиграл! В случае ничьей вернуть Draw!
+    //Пример: rps('scissors','paper') // Игрок 1 выиграл!
+    //rps('scissors','rock') // Игрок 2 выиграл!
+    //rps('бумага','бумага') // Рисуем!
+
+
 }
 
 
