@@ -1,4 +1,6 @@
 package com.company.function;
+import java.util.Scanner;
+import java.util.Random;
 
 public class Helper {
     public double getHexagonSquare(int a) {
@@ -55,7 +57,7 @@ public class Helper {
 
     public double getSquareQuadrangle(int x, int y, int z, int t) {
         double semiPerimeter = (x + y + z + t) / 2;
-        return  Math.sqrt((semiPerimeter - x) * (semiPerimeter - y) * (semiPerimeter - z) * (semiPerimeter - t));
+        return Math.sqrt((semiPerimeter - x) * (semiPerimeter - y) * (semiPerimeter - z) * (semiPerimeter - t));
     }
 
     public int[] getArrayOfNumbers(int numberN) {
@@ -72,7 +74,7 @@ public class Helper {
         int amountOfDigitsNumberTwo = calcDigits(number2);
 
         if (amountOfDigitsNumberOne > amountOfDigitsNumberTwo) {
-             comparisonCode = 1;
+            comparisonCode = 1;
         } else if (amountOfDigitsNumberOne < amountOfDigitsNumberTwo) {
             comparisonCode = -1;
         }
@@ -146,6 +148,7 @@ public class Helper {
         }
         return arrayWithoutZeros;
     }
+
     // - найти количество n-значных чисел для создания массива;
     // - создать массив n-значных чисел;
     // - разбить n-значные числа на цифры и записать в новый массив те которые идут по возрастанию;
@@ -178,13 +181,14 @@ public class Helper {
         }
         return isIncreasing;
     }
+
     // - ввести любое целое число( желательно двузначное и больше);
     // - разложить число на цифры;
     // - записать получившийся результат в массив;
     // - сложить полученные цифры числа и сохранить результат;
     // - из результата вычетать полученную сумму его цифр пока не получим нуль.
     // - посчитать количество таких операций;
-     public int amountOfDeductions(int number) {
+    public int amountOfDeductions(int number) {
         int counterDeduction = 0;
         for (int i = number; number > 0; i++) {
             int sumDigits = getSumDigits(number);
@@ -194,9 +198,10 @@ public class Helper {
         return counterDeduction;
     }
 
-    public int getSumDigits( int number) {
+    public int getSumDigits(int number) {
         int sumDigits = 0;
-        int[]digits = getArrayOfNumbers(number);;
+        int[] digits = getArrayOfNumbers(number);
+        ;
         for (int i = 0; i < digits.length; i++) {
             sumDigits = sumDigits + digits[i];
         }
@@ -205,8 +210,7 @@ public class Helper {
 
     // - Напишите функцию, которая преобразует входную строку в верхний регистр
     public String transformation(String inputString) {
-        String translate = inputString.toUpperCase();
-        return translate;
+        return inputString.toUpperCase();
     }
 
     // Камень ножницы Бумага. Давайте играть! Вы должны вернуть, какой игрок выиграл! В случае ничьей вернуть Draw!
@@ -215,6 +219,85 @@ public class Helper {
     //rps('бумага','бумага') // Рисуем!
 
 
+    public class RockPaperScissors {
+
+        public enum Move {
+            Камень, Ножницы, Бумага;
+
+            public int compareMoves(Move otherMove) {
+                if (this == otherMove) {
+                    return 0;
+                }
+                switch (this) {
+                    case Камень:
+                        return (otherMove == Ножницы ? 1 : -1);
+                    case Бумага:
+                        return (otherMove == Камень ? 1 : -1);
+                    case Ножницы:
+                        return (otherMove == Бумага ? 1 : -1);
+                }
+                return 0;
+            }
+        }
+
+        public class Player {
+            private Scanner scr;
+
+            public Player() {
+                Scanner scr = new Scanner(System.in);
+            }
+
+            public Move getMove() {
+                System.out.print("Камень, ножницы или бумага?");
+                String playerScr = scr.nextLine();
+                playerScr = playerScr.toUpperCase();
+                char firstLetter = playerScr.charAt(0);
+                if (firstLetter == 'K' || firstLetter == 'H' || firstLetter == 'Б') {
+                    switch (firstLetter) {
+                        case 'K':
+                            return Move.Камень;
+                        case 'H':
+                            return Move.Ножницы;
+                        case 'Б':
+                            return Move.Бумага;
+                    }
+                }
+                return getMove();
+            }
+
+            public boolean playAgain() {
+                System.out.print("Хотите сыграть еще раз?");
+                String playerScr = scr.nextLine();
+                playerScr = playerScr.toUpperCase();
+                return playerScr.charAt(0) == 'Д';
+            }
+        }
+            public class Computer {
+                public Move getMove() {
+                    Move[] moves = Move.values();
+                    Random random = new Random();
+                    int randomIndex = random.nextInt(moves.length);
+                    return moves[randomIndex];
+                }
+            }
+
+        private Player player;
+        private Computer computer;
+        private int playerScore;
+        private int computerScore;
+        private int numberOfGames;
+        public RockPaperScissors() {
+            player = new Player();
+            computer = new Computer();
+            playerScore = 0;
+            computerScore = 0;
+            numberOfGames = 0;
+        }
+
+        public void startGame() {
+            System.out.println("Камень, ножницы, бумага");
+        }
+    }
 }
 
 
