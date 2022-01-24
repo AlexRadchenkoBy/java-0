@@ -201,7 +201,6 @@ public class Helper {
     public int getSumDigits(int number) {
         int sumDigits = 0;
         int[] digits = getArrayOfNumbers(number);
-        ;
         for (int i = 0; i < digits.length; i++) {
             sumDigits = sumDigits + digits[i];
         }
@@ -216,87 +215,32 @@ public class Helper {
     // Камень ножницы Бумага. Давайте играть! Вы должны вернуть, какой игрок выиграл! В случае ничьей вернуть Draw!
     //Пример: rps('scissors','paper') // Игрок 1 выиграл!
     //rps('scissors','rock') // Игрок 2 выиграл!
-    //rps('бумага','бумага') // Рисуем!
-
-
-    public class RockPaperScissors {
-
-        public enum Move {
-            Камень, Ножницы, Бумага;
-
-            public int compareMoves(Move otherMove) {
-                if (this == otherMove) {
-                    return 0;
-                }
-                switch (this) {
-                    case Камень:
-                        return (otherMove == Ножницы ? 1 : -1);
-                    case Бумага:
-                        return (otherMove == Камень ? 1 : -1);
-                    case Ножницы:
-                        return (otherMove == Бумага ? 1 : -1);
-                }
-                return 0;
-            }
-        }
-
-        public class Player {
-            private Scanner scr;
-
-            public Player() {
-                Scanner scr = new Scanner(System.in);
-            }
-
-            public Move getMove() {
-                System.out.print("Камень, ножницы или бумага?");
-                String playerScr = scr.nextLine();
-                playerScr = playerScr.toUpperCase();
-                char firstLetter = playerScr.charAt(0);
-                if (firstLetter == 'K' || firstLetter == 'H' || firstLetter == 'Б') {
-                    switch (firstLetter) {
-                        case 'K':
-                            return Move.Камень;
-                        case 'H':
-                            return Move.Ножницы;
-                        case 'Б':
-                            return Move.Бумага;
-                    }
-                }
-                return getMove();
-            }
-
-            public boolean playAgain() {
-                System.out.print("Хотите сыграть еще раз?");
-                String playerScr = scr.nextLine();
-                playerScr = playerScr.toUpperCase();
-                return playerScr.charAt(0) == 'Д';
-            }
-        }
-            public class Computer {
-                public Move getMove() {
-                    Move[] moves = Move.values();
-                    Random random = new Random();
-                    int randomIndex = random.nextInt(moves.length);
-                    return moves[randomIndex];
-                }
-            }
-
-        private Player player;
-        private Computer computer;
-        private int playerScore;
-        private int computerScore;
-        private int numberOfGames;
-        public RockPaperScissors() {
-            player = new Player();
-            computer = new Computer();
-            playerScore = 0;
-            computerScore = 0;
-            numberOfGames = 0;
-        }
-
-        public void startGame() {
-            System.out.println("Камень, ножницы, бумага");
-        }
+    //rps('бумага','бумага') // Ничья!
+    public String rps(String string1, String string2) {
+    String[] game = {"rock", "paper", "scissors"};
+    String player1Win = "Игрок 1 выиграл";
+    String player2Win = "Игрок 2 выиграл";
+    String draw = "Ничья";
+       if (string1 == game[0] && string2 == game[0]) {
+           return draw;
+       } else if (string1 == game[0] && string2 == game[1]) {
+           return player2Win;
+       } else if (string1 == game[0] && string2 == game[2]) {
+           return player1Win;
+       } else if (string1 == game[1] && string2 == game[0])  {
+           return player1Win;
+       } else if (string1 == game[1] && string2 == game[1]) {
+           return draw;
+       } else if (string1 == game[1] && string2 == game[2]) {
+           return player2Win;
+       } else if (string1 == game[2] && string2 == game[0]) {
+           return player2Win;
+       } else if (string1 == game[2] && string2 == game[1]) {
+           return player1Win;
+       } else if (string1 == game[2] && string2 == game[2]) {
+           return draw;
+       }
+       return rps(string1, string2);
     }
 }
 

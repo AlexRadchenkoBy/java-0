@@ -57,7 +57,10 @@ public class Function {
 
         String transformer = helper.transformation("перевести в заглавные буквы");
             System.out.print(transformer + " ");
+            System.out.println();
 
+            String rps = helper.rps("paper", "paper");
+            System.out.print(rps);
     }
 
 
