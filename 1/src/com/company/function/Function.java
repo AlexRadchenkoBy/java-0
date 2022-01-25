@@ -59,9 +59,13 @@ public class Function {
             System.out.print(transformer + " ");
             System.out.println();
 
-            String rps = helper.rps("paper", "paper");
+            String rps = helper.rps("paper", "rock");
             System.out.print(rps);
-    }
+            System.out.println();
 
+
+            String sentenceOfWord = helper.sentenceOfWords("Hello", "word", "this", "is", "great");
+            System.out.print(sentenceOfWord + " ");
+    }
 
 }

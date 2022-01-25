@@ -1,6 +1,6 @@
 package com.company.function;
-import java.util.Scanner;
-import java.util.Random;
+import java.util.Arrays;
+
 
 public class Helper {
     public double getHexagonSquare(int a) {
@@ -221,7 +221,7 @@ public class Helper {
     String player1Win = "Игрок 1 выиграл";
     String player2Win = "Игрок 2 выиграл";
     String draw = "Ничья";
-       if (string1 == game[0] && string2 == game[0]) {
+       if (string1 == string2) {
            return draw;
        } else if (string1 == game[0] && string2 == game[1]) {
            return player2Win;
@@ -229,19 +229,26 @@ public class Helper {
            return player1Win;
        } else if (string1 == game[1] && string2 == game[0])  {
            return player1Win;
-       } else if (string1 == game[1] && string2 == game[1]) {
-           return draw;
        } else if (string1 == game[1] && string2 == game[2]) {
            return player2Win;
        } else if (string1 == game[2] && string2 == game[0]) {
            return player2Win;
        } else if (string1 == game[2] && string2 == game[1]) {
            return player1Win;
-       } else if (string1 == game[2] && string2 == game[2]) {
-           return draw;
        }
        return rps(string1, string2);
     }
+
+    // // Напишите функцию, которая берет массив слов, объединяет их в предложение и возвращает предложение.
+    //    // Вы можете игнорировать необходимость очистки слов или добавления знаков препинания,
+    //    // но вы должны добавлять пробелы между каждым словом.
+    //    // Будьте внимательны, не должно быть пробела ни в начале, ни в конце предложения!
+    //    Example: ['hello', 'world', 'this', 'is', 'great']  =>  'hello world this is great'
+
+    public String sentenceOfWords(String[] words) {
+        return String.join(sentenceOfWords(words));
+    }
+
 }
 
 
