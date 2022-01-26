@@ -64,8 +64,12 @@ public class Function {
             System.out.println();
 
 
-            String sentenceOfWord = helper.sentenceOfWords("Hello", "word", "this", "is", "great");
+            String sentenceOfWord = helper.toSentenceOfWords(new String[] {"Hello", "world", "this", "is", "great"});
             System.out.print(sentenceOfWord + " ");
+            System.out.println();
+
+            int quater = helper.showQuarter(11);
+            System.out.println(quater);
     }
 
 }

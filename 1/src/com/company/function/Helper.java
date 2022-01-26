@@ -244,11 +244,25 @@ public class Helper {
     //    // но вы должны добавлять пробелы между каждым словом.
     //    // Будьте внимательны, не должно быть пробела ни в начале, ни в конце предложения!
     //    Example: ['hello', 'world', 'this', 'is', 'great']  =>  'hello world this is great'
-
-    public String sentenceOfWords(String[] words) {
-        return String.join(sentenceOfWords(words));
+    // 8/10;
+    public String toSentenceOfWords(String[] words) {
+        return String.join(" ", words);
     }
 
+    // Квартал года. Дан месяц как целое число от 1 до 12, вернитесь к тому,
+    // к какому кварталу года он принадлежит, как целое число.
+    //Например: 2-й месяц (февраль) является частью первого квартала;
+    // 6 месяц (июнь) входит во второй квартал; и месяц 11 (ноябрь) является частью четвертого квартала.
+    // 8/10
+    public int showQuarter(int month) {
+        switch (month) {
+            case 1, 2, 3: return 1;
+            case 4, 5, 6: return 2;
+            case 7, 8, 9: return 3;
+            case 10, 11, 12: return 4;
+            default: throw new IllegalArgumentException("Область допустимых значений от 1 до 12");
+        }
+    }
 }
 
 
