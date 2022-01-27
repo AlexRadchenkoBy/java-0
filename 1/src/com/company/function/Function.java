@@ -70,6 +70,8 @@ public class Function {
 
             int quater = helper.showQuarter(11);
             System.out.println(quater);
+
+            helper.readingFile(" ");
     }
 
 }
