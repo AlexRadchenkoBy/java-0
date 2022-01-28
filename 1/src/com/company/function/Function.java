@@ -1,8 +1,10 @@
 package com.company.function;
 
+import java.io.FileNotFoundException;
+
 public class Function {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         Helper helper = new Helper();
         int[] array = {1, 3, 5, 7, 9};
         double square = helper.getHexagonSquare(4);
@@ -71,7 +73,7 @@ public class Function {
             int quater = helper.showQuarter(11);
             System.out.println(quater);
 
-            helper.readingFile(" ");
+            helper.readingFile("C:\\Users\\alexr\\Documents\\Nekliaev.txt");
     }
 
 }

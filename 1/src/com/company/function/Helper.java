@@ -1,10 +1,7 @@
 package com.company.function;
-import java.awt.*;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.nio.file.Path;
-import java.util.Arrays;
-
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class Helper {
     public double getHexagonSquare(int a) {
@@ -272,13 +269,17 @@ public class Helper {
     // Функция принимает путь к файлу в виде строки,
     // а возвращает массив строк, которые содержались в файле.
 
-    public String[] readingFile(String pathToFile) {
-        Path file = Path.of("C:\\Users\\alexr\\Documents\\Nekliaev.txt");
+    public String[] readingFile(String pathToFile) throws FileNotFoundException {
+//        Path file = Path.of("C:\\Users\\alexr\\Documents\\Nekliaev.txt");
 //        String str = new String(pathToFile);
 //        for (String retval : str.split(" ")) {
 //            return retval;
 //        }
-        return null;
+        File file = new File("C:\\Users\\alexr\\Documents\\Nekliaev.txt");
+        Scanner scanner = new Scanner(file);
+        String input = scanner.nextLine();
+        String[] words = input.split("\\s");
+        return words;
     }
 }
 
