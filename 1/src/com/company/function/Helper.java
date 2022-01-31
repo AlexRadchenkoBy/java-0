@@ -2,6 +2,7 @@ package com.company.function;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.LineNumberReader;
 import java.util.Scanner;
 
 public class Helper {
@@ -270,17 +271,19 @@ public class Helper {
     // Функция принимает путь к файлу в виде строки,
     // а возвращает массив строк, которые содержались в файле.
 
-    public String[] readingFile(String pathToFile) throws FileNotFoundException {
-//        Path file = Path.of("C:\\Users\\alexr\\Documents\\Nekliaev.txt");
-//        String str = new String(pathToFile);
-//        for (String retval : str.split(" ")) {
-//            return retval;
-//        }
-        File file = new File("C:\\Users\\alexr\\Documents\\Nekliaev.txt");
+    public String[] readingFile(String pathToFile) throws Exception {
+
+        FileReader file = new FileReader("C:\\Users\\alexr\\nekl.txt");
         Scanner scanner = new Scanner(file);
-        String input = scanner.nextLine();
-        String[] words = input.split("\\s");
-        return words;
+        int line = 0;
+        while (scanner.hasNextLine()) {
+            line++;
+        }
+        String[] stringsFile = new String[line];
+        for (int i = 0; i < stringsFile.length ; i++) {
+            stringsFile[i] = scanner.nextLine();
+        }
+        return stringsFile;
     }
 }
 

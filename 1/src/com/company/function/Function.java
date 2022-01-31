@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 
 public class Function {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws Exception {
         Helper helper = new Helper();
         int[] array = {1, 3, 5, 7, 9};
         double square = helper.getHexagonSquare(4);
@@ -73,7 +73,10 @@ public class Function {
             int quater = helper.showQuarter(11);
             System.out.println(quater);
 
-            helper.readingFile("C:\\Users\\alexr\\Documents\\Nekliaev.txt");
+            String[] j = helper.readingFile("C:\\Users\\alexr\\Nekl.txt");
+            for (int i = 0; i < j.length; i++) {
+                System.out.print(j[i]);
+            }
     }
 
 }
