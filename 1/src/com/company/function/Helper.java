@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.LineNumberReader;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Helper {
@@ -272,18 +273,21 @@ public class Helper {
     // а возвращает массив строк, которые содержались в файле.
 
     public String[] readingFile(String pathToFile) throws Exception {
-
-        FileReader file = new FileReader("C:\\Users\\alexr\\nekl.txt");
+        FileReader file = new FileReader(pathToFile);
+        FileReader file2 = new FileReader(pathToFile);
         Scanner scanner = new Scanner(file);
         int line = 0;
         while (scanner.hasNextLine()) {
+            scanner.nextLine();
             line++;
         }
+        scanner = new Scanner(file2);
         String[] stringsFile = new String[line];
         for (int i = 0; i < stringsFile.length ; i++) {
             stringsFile[i] = scanner.nextLine();
         }
         return stringsFile;
+
     }
 }
 
