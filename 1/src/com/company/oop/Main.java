@@ -3,6 +3,9 @@ package com.company.oop;
 import com.company.oop.animal.Animal;
 import com.company.oop.animal.Cat;
 import com.company.oop.animal.Dog;
+import com.company.oop.transportation.Airplane;
+import com.company.oop.transportation.Car;
+import com.company.oop.transportation.Transportation;
 
 public class Main {
 
@@ -17,6 +20,25 @@ public class Main {
 
         hello(cat);
         hello(dog);
+
+        Car car =  new Car();
+        car.setColor("black");
+        car.setWeight(1500);
+
+        Airplane airplane = new Airplane();
+        airplane.setColor("white");
+        airplane.setWeight(10000);
+
+        Transportation transportation = new Car();
+
+        move(car);
+        move(airplane);
+    }
+
+    public static void move(Transportation transportation) {
+        System.out.println("Move");
+        transportation.move();
+
     }
 
     public static void hello(Animal animal) {
