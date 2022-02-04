@@ -3,10 +3,10 @@ package com.company.oop.employee;
 public abstract class Employee {
 
     private int age;
-    private int coefficient;
+    private double coefficient;
     private int workedHours;
 
-    public Employee(int age, int coefficient, int workedHours) {
+    public Employee(int age, double coefficient, int workedHours) {
         this.age = age;
         this.coefficient = coefficient;
         this.workedHours = workedHours;
@@ -17,7 +17,7 @@ public abstract class Employee {
     }
 
     public int getSalary() {
-        return 1000 * coefficient * workedHours;
+        return (int) (1000 * coefficient * workedHours);
     }
 
 }
