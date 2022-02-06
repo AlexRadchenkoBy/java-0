@@ -20,6 +20,17 @@ public class Main {
                             student6, student7, student8, student9, student10};
 
         getExcellentStudent(students);
+
+
+        Train train1 = new Train("Minsk", 1, 16.30);
+        Train train2 = new Train("Minsk", 3, 08.00);
+        Train train3 = new Train("Berlin", 5, 14.00);
+        Train train4 = new Train("Kiev", 4, 12.00);
+        Train train5 = new Train("Vilnus", 2, 19.00);
+        Train[] trains = {train1, train2, train3, train4, train5};
+
+
+
     }
 
     public static void getExcellentStudent(Student[] students) {
@@ -34,5 +45,28 @@ public class Main {
                 System.out.println(student.getSurnameAndInitials() + " " + student.getGroupNumber());
             }
         }
+    }
+
+    public static void getTrainNumberSorting(Train[] trains) {
+        Train train1 = trains[0];
+        Train train2 = trains[1];
+        int temp;
+        boolean isSorted = false;
+        while (!isSorted) {
+            isSorted = true;
+            for (int i = 0; i < trains.length - 1; i++) {
+                if(train1.getTrainNumber() < train2.getTrainNumber()) {
+                    isSorted = false;
+                    temp = train1.getTrainNumber();
+                    train1.getTrainNumber() = train2.getTrainNumber();
+                    train2.trainNumber = temp;
+
+                }
+            }
+        }
+        for (int i = 0; i < trains.length; i++) {
+            System.out.println(trains[i]);
+        }
+
     }
 }
