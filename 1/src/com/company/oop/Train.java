@@ -29,5 +29,9 @@ public class Train {
         return departureTime;
     }
 
+    public String toString() {
+        return "destination" + " " + destination + " " + "trainNumber" + " " + trainNumber + " "
+                + "departureTime" + " " + departureTime;
+    }
 
 }

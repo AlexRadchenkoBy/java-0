@@ -28,7 +28,7 @@ public class Main {
         Train train4 = new Train("Kiev", 4, 12.00);
         Train train5 = new Train("Vilnus", 2, 19.00);
         Train[] trains = {train1, train2, train3, train4, train5};
-
+        getTrainNumberSorting(trains);
 
 
     }
@@ -50,22 +50,22 @@ public class Main {
     public static void getTrainNumberSorting(Train[] trains) {
         Train train1 = trains[0];
         Train train2 = trains[1];
-        int temp;
+        Train temp;
         boolean isSorted = false;
         while (!isSorted) {
             isSorted = true;
             for (int i = 0; i < trains.length - 1; i++) {
-                if(train1.getTrainNumber() < train2.getTrainNumber()) {
+                if(trains[i].getTrainNumber() > trains[i + 1].getTrainNumber()) {
                     isSorted = false;
-                    temp = train1.getTrainNumber();
-                    train1.getTrainNumber() = train2.getTrainNumber();
-                    train2.trainNumber = temp;
+                    temp = trains[i];
+                    trains[i] = trains[i + 1];
+                    trains[i + 1] = temp;
 
                 }
             }
         }
         for (int i = 0; i < trains.length; i++) {
-            System.out.println(trains[i]);
+            System.out.println(trains[i].toString());
         }
 
     }
