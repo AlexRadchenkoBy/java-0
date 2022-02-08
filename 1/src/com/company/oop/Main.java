@@ -1,7 +1,9 @@
 package com.company.oop;
 
-import com.company.oop.employee.Cashier;
-import com.company.oop.employee.Manager;
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class Main {
 
@@ -21,16 +23,16 @@ public class Main {
 
         getExcellentStudent(students);
 
-
-        Train train1 = new Train("Minsk", 1, 16.30);
-        Train train2 = new Train("Minsk", 3, 08.00);
-        Train train3 = new Train("Berlin", 5, 14.00);
-        Train train4 = new Train("Kiev", 4, 12.00);
-        Train train5 = new Train("Vilnus", 2, 19.00);
+        Train train1 = new Train("Minsk", 1, 16, 30);
+        Train train2 = new Train("Minsk", 3, 8, 0);
+        Train train3 = new Train("Berlin", 5, 14,0);
+        Train train4 = new Train("Kiev", 4, 12, 0);
+        Train train5 = new Train("Vilnus", 2, 19, 0);
         Train[] trains = {train1, train2, train3, train4, train5};
         getTrainNumberSorting(trains);
-
-
+        Calendar calendar = new GregorianCalendar();
+        calendar.set(Calendar.HOUR_OF_DAY, 14);
+        calendar.set(Calendar.MINUTE, 0);
     }
 
     public static void getExcellentStudent(Student[] students) {
@@ -48,8 +50,6 @@ public class Main {
     }
 
     public static void getTrainNumberSorting(Train[] trains) {
-        Train train1 = trains[0];
-        Train train2 = trains[1];
         Train temp;
         boolean isSorted = false;
         while (!isSorted) {
