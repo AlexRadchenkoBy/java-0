@@ -1,5 +1,7 @@
 package com.company.oop;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Comparator;
 
 import java.time.LocalTime;
 import java.util.Calendar;
@@ -48,10 +50,11 @@ public class Main {
         Train train2 = new Train("Minsk", 3, 8, 0);
         Train train3 = new Train("Berlin", 5, 14, 0);
         Train train4 = new Train("Kiev", 4, 12, 0);
-        Train train5 = new Train("Vilnus", 2, 19, 0);
+        Train train5 = new Train("Vilnius", 2, 19, 0);
         Train[] trains = {train1, train2, train3, train4, train5};
         getTrainNumberSorting(trains);
-        geTrainIformaition(trains);
+        getTrainInformaition(trains);
+        getSortByDestination(trains);
     }
 
     public static void getTrainNumberSorting(Train[] trains) {
@@ -74,11 +77,22 @@ public class Main {
         }
     }
 
-    public  Train[] geTrainIformaition(int numberTrain) {
-    Scanner scanner = new Scanner(System.in);
-    System.out.println("Для информации о пезде введите число от 1 до 5");
-     numberTrain = scanner.nextInt();
-     return new
+    public static void getTrainInformaition(Train[] trains) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Для информации о пезде введите его номер от 1 до 5");
+        int numberTrain = scanner.nextInt();
+        for (int i = 0; i < trains.length; i++) {
+            if (numberTrain == trains[i].getTrainNumber()) {
+                System.out.println(trains[i]);
+            }
+        }
+    }
+
+    public static void getSortByDestination(Train[] trains) {
+        Arrays.sort(trains);
+        for (int i = 0; i < trains.length; i++) {
+            System.out.println(trains[i].toString());
+        }
     }
 
 }

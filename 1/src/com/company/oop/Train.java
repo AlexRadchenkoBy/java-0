@@ -2,8 +2,9 @@ package com.company.oop;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Comparator;
 
-public class Train {
+public class Train implements Comparable {
     // Создайте класс Train, содержащий поля: название пункта назначения, номер поезда, время отправления.
     //Создайте данные в массив из пяти элементов типа Train, добавьте возможность сортировки элементов массива по
     //номерам поездов. Добавьте возможность вывода информации о поезде, номер которого введен пользователем.
@@ -28,20 +29,39 @@ public class Train {
     }
 
     public int getTrainNumber() {
+
         return trainNumber;
     }
 
     public Calendar getDepartureTime() {
+
         return departureTime;
     }
 
 
     public String toString() {
         return "destination" + " " + destination + " " + "trainNumber" + " " + trainNumber + " "
-                + "departureTime" + " " + departureTime;
+                + "departureTime" + " " + departureTime.getTime();
     }
 
     public void setDepartureTime(Calendar departureTime) {
+
         this.departureTime = departureTime;
     }
+
+    @Override
+    public int compareTo(Train trains) {
+        Train tmp = (Train) trains;
+        if(this.destination < tmp.destination)
+        {
+            return -1;
+        }
+        else if(this.destination > tmp.destination)
+        {
+            return 1;
+        }
+        return 0;
+    }
+
+}
 }
