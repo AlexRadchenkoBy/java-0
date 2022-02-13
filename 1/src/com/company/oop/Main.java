@@ -52,12 +52,14 @@ public class Main {
         Train train4 = new Train("Kiev", 4, 12, 0);
         Train train5 = new Train("Vilnius", 2, 19, 0);
         Train[] trains = {train1, train2, train3, train4, train5};
-        getTrainNumberSorting(trains);
+        sortByTrainNumber(trains);
+        printTrains(trains);
         getTrainInformaition(trains);
-        getSortByDestination(trains);
+        sortByDestinationAndTime(trains);
+        printTrains(trains);
     }
 
-    public static void getTrainNumberSorting(Train[] trains) {
+    public static void sortByTrainNumber(Train[] trains) {
         Train temp;
         boolean isSorted = false;
         while (!isSorted) {
@@ -68,18 +70,14 @@ public class Main {
                     temp = trains[i];
                     trains[i] = trains[i + 1];
                     trains[i + 1] = temp;
-
                 }
             }
-        }
-        for (int i = 0; i < trains.length; i++) {
-            System.out.println(trains[i].toString());
         }
     }
 
     public static void getTrainInformaition(Train[] trains) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Для информации о пезде введите его номер от 1 до 5");
+        System.out.println("Для информации о поезде введите его номер от 1 до 5");
         int numberTrain = scanner.nextInt();
         for (int i = 0; i < trains.length; i++) {
             if (numberTrain == trains[i].getTrainNumber()) {
@@ -88,11 +86,13 @@ public class Main {
         }
     }
 
-    public static void getSortByDestination(Train[] trains) {
-        Arrays.sort(trains);
-        for (int i = 0; i < trains.length; i++) {
-            System.out.println(trains[i].toString());
-        }
+    public static void sortByDestinationAndTime(Train[] trains) {
+        Arrays.sort(trains, Comparator.comparing(Train::getDestination).thenComparing(Train::getDepartureTime));
     }
 
+    public static void printTrains(Train[] trains) {
+        for (int i = 0; i < trains.length; i++) {
+            System.out.println(trains[i]);
+        }
+    }
 }
