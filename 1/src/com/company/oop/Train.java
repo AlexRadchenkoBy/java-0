@@ -13,7 +13,6 @@ public class Train {
     private String destination;
     private int trainNumber;
     private Calendar departureTime;
-    private String getDestination;
 
     public Train(String destination, int trainNumber, int hour, int minute) {
         Calendar calendarTime = new GregorianCalendar();

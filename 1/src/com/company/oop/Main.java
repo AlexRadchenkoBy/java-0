@@ -11,7 +11,7 @@ import java.util.Locale;
 public class Main {
 
     public static void main(String[] args) {
-        checkTrain();
+        chekCounter();
     }
 
     public static void checkStudent() {
@@ -93,6 +93,20 @@ public class Main {
     public static void printTrains(Train[] trains) {
         for (int i = 0; i < trains.length; i++) {
             System.out.println(trains[i]);
+        }
+    }
+
+    public static void chekCounter() {
+        Counter count = new Counter(2, 8, 6);
+            count.incriment();
+            printCounter(count);
+            count.decriment();
+            printCounter(count);
+    }
+
+    public static void printCounter(Counter count) {
+        for (int i = 0; i < 1; i++) {
+            System.out.println(count.incriment() + " " + count.decriment());
         }
     }
 }
