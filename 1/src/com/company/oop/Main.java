@@ -97,16 +97,15 @@ public class Main {
     }
 
     public static void chekCounter() {
-        Counter count = new Counter(2, 8, 6);
-            count.incriment();
-            printCounter(count);
-            count.decriment();
-            printCounter(count);
+        Counter count = new Counter(5, 8, 6);
+        Counter[] counter = {count};
+
+               System.out.println("Прибавили 1 = " + " " + count.incriment());
+
+
+               System.out.println("Отняли 1 = " + " " + count.decriment());
+
     }
 
-    public static void printCounter(Counter count) {
-        for (int i = 0; i < 1; i++) {
-            System.out.println(count.incriment() + " " + count.decriment());
-        }
-    }
+
 }

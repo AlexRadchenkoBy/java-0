@@ -15,17 +15,17 @@ public class Counter {
         this.max = max;
         this.max = current;
 
-        if(max < min) {
+        if (max < min) {
             int temp = max;
             max = min;
             min = max;
         }
 
-        if(current < min) {
+        if (current < min) {
             current = min;
         }
 
-        if(current > max) {
+        if (current > max) {
             current = max;
         }
     }
@@ -37,21 +37,26 @@ public class Counter {
     }
 
 
-    public void incriment() {
+    public int incriment() {
         current++;
         if (current > max) {
             current = min;
+
+
         }
+        return current;
     }
 
-    public void decriment() {
+    public int decriment() {
         current--;
         if (current < min) {
             current = max;
+
         }
+        return current;
     }
 
     public int getCurrent() {
-        return current;
+        return this.current;
     }
 }
