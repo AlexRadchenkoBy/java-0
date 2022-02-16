@@ -98,14 +98,8 @@ public class Main {
 
     public static void chekCounter() {
         Counter count = new Counter(5, 8, 6);
-        Counter[] counter = {count};
-
-               System.out.println("Прибавили 1 = " + " " + count.incriment());
-
-
-               System.out.println("Отняли 1 = " + " " + count.decriment());
-
+        System.out.println("Текущее значение " + count.getCurrent());
+        System.out.println("Прибавили 1 = " + count.increment());
+        System.out.println("Отняли 1 = " + count.decrement());
     }
-
-
 }
