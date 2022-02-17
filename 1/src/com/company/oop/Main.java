@@ -1,17 +1,10 @@
 package com.company.oop;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.Comparator;
-
-import java.time.LocalTime;
+import java.util.*;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Locale;
-
 public class Main {
 
     public static void main(String[] args) {
-        chekCounter();
+      chekTime();
     }
 
     public static void checkStudent() {
@@ -101,5 +94,11 @@ public class Main {
         System.out.println("Текущее значение " + count.getCurrent());
         System.out.println("Прибавили 1 = " + count.increment());
         System.out.println("Отняли 1 = " + count.decrement());
+    }
+
+    public static void chekTime() {
+        Time time = new Time(25, 30, 30);
+        System.out.println(time);
+
     }
 }
