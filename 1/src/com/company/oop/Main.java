@@ -1,6 +1,7 @@
 package com.company.oop;
 import java.util.*;
-import java.util.Calendar;
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -97,8 +98,10 @@ public class Main {
     }
 
     public static void chekTime() {
-        Time time = new Time(25, 30, 30);
+        Time time = new Time(18, 10, 35);
         System.out.println(time);
-
+        time.changeTime(2, 60, 40);
+        System.out.println(time);
     }
+
 }
