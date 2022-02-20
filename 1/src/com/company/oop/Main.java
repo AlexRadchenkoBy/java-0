@@ -1,11 +1,11 @@
 package com.company.oop;
 import java.util.*;
-import java.util.Scanner;
+
 
 public class Main {
 
     public static void main(String[] args) {
-      chekTime();
+        chekTriangles();
     }
 
     public static void checkStudent() {
@@ -102,6 +102,14 @@ public class Main {
         System.out.println(time);
         time.changeTime(2, 60, 40);
         System.out.println(time);
+    }
+
+    public static void chekTriangles() {
+
+        Triangles triangles = new Triangles(8, 8, 8);
+        triangles.trianglePerimeter();
+        triangles.triangleArea();
+        System.out.println(triangles);
     }
 
 }
