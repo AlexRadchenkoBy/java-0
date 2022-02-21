@@ -5,7 +5,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        chekTriangles();
+        chekTriangle();
     }
 
     public static void checkStudent() {
@@ -104,12 +104,11 @@ public class Main {
         System.out.println(time);
     }
 
-    public static void chekTriangles() {
-
-        Triangles triangles = new Triangles(8, 8, 8);
-        triangles.trianglePerimeter();
-        triangles.triangleArea();
-        System.out.println(triangles);
+    public static void chekTriangle() {
+        Point point1 = new Point(1, 1);
+        Point point2 = new Point(5, 5);
+        Point point3 = new Point(1, 10);
+        Triangle triangle = new Triangle(point1, point2, point3);
+        System.out.println(triangle);
     }
-
 }
