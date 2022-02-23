@@ -1,11 +1,13 @@
 package com.company.oop;
+import com.company.oop.customer.Customer;
+
 import java.util.*;
 
 
 public class Main {
 
     public static void main(String[] args) {
-        chekTriangle();
+        chekCustomer();
     }
 
     public static void checkStudent() {
@@ -110,5 +112,19 @@ public class Main {
         Point point3 = new Point(1, 10);
         Triangle triangle = new Triangle(point1, point2, point3);
         System.out.println(triangle);
+    }
+
+    public static void chekCustomer() {
+
+        Customer customer1 = new Customer(1563, "Suvorov", "Aleksandr", "Vasilievich",
+                "St. Petersburg", 764345, 83452);
+        Customer customer2 = new Customer(4243, "Kutuzov", "Mihail", "Ilarionovich",
+                "Moscow", 134539, 34567);
+        Customer customer3 = new Customer(2345, "Bagration", "Petr", "Iraklievich",
+                "Hrodno", 245319, 14201);
+        Customer customer4 = new Customer(1452, "Kalinovsky", "Kastus", "Semenovich",
+                "Vilna", 432161, 23415);
+        Customer[] arrayCustomers = {customer1, customer2, customer3, customer4};
+
     }
 }
