@@ -1,5 +1,10 @@
 package com.company.oop.customer;
 
+import com.company.oop.Train;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class Customers {
     // 8. Создать класс Customer, спецификация которого приведена ниже. Определить конструкторы, set- и get- методы
     //и метод toString(). Создать второй класс, агрегирующий массив типа Customer, с подходящими конструкторами
@@ -9,9 +14,13 @@ public class Customers {
     //a) список покупателей в алфавитном порядке;
     //b) список покупателей, у которых номер кредитной карточки находится в заданном интервале
 
-    Customer customer;
+    Customer[] customers;
 
-    public Customers(Customer customer) {
-        this.customer = customer;
+    public Customers(Customer[] customers) {
+        this.customers = customers;
+    }
+
+    public Customer[] sortCustomersAlphabeticalOrder() {
+        return Arrays.sort(customers, Comparator.comparing(Customer::getSurname));
     }
 }

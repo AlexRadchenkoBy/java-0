@@ -1,5 +1,6 @@
 package com.company.oop;
 import com.company.oop.customer.Customer;
+import com.company.oop.customer.Customers;
 
 import java.util.*;
 
@@ -125,6 +126,11 @@ public class Main {
         Customer customer4 = new Customer(1452, "Kalinovsky", "Kastus", "Semenovich",
                 "Vilna", 432161, 23415);
         Customer[] arrayCustomers = {customer1, customer2, customer3, customer4};
+        Customers bestCustomer = new Customers(arrayCustomers);
+        bestCustomer.sortCustomersAlphabeticalOrder();
+        for (int i = 0; i < arrayCustomers.length; i++) {
+            System.out.println(arrayCustomers[i]);
+        }
 
     }
 }

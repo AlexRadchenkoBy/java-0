@@ -59,4 +59,35 @@ public class Customer {
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getCreditCardNumber() {
+        return creditCardNumber;
+    }
+
+    public void setCreditCardNumber(int creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
+    }
+
+    public int getBankAccountNumber() {
+        return bankAccountNumber;
+    }
+
+    public void setBankAccountNumber(int bankAccountNumber) {
+        this.bankAccountNumber = bankAccountNumber;
+    }
+
+    public String toString() {
+        return "id:" + " " + id + "" + ", surname:" + " " + surname + ""
+                + ", name:" + " " + name + "" + ", middleName:" + " " + middleName + "" + ", address:" + " "
+                + address + "" + ", creditCardNumber:" + " " + creditCardNumber + ""
+                + ", bankAccountNumber:" + " " + bankAccountNumber;
+    }
 }
