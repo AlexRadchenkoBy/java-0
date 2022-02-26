@@ -1,9 +1,7 @@
 package com.company.oop.customer;
-
-import com.company.oop.Train;
-
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Random;
 
 public class Customers {
     // 8. Создать класс Customer, спецификация которого приведена ниже. Определить конструкторы, set- и get- методы
@@ -21,6 +19,14 @@ public class Customers {
     }
 
     public Customer[] sortCustomersAlphabeticalOrder() {
-        return Arrays.sort(customers, Comparator.comparing(Customer::getSurname));
+        Customer[] customersCopy = new Customer[customers.length];
+        System.arraycopy(customers, 0, customersCopy, 0, customers.length);
+        Arrays.sort(customersCopy, Comparator.comparing(Customer::getSurname));
+        return customersCopy;
+    }
+
+    public Customer cardNumberInterval(int min, int max) {
+        for (int i = 0; i < customers.length; i++) {
+
     }
 }

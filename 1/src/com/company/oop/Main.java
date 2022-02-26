@@ -127,9 +127,9 @@ public class Main {
                 "Vilna", 432161, 23415);
         Customer[] arrayCustomers = {customer1, customer2, customer3, customer4};
         Customers bestCustomer = new Customers(arrayCustomers);
-        bestCustomer.sortCustomersAlphabeticalOrder();
-        for (int i = 0; i < arrayCustomers.length; i++) {
-            System.out.println(arrayCustomers[i]);
+        Customer[] sort = bestCustomer.sortCustomersAlphabeticalOrder();
+        for (int i = 0; i < sort.length; i++) {
+            System.out.println(sort[i]);
         }
 
     }
