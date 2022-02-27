@@ -131,6 +131,9 @@ public class Main {
         for (int i = 0; i < sort.length; i++) {
             System.out.println(sort[i]);
         }
-
+        Customer[] interval = bestCustomer.cardNumberInterval(200000, 500000);
+        for (int i = 0; i < interval.length; i++) {
+            System.out.println(interval[i]);
+        }
     }
 }

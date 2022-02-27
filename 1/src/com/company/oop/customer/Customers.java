@@ -1,7 +1,6 @@
 package com.company.oop.customer;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Random;
 
 public class Customers {
     // 8. Создать класс Customer, спецификация которого приведена ниже. Определить конструкторы, set- и get- методы
@@ -25,8 +24,19 @@ public class Customers {
         return customersCopy;
     }
 
-    public Customer cardNumberInterval(int min, int max) {
+    public Customer[] cardNumberInterval(int min, int max) {
+        int currentInterval = 0;
         for (int i = 0; i < customers.length; i++) {
-
+            if (customers[i].getCreditCardNumber() >= min && customers[i].getCreditCardNumber() <= max) {
+                currentInterval++;
+            }
+        }
+        Customer[] interval = new Customer[currentInterval];
+        for (int i = 0; i < customers.length; i++) {
+            if (customers[i].getCreditCardNumber() >= min && customers[i].getCreditCardNumber() <= max) {
+                interval[i] = customers[i];
+            }
+        }
+        return interval;
     }
 }
