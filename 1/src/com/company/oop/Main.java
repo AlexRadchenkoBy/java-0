@@ -1,4 +1,6 @@
 package com.company.oop;
+import com.company.oop.book.Book;
+import com.company.oop.book.Books;
 import com.company.oop.customer.Customer;
 import com.company.oop.customer.Customers;
 
@@ -8,7 +10,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        chekCustomer();
+        chekBook();
     }
 
     public static void checkStudent() {
@@ -126,14 +128,29 @@ public class Main {
         Customer customer4 = new Customer(1452, "Kalinovsky", "Kastus", "Semenovich",
                 "Vilna", 432161, 23415);
         Customer[] arrayCustomers = {customer1, customer2, customer3, customer4};
-        Customers bestCustomer = new Customers(arrayCustomers);
-        Customer[] sort = bestCustomer.sortCustomersAlphabeticalOrder();
-        for (int i = 0; i < sort.length; i++) {
-            System.out.println(sort[i]);
+        Customers customers = new Customers(arrayCustomers);
+        Customer[] sortedCustomers = customers.sortAlphabeticalOrder();
+        for (int i = 0; i < sortedCustomers.length; i++) {
+            System.out.println(sortedCustomers[i]);
         }
-        Customer[] interval = bestCustomer.cardNumberInterval(200000, 500000);
-        for (int i = 0; i < interval.length; i++) {
-            System.out.println(interval[i]);
+        System.out.println();
+
+        Customer[] filteredCustomers = customers.findByCardNumberInterval(200000, 500000);
+        for (int i = 0; i < filteredCustomers.length; i++) {
+            System.out.println(filteredCustomers[i]);
         }
+    }
+
+    public static void chekBook() {
+        Book book1 = new Book(2314, "Колосья под серпом твоим", "Короткевич В.", "Минск",
+                1975, 645, "15 р.", "Твердый");
+        Book book2 = new Book(1432, "Погоня на Грюнвальд", "Тарасов К.", "Гродно",
+                2015, 280, "10 р.", "Мягкий");
+        Book book3 = new Book(3451, "Новая земля", "Колас Я.", "Минск", 1958,
+                125, "8 р.", "Твердый");
+        Book book4 = new Book(3421, "В когтях ГПУ", "Олехнович Ф.", "Гомель",
+                2017, 245, "4 р.", "Мякгий");
+        Book[] arrayBooks = {book1, book2, book3, book4};
+        Books books = new Books(arrayBooks);
     }
 }

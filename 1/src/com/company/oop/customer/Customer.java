@@ -24,8 +24,8 @@ public class Customer {
         this.name = name;
         this.middleName = middleName;
         this.address = address;
-         this.creditCardNumber = creditCardNumber;
-         this.bankAccountNumber = bankAccountNumber;
+        this.creditCardNumber = creditCardNumber;
+        this.bankAccountNumber = bankAccountNumber;
     }
 
     public int getId() {
@@ -85,9 +85,9 @@ public class Customer {
     }
 
     public String toString() {
-        return "id:" + " " + id + "" + ", surname:" + " " + surname + ""
-                + ", name:" + " " + name + "" + ", middleName:" + " " + middleName + "" + ", address:" + " "
-                + address + "" + ", creditCardNumber:" + " " + creditCardNumber + ""
-                + ", bankAccountNumber:" + " " + bankAccountNumber;
+        return "id: " + id + ", surname: " + surname
+                + ", name: " + name + ", middleName: " + middleName + ", address: "
+                + address + ", creditCardNumber: " + creditCardNumber
+                + ", bankAccountNumber: " + bankAccountNumber;
     }
 }

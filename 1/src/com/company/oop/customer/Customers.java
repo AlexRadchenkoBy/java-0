@@ -17,26 +17,27 @@ public class Customers {
         this.customers = customers;
     }
 
-    public Customer[] sortCustomersAlphabeticalOrder() {
-        Customer[] customersCopy = new Customer[customers.length];
-        System.arraycopy(customers, 0, customersCopy, 0, customers.length);
-        Arrays.sort(customersCopy, Comparator.comparing(Customer::getSurname));
-        return customersCopy;
+    public Customer[] sortAlphabeticalOrder() {
+        Customer[] copiedCustomers = new Customer[customers.length];
+        System.arraycopy(customers, 0, copiedCustomers, 0, customers.length);
+        Arrays.sort(copiedCustomers, Comparator.comparing(Customer::getSurname));
+        return copiedCustomers;
     }
 
-    public Customer[] cardNumberInterval(int min, int max) {
-        int currentInterval = 0;
+    public Customer[] findByCardNumberInterval(int min, int max) {
+        int filteredCustomersLength = 0;
         for (int i = 0; i < customers.length; i++) {
             if (customers[i].getCreditCardNumber() >= min && customers[i].getCreditCardNumber() <= max) {
-                currentInterval++;
+                filteredCustomersLength++;
             }
         }
-        Customer[] interval = new Customer[currentInterval];
-        for (int i = 0; i < customers.length; i++) {
+        Customer[] filteredCustomers = new Customer[filteredCustomersLength];
+        for (int i = 0, j = 0; i < customers.length; i++) {
             if (customers[i].getCreditCardNumber() >= min && customers[i].getCreditCardNumber() <= max) {
-                interval[i] = customers[i];
+                filteredCustomers[j] = customers[i];
+                j++;
             }
         }
-        return interval;
+        return filteredCustomers;
     }
 }
