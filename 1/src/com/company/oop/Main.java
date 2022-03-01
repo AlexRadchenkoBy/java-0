@@ -152,5 +152,21 @@ public class Main {
                 2017, 245, "4 р.", "Мякгий");
         Book[] arrayBooks = {book1, book2, book3, book4};
         Books books = new Books(arrayBooks);
+        Book[] filteredBooksAuthor = books.findListBooksAuthors("Тарасов К.");
+        for (int i = 0; i < filteredBooksAuthor.length; i++) {
+            System.out.println(filteredBooksAuthor[i]);
+        }
+        System.out.println();
+
+        Book[] filteredPublishingHouse = books.findPublishingListOfHouse("Минск");
+        for (int i = 0; i < filteredPublishingHouse.length; i++) {
+            System.out.println(filteredPublishingHouse[i]);
+        }
+        System.out.println();
+
+        Book[] filteredYearPublishing = books.findYearOfPublishing(1975);
+        for (int i = 0; i < filteredYearPublishing.length; i++) {
+            System.out.println(filteredYearPublishing[i]);
+        }
     }
 }

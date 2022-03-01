@@ -97,7 +97,7 @@ public class Book {
     public String toString() {
         return "id: " + id + ", title: " + title + ", author: " + author + ", publishingHouse: " + publishingHouse
                 + ", yearOfPublishing: " + yearOfPublishing + ", numberOfPages: " + numberOfPages
-                + ", price: " + price + ", bindingType" + bindingType;
+                + ", price: " + price + ", bindingType: " + bindingType;
     }
 
 
