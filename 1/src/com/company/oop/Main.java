@@ -150,21 +150,21 @@ public class Main {
                 125, "8 р.", "Твердый");
         Book book4 = new Book(3421, "В когтях ГПУ", "Олехнович Ф.", "Гомель",
                 2017, 245, "4 р.", "Мякгий");
-        Book[] arrayBooks = {book1, book2, book3, book4};
-        Books books = new Books(arrayBooks);
-        Book[] filteredBooksAuthor = books.findListBooksAuthors("Тарасов К.");
+        Book[] bookArray = {book1, book2, book3, book4};
+        Books books = new Books(bookArray);
+        Book[] filteredBooksAuthor = books.findByAuthor("Тарасов К.");
         for (int i = 0; i < filteredBooksAuthor.length; i++) {
             System.out.println(filteredBooksAuthor[i]);
         }
         System.out.println();
 
-        Book[] filteredPublishingHouse = books.findPublishingListOfHouse("Минск");
+        Book[] filteredPublishingHouse = books.findByPublisher("Минск");
         for (int i = 0; i < filteredPublishingHouse.length; i++) {
             System.out.println(filteredPublishingHouse[i]);
         }
         System.out.println();
 
-        Book[] filteredYearPublishing = books.findYearOfPublishing(1975);
+        Book[] filteredYearPublishing = books.findMoreYear(1975);
         for (int i = 0; i < filteredYearPublishing.length; i++) {
             System.out.println(filteredYearPublishing[i]);
         }

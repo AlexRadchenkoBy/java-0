@@ -1,7 +1,5 @@
 package com.company.oop.book;
 
-import com.company.oop.customer.Customer;
-
 public class Books {
     // Создать класс Book, спецификация которого приведена ниже. Определить конструкторы, set- и get- методы и
     //метод toString(). Создать второй класс, агрегирующий массив типа Book, с подходящими конструкторами и
@@ -18,54 +16,54 @@ public class Books {
         this.books = books;
     }
 
-    public Book[] findListBooksAuthors(String author) {
-        int filteredAuthors = 0;
+    public Book[] findByAuthor(String author) {
+        int bookNumberByAuthor = 0;
         for (int i = 0; i < books.length; i++) {
-            if (books[i].getAuthor() == author) {
-                filteredAuthors++;
+            if (books[i].getAuthor().equals(author)) {
+                bookNumberByAuthor++;
             }
         }
-        Book[] filteredAuthorBooks = new Book[filteredAuthors];
+        Book[] filteredBooksByAuthor = new Book[bookNumberByAuthor];
         for (int i = 0, j = 0; i < books.length; i++) {
-            if (books[i].getAuthor() == author) {
-                filteredAuthorBooks[j] = books[i];
+            if (books[i].getAuthor().equals(author)) {
+                filteredBooksByAuthor[j] = books[i];
                 j++;
             }
         }
-        return filteredAuthorBooks;
+        return filteredBooksByAuthor;
     }
 
-    public Book[] findPublishingListOfHouse(String publisher) {
-        int filteredPublisher = 0;
+    public Book[] findByPublisher(String publisher) {
+        int bookNumberByPublisher = 0;
         for (int i = 0; i < books.length; i++) {
-            if (books[i].getPublishingHouse() == publisher) {
-                filteredPublisher++;
+            if (books[i].getPublishingHouse().equals(publisher)) {
+                bookNumberByPublisher++;
             }
         }
-        Book[] filteredPublishingHouse = new Book[filteredPublisher];
+        Book[] filteredBooksByPublisher = new Book[bookNumberByPublisher];
         for (int i = 0, j = 0; i < books.length; i++) {
-            if (books[i].getPublishingHouse() == publisher) {
-                filteredPublishingHouse[j] = books[i];
+            if (books[i].getPublishingHouse().equals(publisher)) {
+                filteredBooksByPublisher[j] = books[i];
                 j++;
             }
         }
-        return filteredPublishingHouse;
+        return filteredBooksByPublisher;
     }
 
-    public Book[] findYearOfPublishing(int year) {
-        int filteredYearPublishing = 0;
+    public Book[] findMoreYear(int year) {
+        int bookNumberMoreYear = 0;
         for (int i = 0; i < books.length; i++) {
             if (books[i].getYearOfPublishing() > year) {
-                filteredYearPublishing++;
+                bookNumberMoreYear++;
             }
         }
-        Book[] filteredYearOfPublishing = new Book[filteredYearPublishing];
+        Book[] filteredBooksMoreYear = new Book[bookNumberMoreYear];
         for (int i = 0, j = 0; i < books.length; i++) {
             if (books[i].getYearOfPublishing() > year) {
-                filteredYearOfPublishing[j] = books[i];
+                filteredBooksMoreYear[j] = books[i];
                 j++;
             }
         }
-        return filteredYearOfPublishing;
+        return filteredBooksMoreYear;
     }
 }
