@@ -1,16 +1,19 @@
 package com.company.oop;
+import com.company.oop.Airline.Airline;
+import com.company.oop.Airline.Airlines;
 import com.company.oop.book.Book;
 import com.company.oop.book.Books;
 import com.company.oop.customer.Customer;
 import com.company.oop.customer.Customers;
 
+import java.io.FileReader;
 import java.util.*;
 
 
 public class Main {
 
     public static void main(String[] args) {
-        chekBook();
+        chekAirline();
     }
 
     public static void checkStudent() {
@@ -167,6 +170,31 @@ public class Main {
         Book[] filteredYearPublishing = books.findMoreYear(1975);
         for (int i = 0; i < filteredYearPublishing.length; i++) {
             System.out.println(filteredYearPublishing[i]);
+        }
+    }
+
+    public static void chekAirline() {
+        Airline airline1 = new Airline("Berlin", 2341, "Boeing 747",12, 45,
+                "Monday");
+        Airline airline2 = new Airline("Madrid", 4563, "Boeing A380", 10, 30,
+                "Monday");
+        Airline airline3 = new Airline("Tokyo", 3214, "Boeing 737", 18, 0,
+                "Tuesday");
+        Airline airline4 = new Airline("Paris", 8216, "Dash-8", 9, 15,
+                "Tuesday");
+        Airline airline5 = new Airline("London", 4536, "Boeing 747", 20, 55,
+                "Wednesday");
+        Airline airline6 = new Airline("Stumble", 2890, "Boeing 747", 19, 35,
+                "Thursday");
+        Airline airline7 = new Airline("Prague", 3780, "ATR", 6, 10,
+                "Friday");
+        Airline airline8 = new Airline("Amsterdam", 3457, "Boeing A380", 16,
+                40, "Thursday");
+        Airline[] airlineArray = {airline1, airline2, airline3, airline4};
+        Airlines airlines = new Airlines(airlineArray);
+
+        for (int i = 0; i < airlineArray.length; i++) {
+            System.out.println(airlineArray[i]);
         }
     }
 }
