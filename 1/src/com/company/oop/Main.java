@@ -175,26 +175,41 @@ public class Main {
 
     public static void chekAirline() {
         Airline airline1 = new Airline("Berlin", 2341, "Boeing 747",12, 45,
-                "Monday");
+                28,  1, "Monday");
         Airline airline2 = new Airline("Madrid", 4563, "Boeing A380", 10, 30,
-                "Monday");
+                28, 1, "Monday");
         Airline airline3 = new Airline("Tokyo", 3214, "Boeing 737", 18, 0,
-                "Tuesday");
+                1, 2, "Tuesday");
         Airline airline4 = new Airline("Paris", 8216, "Dash-8", 9, 15,
-                "Tuesday");
+                1, 2, "Tuesday");
         Airline airline5 = new Airline("London", 4536, "Boeing 747", 20, 55,
-                "Wednesday");
+                2, 2, "Wednesday");
         Airline airline6 = new Airline("Stumble", 2890, "Boeing 747", 19, 35,
-                "Thursday");
+                2, 2, "Thursday");
         Airline airline7 = new Airline("Prague", 3780, "ATR", 6, 10,
-                "Friday");
+                3, 2, "Friday");
         Airline airline8 = new Airline("Amsterdam", 3457, "Boeing A380", 16,
-                40, "Thursday");
-        Airline[] airlineArray = {airline1, airline2, airline3, airline4};
+                40, 4, 2, "Saturday");
+        Airline[] airlineArray = {airline1, airline2, airline3, airline4, airline5, airline6, airline7, airline8};
         Airlines airlines = new Airlines(airlineArray);
 
         for (int i = 0; i < airlineArray.length; i++) {
             System.out.println(airlineArray[i]);
         }
+        System.out.println();
+
+        Airline[] filteredFlightByDestination = airlines.findFlightByDestination("London");
+        for (int i = 0; i < filteredFlightByDestination.length; i++) {
+            System.out.println(filteredFlightByDestination[i]);
+        }
+        System.out.println();
+
+        Airline[] filteredFlightByDayOfWeek = airlines.findFlightByDayOfWeek("Tuesday");
+        for (int i = 0; i < filteredFlightByDayOfWeek.length; i++) {
+            System.out.println(filteredFlightByDayOfWeek[i]);
+        }
+
+        Airline[] filteredFlightByDayOfWeekAndDepatureTime = airlines.findflightDayOfWeekAndDepatureTime("Monday",
+                10, 0);
     }
 }

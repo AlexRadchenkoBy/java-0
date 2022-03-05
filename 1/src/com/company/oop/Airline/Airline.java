@@ -16,18 +16,21 @@ public class Airline {
     public int flightNumber;
     public String aircraftType;
     public Calendar departureTime;
-    public String daysOfTheWeek;
+    public String dayOfWeek;
 
     public Airline(String destination, int flightNumber, String aircraftType, int hour, int minute,
-                   String daysOfTheWeek) {
+                   int day, int month, String dayOfWeek) {
         Calendar calendarTime = new GregorianCalendar();
         calendarTime.set(Calendar.HOUR_OF_DAY, hour);
         calendarTime.set(Calendar.MINUTE, minute);
+        calendarTime.set(Calendar.DAY_OF_MONTH, day);
+        calendarTime.set(Calendar.MONTH, month);
         this.destination = destination;
         this.flightNumber = flightNumber;
         this.aircraftType = aircraftType;
         this.departureTime = calendarTime;
-        this.daysOfTheWeek = daysOfTheWeek;
+        this.dayOfWeek = dayOfWeek;
+
     }
 
     public String getDestination() {
@@ -54,16 +57,16 @@ public class Airline {
         this.aircraftType = aircraftType;
     }
 
-    public String getDaysOfTheWeek() {
-        return daysOfTheWeek;
+    public String getDayOfWeek() {
+        return dayOfWeek;
     }
 
-    public void setDaysOfTheWeek(String daysOfTheWeek) {
-        this.daysOfTheWeek = daysOfTheWeek;
+    public void setDayOfWeek(String dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
     }
 
     public String toString() {
         return "destination: " + destination + ", flightNumber: " + flightNumber + ", aircraftType: " + aircraftType +
-                ", departureTime: " + departureTime.getTime() + ", daysOfTheWeek: " + daysOfTheWeek;
+                ", departureTime: " + departureTime.getTime() + ", dayOfWeek:" + dayOfWeek;
     }
 }
