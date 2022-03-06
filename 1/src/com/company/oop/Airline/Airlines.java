@@ -8,7 +8,8 @@ package com.company.oop.Airline;
 //b) список рейсов для заданного дня недели;
 //c) список рейсов для заданного дня недели, время вылета для которых больше заданного.
 
-import java.util.Calendar;
+import java.time.LocalTime;
+import java.util.Objects;
 
 public class Airlines {
 
@@ -36,16 +37,16 @@ public class Airlines {
         return filteredFlightByDestination;
     }
 
-    public Airline[] findFlightByDayOfWeek(String week) {
+    public Airline[] findFlightByDayOfWeek(String dayOdWeek) {
         int flightNumberByDayOfWeek = 0;
         for (int i = 0; i < airlines.length; i++) {
-            if (airlines[i].getDayOfWeek().equals(week)) {
+            if (isInclude(airlines[i].getDaysOfWeek(), dayOdWeek)) {
                 flightNumberByDayOfWeek++;
             }
         }
         Airline[] filteredFlightByDayOfWeek = new Airline[flightNumberByDayOfWeek];
         for (int i = 0, j = 0; i < airlines.length; i++) {
-            if (airlines[i].getDayOfWeek().equals(week)) {
+            if (isInclude(airlines[i].getDaysOfWeek(), dayOdWeek)) {
                 filteredFlightByDayOfWeek[j] = airlines[i];
                 j++;
             }
@@ -53,22 +54,31 @@ public class Airlines {
         return filteredFlightByDayOfWeek;
     }
 
-    public Airline[] findflightDayOfWeekAndDepatureTime(String dayOfWeek, int hour, int minute) {
+    public Airline[] findflightDayOfWeekAndDepatureTime(String dayOfWeek, LocalTime time) {
         int flightNumberByDayOfWeekDeparture = 0;
         for (int i = 0; i < airlines.length; i++) {
-            if (airlines[i].getDayOfWeek().equals(dayOfWeek) && airlines[i].departureTime == hour
-                    && airlines[i].departureTime == minute) {
+            if (isInclude(airlines[i].getDaysOfWeek(), dayOfWeek) && airlines[i].departureTime.isAfter(time)) {
                 flightNumberByDayOfWeekDeparture++;
             }
         }
         Airline[] filteredFlightByDayOfWeekAndDepatureTime = new Airline[flightNumberByDayOfWeekDeparture];
         for (int i = 0, j = 0; i < airlines.length; i++) {
-            if (airlines[i].getDayOfWeek().equals(dayOfWeek) && airlines[i].departureTime == hour
-                    && airlines[i].departureTime == minute) {
+            if (isInclude(airlines[i].getDaysOfWeek(), dayOfWeek) && airlines[i].departureTime.isAfter(time)) {
                 filteredFlightByDayOfWeekAndDepatureTime[j] = airlines[i];
                 j++;
             }
         }
         return filteredFlightByDayOfWeekAndDepatureTime;
     }
+
+    public boolean isInclude(String[] daysOfWeek, String day) {
+        for (int i = 0; i < daysOfWeek.length; i++) {
+            if (Objects.equals(day, daysOfWeek[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }

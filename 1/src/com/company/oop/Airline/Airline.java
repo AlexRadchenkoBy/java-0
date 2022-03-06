@@ -1,6 +1,6 @@
 package com.company.oop.Airline;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.time.LocalTime;
+import java.util.Arrays;
 
 public class Airline {
     // Создать класс Airline, спецификация которого приведена ниже. Определить конструкторы, set- и get- методы
@@ -15,21 +15,17 @@ public class Airline {
     public String destination;
     public int flightNumber;
     public String aircraftType;
-    public Calendar departureTime;
-    public String dayOfWeek;
+    public LocalTime departureTime;
+    public String[] daysOfWeek;
 
     public Airline(String destination, int flightNumber, String aircraftType, int hour, int minute,
-                   int day, int month, String dayOfWeek) {
-        Calendar calendarTime = new GregorianCalendar();
-        calendarTime.set(Calendar.HOUR_OF_DAY, hour);
-        calendarTime.set(Calendar.MINUTE, minute);
-        calendarTime.set(Calendar.DAY_OF_MONTH, day);
-        calendarTime.set(Calendar.MONTH, month);
+                   String[] daysOfWeek) {
+        LocalTime time = LocalTime.of(hour, minute);
         this.destination = destination;
         this.flightNumber = flightNumber;
         this.aircraftType = aircraftType;
-        this.departureTime = calendarTime;
-        this.dayOfWeek = dayOfWeek;
+        this.departureTime = time;
+        this.daysOfWeek = daysOfWeek;
 
     }
 
@@ -57,16 +53,16 @@ public class Airline {
         this.aircraftType = aircraftType;
     }
 
-    public String getDayOfWeek() {
-        return dayOfWeek;
+    public String[] getDaysOfWeek() {
+        return daysOfWeek;
     }
 
-    public void setDayOfWeek(String dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
+    public void setDaysOfWeek(String[] daysOfWeek) {
+        this.daysOfWeek = daysOfWeek;
     }
 
     public String toString() {
         return "destination: " + destination + ", flightNumber: " + flightNumber + ", aircraftType: " + aircraftType +
-                ", departureTime: " + departureTime.getTime() + ", dayOfWeek:" + dayOfWeek;
+                ", departureTime: " + departureTime + ", daysOfWeek: " + Arrays.toString(daysOfWeek);
     }
 }
