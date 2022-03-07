@@ -26,7 +26,6 @@ public class Airline {
         this.aircraftType = aircraftType;
         this.departureTime = time;
         this.daysOfWeek = daysOfWeek;
-
     }
 
     public String getDestination() {

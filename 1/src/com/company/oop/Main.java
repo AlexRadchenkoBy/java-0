@@ -6,7 +6,6 @@ import com.company.oop.book.Books;
 import com.company.oop.customer.Customer;
 import com.company.oop.customer.Customers;
 
-import java.io.FileReader;
 import java.time.LocalTime;
 import java.util.*;
 
@@ -205,14 +204,14 @@ public class Main {
         }
         System.out.println();
 
-        Airline[] filteredFlightByDayOfWeek = airlines.findFlightByDayOfWeek("Tuesday");
+        Airline[] filteredFlightByDayOfWeek = airlines.findFlightByDayOfWeek("Friday");
         for (int i = 0; i < filteredFlightByDayOfWeek.length; i++) {
             System.out.println(filteredFlightByDayOfWeek[i]);
         }
         System.out.println();
 
         LocalTime time = LocalTime.of(12, 0);
-        Airline[] filteredFlightByDayAndTime = airlines.findflightDayOfWeekAndDepatureTime("Monday", time);
+        Airline[] filteredFlightByDayAndTime = airlines.findFlightByDayOfWeekAndDepartureTime("Monday", time);
         for (int i = 0; i < filteredFlightByDayAndTime.length; i++) {
             System.out.println(filteredFlightByDayAndTime[i]);
         }

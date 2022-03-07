@@ -54,21 +54,21 @@ public class Airlines {
         return filteredFlightByDayOfWeek;
     }
 
-    public Airline[] findflightDayOfWeekAndDepatureTime(String dayOfWeek, LocalTime time) {
+    public Airline[] findFlightByDayOfWeekAndDepartureTime(String dayOfWeek, LocalTime time) {
         int flightNumberByDayOfWeekDeparture = 0;
         for (int i = 0; i < airlines.length; i++) {
             if (isInclude(airlines[i].getDaysOfWeek(), dayOfWeek) && airlines[i].departureTime.isAfter(time)) {
                 flightNumberByDayOfWeekDeparture++;
             }
         }
-        Airline[] filteredFlightByDayOfWeekAndDepatureTime = new Airline[flightNumberByDayOfWeekDeparture];
+        Airline[] filteredFlightByDayOfWeekAndDepartureTime = new Airline[flightNumberByDayOfWeekDeparture];
         for (int i = 0, j = 0; i < airlines.length; i++) {
             if (isInclude(airlines[i].getDaysOfWeek(), dayOfWeek) && airlines[i].departureTime.isAfter(time)) {
-                filteredFlightByDayOfWeekAndDepatureTime[j] = airlines[i];
+                filteredFlightByDayOfWeekAndDepartureTime[j] = airlines[i];
                 j++;
             }
         }
-        return filteredFlightByDayOfWeekAndDepatureTime;
+        return filteredFlightByDayOfWeekAndDepartureTime;
     }
 
     public boolean isInclude(String[] daysOfWeek, String day) {
@@ -79,6 +79,4 @@ public class Airlines {
         }
         return false;
     }
-
-
 }
