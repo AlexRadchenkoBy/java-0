@@ -1,6 +1,5 @@
 package com.company.oop.customer;
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 
 public class Customers {
     // 8. Создать класс Customer, спецификация которого приведена ниже. Определить конструкторы, set- и get- методы
@@ -11,30 +10,29 @@ public class Customers {
     //a) список покупателей в алфавитном порядке;
     //b) список покупателей, у которых номер кредитной карточки находится в заданном интервале
 
-    Customer[] customers;
+    ArrayList<Customer> customers;
 
-    public Customers(Customer[] customers) {
+    public Customers(ArrayList<Customer> customers) {
         this.customers = customers;
     }
 
-    public Customer[] sortAlphabeticalOrder() {
-        Customer[] copiedCustomers = new Customer[customers.length];
-        System.arraycopy(customers, 0, copiedCustomers, 0, customers.length);
-        Arrays.sort(copiedCustomers, Comparator.comparing(Customer::getSurname));
+    public ArrayList<Customer> sortAlphabeticalOrder() {
+        ArrayList<Customer> copiedCustomers = new ArrayList<Customer>(customers);
+        copiedCustomers.sort(Comparator.comparing(Customer::getSurname));
         return copiedCustomers;
     }
 
-    public Customer[] findByCardNumberInterval(int min, int max) {
+    public ArrayList<Customer> findByCardNumberInterval(int min, int max) {
         int filteredCustomersLength = 0;
-        for (int i = 0; i < customers.length; i++) {
-            if (customers[i].getCreditCardNumber() >= min && customers[i].getCreditCardNumber() <= max) {
+        for (int i = 0; i < customers.size(); i++) {
+            if (customers.get(i).getCreditCardNumber() >= min && customers.get(i).getCreditCardNumber() <= max) {
                 filteredCustomersLength++;
             }
         }
-        Customer[] filteredCustomers = new Customer[filteredCustomersLength];
-        for (int i = 0, j = 0; i < customers.length; i++) {
-            if (customers[i].getCreditCardNumber() >= min && customers[i].getCreditCardNumber() <= max) {
-                filteredCustomers[j] = customers[i];
+        ArrayList<Customer> filteredCustomers = new ArrayList<Customer>();
+        for (int i = 0, j = 0; i < customers.size(); i++) {
+            if (customers.get(i).getCreditCardNumber() >= min && customers.get(i).getCreditCardNumber() <= max) {
+                filteredCustomers.get(j) = customers.get(i);
                 j++;
             }
         }

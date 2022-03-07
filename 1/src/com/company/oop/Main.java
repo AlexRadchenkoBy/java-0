@@ -13,7 +13,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        chekAirline();
+        chekCustomer();
     }
 
     public static void checkStudent() {
@@ -56,7 +56,7 @@ public class Main {
         Train[] trains = {train1, train2, train3, train4, train5};
         sortByTrainNumber(trains);
         printTrains(trains);
-        getTrainInformaition(trains);
+        getTrainInformation(trains);
         sortByDestinationAndTime(trains);
         printTrains(trains);
     }
@@ -77,7 +77,7 @@ public class Main {
         }
     }
 
-    public static void getTrainInformaition(Train[] trains) {
+    public static void getTrainInformation(Train[] trains) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Для информации о поезде введите его номер от 1 до 5");
         int numberTrain = scanner.nextInt();
@@ -130,17 +130,21 @@ public class Main {
                 "Hrodno", 245319, 14201);
         Customer customer4 = new Customer(1452, "Kalinovsky", "Kastus", "Semenovich",
                 "Vilna", 432161, 23415);
-        Customer[] arrayCustomers = {customer1, customer2, customer3, customer4};
+        ArrayList<Customer> arrayCustomers = new ArrayList<Customer>();
+        arrayCustomers.add(customer1);
+        arrayCustomers.add(customer2);
+        arrayCustomers.add(customer3);
+        arrayCustomers.add(customer4);
         Customers customers = new Customers(arrayCustomers);
-        Customer[] sortedCustomers = customers.sortAlphabeticalOrder();
-        for (int i = 0; i < sortedCustomers.length; i++) {
-            System.out.println(sortedCustomers[i]);
+        ArrayList<Customer> sortedCustomers = customers.sortAlphabeticalOrder();
+        for (int i = 0; i < sortedCustomers.size(); i++) {
+            System.out.println(sortedCustomers);
         }
         System.out.println();
 
-        Customer[] filteredCustomers = customers.findByCardNumberInterval(200000, 500000);
-        for (int i = 0; i < filteredCustomers.length; i++) {
-            System.out.println(filteredCustomers[i]);
+        ArrayList<Customer> filteredCustomers = customers.findByCardNumberInterval(200000, 500000);
+        for (int i = 0; i < filteredCustomers.size(); i++) {
+            System.out.println(filteredCustomers);
         }
     }
 
