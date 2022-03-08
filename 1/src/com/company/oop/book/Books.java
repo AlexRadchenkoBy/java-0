@@ -1,5 +1,7 @@
 package com.company.oop.book;
 
+import java.util.ArrayList;
+
 public class Books {
     // Создать класс Book, спецификация которого приведена ниже. Определить конструкторы, set- и get- методы и
     //метод toString(). Создать второй класс, агрегирующий массив типа Book, с подходящими конструкторами и
@@ -10,57 +12,39 @@ public class Books {
     //b) список книг, выпущенных заданным издательством;
     //c) список книг, выпущенных после заданного года.
 
-    Book[] books;
+     ArrayList<Book> books;
 
-    public Books(Book[] books) {
+    public Books(ArrayList<Book> books) {
         this.books = books;
     }
 
-    public Book[] findByAuthor(String author) {
-        int bookNumberByAuthor = 0;
-        for (int i = 0; i < books.length; i++) {
-            if (books[i].getAuthor().equals(author)) {
-                bookNumberByAuthor++;
-            }
-        }
-        Book[] filteredBooksByAuthor = new Book[bookNumberByAuthor];
-        for (int i = 0, j = 0; i < books.length; i++) {
-            if (books[i].getAuthor().equals(author)) {
-                filteredBooksByAuthor[j] = books[i];
+    public ArrayList<Book> findByAuthor(String author) {
+        ArrayList<Book> filteredBooksByAuthor = new ArrayList<Book>();
+        for (int i = 0, j = 0; i < books.size(); i++) {
+            if (books.get(i).getAuthor().equals(author)) {
+                filteredBooksByAuthor.add(j, books.get(i));
                 j++;
             }
         }
         return filteredBooksByAuthor;
     }
 
-    public Book[] findByPublisher(String publisher) {
-        int bookNumberByPublisher = 0;
-        for (int i = 0; i < books.length; i++) {
-            if (books[i].getPublishingHouse().equals(publisher)) {
-                bookNumberByPublisher++;
-            }
-        }
-        Book[] filteredBooksByPublisher = new Book[bookNumberByPublisher];
-        for (int i = 0, j = 0; i < books.length; i++) {
-            if (books[i].getPublishingHouse().equals(publisher)) {
-                filteredBooksByPublisher[j] = books[i];
+    public ArrayList<Book> findByPublisher(String publisher) {
+        ArrayList<Book> filteredBooksByPublisher = new ArrayList<Book>();
+        for (int i = 0, j = 0; i < books.size(); i++) {
+            if (books.get(i).getPublishingHouse().equals(publisher)) {
+                filteredBooksByPublisher.add(j, books.get(i));
                 j++;
             }
         }
         return filteredBooksByPublisher;
     }
 
-    public Book[] findMoreYear(int year) {
-        int bookNumberMoreYear = 0;
-        for (int i = 0; i < books.length; i++) {
-            if (books[i].getYearOfPublishing() > year) {
-                bookNumberMoreYear++;
-            }
-        }
-        Book[] filteredBooksMoreYear = new Book[bookNumberMoreYear];
-        for (int i = 0, j = 0; i < books.length; i++) {
-            if (books[i].getYearOfPublishing() > year) {
-                filteredBooksMoreYear[j] = books[i];
+    public ArrayList<Book> findMoreYear(int year) {
+        ArrayList<Book> filteredBooksMoreYear = new ArrayList<Book>();
+        for (int i = 0, j = 0; i < books.size(); i++) {
+            if (books.get(i).getYearOfPublishing() > year) {
+                filteredBooksMoreYear.add(j, books.get(i));
                 j++;
             }
         }

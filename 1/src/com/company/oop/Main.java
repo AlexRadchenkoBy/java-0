@@ -13,7 +13,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        chekCustomer();
+        chekBook();
     }
 
     public static void checkStudent() {
@@ -138,13 +138,13 @@ public class Main {
         Customers customers = new Customers(arrayCustomers);
         ArrayList<Customer> sortedCustomers = customers.sortAlphabeticalOrder();
         for (int i = 0; i < sortedCustomers.size(); i++) {
-            System.out.println(sortedCustomers);
+            System.out.println(sortedCustomers.get(i));
         }
         System.out.println();
 
-        ArrayList<Customer> filteredCustomers = customers.findByCardNumberInterval(200000, 500000);
+        ArrayList<Customer> filteredCustomers = customers.findByCardNumberInterval(400000, 800000);
         for (int i = 0; i < filteredCustomers.size(); i++) {
-            System.out.println(filteredCustomers);
+            System.out.println(filteredCustomers.get(i));
         }
     }
 
@@ -157,23 +157,27 @@ public class Main {
                 125, "8 р.", "Твердый");
         Book book4 = new Book(3421, "В когтях ГПУ", "Олехнович Ф.", "Гомель",
                 2017, 245, "4 р.", "Мякгий");
-        Book[] bookArray = {book1, book2, book3, book4};
+        ArrayList<Book> bookArray = new ArrayList<Book>();
+        bookArray.add(book1);
+        bookArray.add(book2);
+        bookArray.add(book3);
+        bookArray.add(book4);
         Books books = new Books(bookArray);
-        Book[] filteredBooksAuthor = books.findByAuthor("Тарасов К.");
-        for (int i = 0; i < filteredBooksAuthor.length; i++) {
-            System.out.println(filteredBooksAuthor[i]);
+        ArrayList<Book> filteredBooksAuthor = books.findByAuthor("Тарасов К.");
+        for (int i = 0; i < filteredBooksAuthor.size(); i++) {
+            System.out.println(filteredBooksAuthor.get(i));
         }
         System.out.println();
 
-        Book[] filteredPublishingHouse = books.findByPublisher("Минск");
-        for (int i = 0; i < filteredPublishingHouse.length; i++) {
-            System.out.println(filteredPublishingHouse[i]);
+        ArrayList<Book> filteredPublishingHouse = books.findByPublisher("Минск");
+        for (int i = 0; i < filteredPublishingHouse.size(); i++) {
+            System.out.println(filteredPublishingHouse.get(i));
         }
         System.out.println();
 
-        Book[] filteredYearPublishing = books.findMoreYear(1975);
-        for (int i = 0; i < filteredYearPublishing.length; i++) {
-            System.out.println(filteredYearPublishing[i]);
+        ArrayList<Book> filteredYearPublishing = books.findMoreYear(1975);
+        for (int i = 0; i < filteredYearPublishing.size(); i++) {
+            System.out.println(filteredYearPublishing.get(i));
         }
     }
 

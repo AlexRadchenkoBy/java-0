@@ -23,16 +23,10 @@ public class Customers {
     }
 
     public ArrayList<Customer> findByCardNumberInterval(int min, int max) {
-        int filteredCustomersLength = 0;
-        for (int i = 0; i < customers.size(); i++) {
-            if (customers.get(i).getCreditCardNumber() >= min && customers.get(i).getCreditCardNumber() <= max) {
-                filteredCustomersLength++;
-            }
-        }
         ArrayList<Customer> filteredCustomers = new ArrayList<Customer>();
         for (int i = 0, j = 0; i < customers.size(); i++) {
             if (customers.get(i).getCreditCardNumber() >= min && customers.get(i).getCreditCardNumber() <= max) {
-                filteredCustomers.get(j) = customers.get(i);
+                filteredCustomers.add(j, customers.get(i));
                 j++;
             }
         }
