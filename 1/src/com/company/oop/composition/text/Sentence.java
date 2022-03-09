@@ -8,4 +8,6 @@ public class Sentence {
     public Sentence(ArrayList<Word> words) {
         this.words = words;
     }
+
+
 }
