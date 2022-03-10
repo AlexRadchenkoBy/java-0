@@ -9,5 +9,9 @@ public class Sentence {
         this.words = words;
     }
 
+    public String toString() {
+        return words.toString();
+    }
+
 
 }

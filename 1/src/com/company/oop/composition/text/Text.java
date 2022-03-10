@@ -5,11 +5,17 @@ import java.util.ArrayList;
 //консоль текст, заголовок текста.
 
 public class Text {
+    private Sentence title;
     private ArrayList<Sentence> sentences;
 
-    public Text(ArrayList<Sentence> sentences) {
-
+    public Text(Sentence title, ArrayList<Sentence> sentences) {
+        this.title = title;
         this.sentences = sentences;
+    }
+
+    @Override
+    public String toString() {
+        return sentences.toString() + " " + title.toString();
     }
 
 
