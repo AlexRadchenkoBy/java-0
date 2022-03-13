@@ -34,6 +34,17 @@ public class Main {
 
         System.out.println(text);
 
+        ArrayList<Word> phrase = new ArrayList<Word>();
+        Word phrase1 = new Word("keep");
+        Word phrase2 = new Word("working");
+        phrase.add(phrase1);
+        phrase.add(phrase2);
+        ArrayList<Sentence> phraseList = new ArrayList<Sentence>();
+        Sentence sentenceList = new Sentence(phrase);
+        phraseList.add(sentenceList);
+
+        text.addText(phraseList);
+        System.out.println(text);
 
     }
 }

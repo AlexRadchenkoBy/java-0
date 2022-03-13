@@ -13,10 +13,11 @@ public class Text {
         this.sentences = sentences;
     }
 
-    @Override
-    public String toString() {
-        return sentences.toString() + " " + title.toString();
+    public void addText(ArrayList<Sentence> sentences) {
+        this.sentences.addAll(sentences);
     }
 
-
+    public String toString() {
+        return title.toString() + " " + sentences.toString();
+    }
 }

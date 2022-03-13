@@ -13,7 +13,7 @@ public class Word {
         return word;
     }
 
-    @Override
+
     public String toString() {
         return word.toString();
     }
