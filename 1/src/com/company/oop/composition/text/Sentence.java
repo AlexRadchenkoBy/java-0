@@ -10,7 +10,10 @@ public class Sentence {
     }
 
     public String toString() {
-        return words.toString();
+        for (int i = 0; i < words.size(); i++) {
+            String wordList = words.get(i) ;
+        }
+        return wordList;
     }
 
 
