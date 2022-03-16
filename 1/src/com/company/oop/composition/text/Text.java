@@ -18,6 +18,6 @@ public class Text {
     }
 
     public String toString() {
-        return title.toString() + " " + sentences.toString();
+        return "title" + title + "sentence" + sentences;
     }
 }

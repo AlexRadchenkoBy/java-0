@@ -9,9 +9,14 @@ public class Sentence {
         this.words = words;
     }
 
+    public ArrayList<Word> getWords() {
+        return words;
+    }
+
     public String toString() {
-        for (int i = 0; i < words.size(); i++) {
-            String wordList = words.get(i) ;
+        ArrayList<Word> wordList = new ArrayList<Word>();
+        for (int i = 0; i < words.size(); i += 2) {
+            wordList.add(words.get(i) + words.get(i + 1));
         }
         return wordList;
     }
