@@ -18,6 +18,10 @@ public class Text {
     }
 
     public String toString() {
-        return "title" + title + "sentence" + sentences;
+        String str = "";
+        for (int i = 0; i < sentences.size(); i++) {
+            str = str.trim() + " " + "\n" + sentences.get(i).toString();
+        }
+        return title + str;
     }
 }

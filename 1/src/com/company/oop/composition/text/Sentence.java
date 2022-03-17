@@ -14,11 +14,11 @@ public class Sentence {
     }
 
     public String toString() {
-        ArrayList<Word> wordList = new ArrayList<Word>();
-        for (int i = 0; i < words.size(); i += 2) {
-            wordList.add(words.get(i) + words.get(i + 1));
+        String str = "";
+        for (int i = 0; i < words.size(); i++) {
+            str = str.trim() + " " + words.get(i).toString() + "\n";
         }
-        return wordList;
+        return str;
     }
 
 
