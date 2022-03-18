@@ -16,10 +16,12 @@ public class Sentence {
     public String toString() {
         String str = "";
         for (int i = 0; i < words.size(); i++) {
-            str = str.trim() + " " + words.get(i).toString() + "\n";
+            if (i < words.size() - 1) {
+                str = str + words.get(i).toString() + " ";
+            } else {
+                str = str + words.get(i).toString() + "\n";
+            }
         }
         return str;
     }
-
-
 }
