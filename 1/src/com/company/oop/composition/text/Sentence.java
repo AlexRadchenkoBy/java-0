@@ -9,10 +9,6 @@ public class Sentence {
         this.words = words;
     }
 
-    public ArrayList<Word> getWords() {
-        return words;
-    }
-
     public String toString() {
         String str = "";
         for (int i = 0; i < words.size(); i++) {
