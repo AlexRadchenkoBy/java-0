@@ -10,11 +10,8 @@ public class Main {
     }
 
     public static void chekAutomobile() {
-        ArrayList<String> engineCondition = new ArrayList<String>();
-        String condition1 = new String("Двигатель не работает");
-        String condition2 = new String("Двигатель работает");
-        engineCondition.add(condition1);
-        engineCondition.add(condition2);
-        Automobile automobile = new Automobile();
+    Automobile automobile = new Automobile();
+    automobile.drive();
+    automobile.fillCar();
     }
 }

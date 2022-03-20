@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Wheel {
 
-    String wheelsCondition;
+    String mainWheels;
 
-    public Wheel(String wheelsCondition) {
-        this.wheelsCondition = wheelsCondition;
+    public Wheel(String mainWheels) {
+        this.mainWheels = mainWheels;
     }
 
 }
