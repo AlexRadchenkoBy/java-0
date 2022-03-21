@@ -1,13 +1,13 @@
 package com.company.car1;
 
-import java.util.ArrayList;
-
 public class Wheel {
+   private String wheels;
 
-    String mainWheels;
-
-    public Wheel(String mainWheels) {
-        this.mainWheels = mainWheels;
+    public Wheel(String wheels) {
+        this.wheels = wheels;
     }
 
+    public String getWheels() {
+        return wheels;
+    }
 }

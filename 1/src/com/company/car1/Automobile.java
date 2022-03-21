@@ -1,15 +1,19 @@
 package com.company.car1;
+
 import java.util.Scanner;
+
 public class Automobile {
     // Создать объект класса Автомобиль, используя классы Колесо, Двигатель. Методы: ехать, заправляться,
     //менять колесо, вывести на консоль марку автомобиля.
 
-    private String carModel = "Toyota RAV4";
+    private String carModel;
     private Engine engine;
-     private Wheel wheels;
-    public Automobile() {
-    this.engine = new Engine("Двигатель работает!", 0);
-    this.wheels = new Wheel("Летняя резина");
+    private Wheel wheels;
+
+    public Automobile(String carModel) {
+        this.carModel = carModel;
+        this.engine = new Engine("Двигатель работает!");
+        this.wheels = new Wheel("летняя резина!");
     }
 
     public void drive() {
@@ -21,16 +25,20 @@ public class Automobile {
         Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
         if (number == 1) {
-            System.out.println("Машина заправлена!"+ " " + engine.getEngineCondition() + " " + "Едем дальше!");
+            System.out.println("Машина заправлена!" + " " + engine.getEngineCondition() + " " + "Едем дальше!");
         }
     }
 
     public void replaceWheel() {
-
+        System.out.println("Пришла зима, а у вас стоит" + " " + wheels.getWheels() + " " + "Для замены нажмите 2!");
+        Scanner scr = new Scanner(System.in);
+        int number = scr.nextInt();
+        if (number == 2) {
+            System.out.println("Зимняя резина установлена!");
+        }
     }
 
     public String toString() {
-        return "carModel" + carModel + "engine" + engine.toString() + "wheels" + wheels;
+        return "carModel" + " " + carModel;
     }
-
 }
