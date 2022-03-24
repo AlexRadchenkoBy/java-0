@@ -1,5 +1,7 @@
 package com.company.oop.state;
 
+import java.util.Objects;
+
 public class City {
     private boolean isCapital;
     private String nameCity;
@@ -7,4 +9,6 @@ public class City {
         this.isCapital = isCapital;
         this.nameCity = nameCity;
     }
+
+
 }

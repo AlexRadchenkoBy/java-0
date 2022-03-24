@@ -11,10 +11,11 @@ public class State {
     private District districts;
     private City city;
 
-    public State (int stateArea) {
+    public State (int stateArea, Region regions, District districts, City city) {
         this.stateArea = stateArea;
-        this.regions = new Region();
-        this.districts = new District();
-        this.city = new City();
+        this.regions = regions;
+        this.districts = districts;
+        this.city = city;
     }
+
 }
