@@ -10,5 +10,11 @@ public class City {
         this.nameCity = nameCity;
     }
 
+    public boolean getIsCapital() {
+        return isCapital;
+    }
 
+    public String getNameCity() {
+        return nameCity;
+    }
 }

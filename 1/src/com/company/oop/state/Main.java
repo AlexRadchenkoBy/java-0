@@ -28,14 +28,33 @@ public class Main {
         mogilev.add(city6);
 
         ArrayList<District> districts = new ArrayList<District>();
-        District districtBrest = new District(brest);
-        District districtVitebsk = new District(vitebsk);
-        District districtHomel = new District(homel);
-        District districtHrodno = new District(hrodno);
-        District districtMinsk = new District(minsk);
-        District districtMogilev = new District(mogilev);
+        District districtBrest = new District( brest, "Брестский район");
+        districts.add(districtBrest);
+        District districtVitebsk = new District(vitebsk, "Витебский район");
+        districts.add(districtVitebsk);
+        District districtHomel = new District(homel, "Гомельский район");
+        districts.add(districtHomel);
+        District districtHrodno = new District(hrodno, "Гродненский район");
+        districts.add(districtHrodno);
+        District districtMinsk = new District(minsk, "Минский район");
+        districts.add(districtMinsk);
+        District districtMogilev = new District(mogilev, "Могилевский район");
+        districts.add(districtMogilev);
 
-        State state = new State(207600, districts, );
+        ArrayList<Region> regions = new ArrayList<Region>();
+        Region regionBrest = new Region(districtBrest, "Брестская область");
+        regions.add(regionBrest);
+        Region regionVitebsk = new Region(districtVitebsk, "Витебская область");
+        regions.add(regionVitebsk);
+        Region regionHomel = new Region(districtHomel, "Гомельская область");
+        regions.add(regionHomel);
+        Region regionHrodno = new Region(districtHrodno, "Гродненская область");
+        regions.add(regionHrodno);
+        Region regionMinsk = new Region(districtMinsk, "Минская область");
+        regions.add(regionMinsk);
+        Region regionMogilev = new Region(districtMogilev, "Могилевская область");
+        regions.add(regionMogilev);
+        State state = new State("Беларусь", 207600, regions);
 
     }
 }
