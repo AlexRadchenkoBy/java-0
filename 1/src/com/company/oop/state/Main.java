@@ -9,52 +9,63 @@ public class Main {
 
     public static void chekState() {
         ArrayList<City> brest = new ArrayList<City>();
-        City city1 = new City(false, "Брест");
+        City city1 = new City(true, false, "Брест");
         brest.add(city1);
         ArrayList<City> vitebsk = new ArrayList<City>();
-        City city2 = new City(false, "Витебск");
+        City city2 = new City(true, false,"Витебск");
         vitebsk.add(city2);
         ArrayList<City> homel = new ArrayList<City>();
-        City city3 = new City(false, "Гомель");
+        City city3 = new City(true, false,"Гомель");
         homel.add(city3);
         ArrayList<City> hrodno = new ArrayList<City>();
-        City city4 = new City(false, "Гродно");
+        City city4 = new City(true, false, "Гродно");
         hrodno.add(city4);
         ArrayList<City> minsk = new ArrayList<City>();
-        City city5 = new City(true, "Минск");
+        City city5 = new City(true, true,"Минск");
+        City city7 = new City(false, false, "Осиповичи");
         minsk.add(city5);
+        minsk.add(city7);
         ArrayList<City> mogilev = new ArrayList<City>();
-        City city6 = new City(false, "Могилев");
+        City city6 = new City(true, false, "Могилев");
         mogilev.add(city6);
 
-        ArrayList<District> districts = new ArrayList<District>();
-        District districtBrest = new District( brest, "Брестский район");
-        districts.add(districtBrest);
+        ArrayList<District> districtsBrest = new ArrayList<District>();
+        District districtBrest = new District(brest, "Брестский район");
+        districtsBrest.add(districtBrest);
+        ArrayList<District> districtsVitebsk = new ArrayList<District>();
         District districtVitebsk = new District(vitebsk, "Витебский район");
-        districts.add(districtVitebsk);
+        districtsVitebsk.add(districtVitebsk);
+        ArrayList<District> districtsHomel = new ArrayList<District>();
         District districtHomel = new District(homel, "Гомельский район");
-        districts.add(districtHomel);
+        districtsHomel.add(districtHomel);
+        ArrayList<District> districtsHrodno = new ArrayList<District>();
         District districtHrodno = new District(hrodno, "Гродненский район");
-        districts.add(districtHrodno);
-        District districtMinsk = new District(minsk, "Минский район");
-        districts.add(districtMinsk);
+        districtsHomel.add(districtHrodno);
+        ArrayList<District> districtsMinsk = new ArrayList<District>();
+        District districtMinsk = new District(minsk,  "Минский район");
+        districtsMinsk.add(districtMinsk);
+        ArrayList<District> districtsMogilev = new ArrayList<District>();
         District districtMogilev = new District(mogilev, "Могилевский район");
-        districts.add(districtMogilev);
+        districtsMogilev.add(districtMogilev);
 
         ArrayList<Region> regions = new ArrayList<Region>();
-        Region regionBrest = new Region(districtBrest, "Брестская область");
+        Region regionBrest = new Region(districtsBrest, "Брестская область");
         regions.add(regionBrest);
-        Region regionVitebsk = new Region(districtVitebsk, "Витебская область");
+        Region regionVitebsk = new Region(districtsVitebsk, "Витебская область");
         regions.add(regionVitebsk);
-        Region regionHomel = new Region(districtHomel, "Гомельская область");
+        Region regionHomel = new Region(districtsHomel, "Гомельская область");
         regions.add(regionHomel);
-        Region regionHrodno = new Region(districtHrodno, "Гродненская область");
+        Region regionHrodno = new Region(districtsHrodno, "Гродненская область");
         regions.add(regionHrodno);
-        Region regionMinsk = new Region(districtMinsk, "Минская область");
+        Region regionMinsk = new Region(districtsMinsk, "Минская область");
         regions.add(regionMinsk);
-        Region regionMogilev = new Region(districtMogilev, "Могилевская область");
+        Region regionMogilev = new Region(districtsMogilev, "Могилевская область");
         regions.add(regionMogilev);
         State state = new State("Беларусь", 207600, regions);
 
+        System.out.println(state.getCapital());
+        System.out.println(state.getRegionNumber());
+        System.out.println(state.getArea());
+        System.out.println(state.getRegionalCenter());
     }
 }

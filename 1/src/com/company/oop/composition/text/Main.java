@@ -45,6 +45,5 @@ public class Main {
 
         text.addText(phraseList);
         System.out.println(text);
-
     }
 }
