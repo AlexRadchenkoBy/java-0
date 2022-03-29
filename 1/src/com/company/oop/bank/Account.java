@@ -1,27 +1,19 @@
 package com.company.oop.bank;
 
-import java.util.ArrayList;
+import java.util.UUID;
 
 public class Account {
-    private int id;
+    private String id;
     private int balance;
     private boolean isBlocked;
 
-    public Account(int id, int balance, boolean isBlocked) {
-        this.id = id;
-        this.balance = balance;
-        this.isBlocked = isBlocked;
+    public Account() {
+        this.id = UUID.randomUUID().toString();
+        this.balance = 0;
+        this.isBlocked = false;
+    }
 
-        ArrayList<Account> account1 = new ArrayList<Account>();
-        Account accountOne = new Account(28032201, 406, false);
-        account1.add(accountOne);
-        ArrayList<Account> account2 = new ArrayList<Account>();
-        Account accountTwo = new Account(30042102, 560, false);
-        account2.add(accountTwo);
-        ArrayList<Account> account3 = new ArrayList<Account>();
-        Account accountThree = new Account(27042303, -15, true);
-        account3.add(accountThree);
-        ArrayList<Account> account4 = new ArrayList<Account>();
-        Account accountFour = new Account(32062504, - 10, true);
+    public String toString() {
+        return "id " + id + " balance " + balance + " isBlocked " + isBlocked;
     }
 }
