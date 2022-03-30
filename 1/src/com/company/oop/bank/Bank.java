@@ -19,9 +19,9 @@ public class Bank {
         clients.add(client);
     }
 
-    public void createAccount(Client client) {
+    public void createAccount(int idClient) {
         Account account = new Account();
-        client.getAccounts().add(account);
+        getClient(idClient).getAccounts().add(account);
     }
 
     public Client getClient(int id) {
@@ -31,6 +31,16 @@ public class Bank {
             }
         }
         return null;
+    }
+
+    // - найти клиента в списке clients. Входные данные clientId, clients. Выходные данные client;
+    // - найти счет клиента. Входные даныые client.getAccaunts, accauntId. Выходные данные accaunt;
+    // - положить день на счет accaunt.addBalance(balance);
+    public void addBalance(int clientId, String accountId, int balance) {
+        for (int i = 0; i < clients.size(); i++) {
+
+        }
+
     }
 
     public String toString() {

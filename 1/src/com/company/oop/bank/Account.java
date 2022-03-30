@@ -13,6 +13,14 @@ public class Account {
         this.isBlocked = false;
     }
 
+    public int getBalance(int balance) {
+        return balance;
+    }
+
+    public String getId() {
+        return id;
+    }
+
     public String toString() {
         return "id " + id + " balance " + balance + " isBlocked " + isBlocked;
     }

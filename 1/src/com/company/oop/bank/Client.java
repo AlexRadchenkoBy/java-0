@@ -20,7 +20,7 @@ public class Client {
     }
 
     public String toString() {
-        return "id " + id + "accunts " + accounts;
+        return "id " + id + " accunts " + accounts;
     }
 
 }
