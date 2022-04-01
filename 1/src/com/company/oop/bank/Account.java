@@ -13,8 +13,12 @@ public class Account {
         this.isBlocked = false;
     }
 
-    public int getBalance(int balance) {
+    public int getBalance() {
         return balance;
+    }
+
+    public void addBalance(int balance) {
+        this.balance = this.balance + balance;
     }
 
     public String getId() {

@@ -19,9 +19,10 @@ public class Bank {
         clients.add(client);
     }
 
-    public void createAccount(int idClient) {
+    public String createAccount(int idClient) {
         Account account = new Account();
         getClient(idClient).getAccounts().add(account);
+        return account.getId();
     }
 
     public Client getClient(int id) {
@@ -35,12 +36,19 @@ public class Bank {
 
     // - найти клиента в списке clients. Входные данные clientId, clients. Выходные данные client;
     // - найти счет клиента. Входные даныые client.getAccaunts, accauntId. Выходные данные accaunt;
-    // - положить день на счет accaunt.addBalance(balance);
+    // - положить деньги на счет accaunt.addBalance(balance);
     public void addBalance(int clientId, String accountId, int balance) {
         for (int i = 0; i < clients.size(); i++) {
-
+            if (clients.get(i).getId() == clientId) {
+                Client client = clients.get(i);
+                for (int j = 0; j < client.getAccounts().size(); j++) {
+                    if (client.getAccounts().get(j).getId() == accountId) {
+                        Account account = client.getAccounts().get(j);
+                        account.addBalance(balance);
+                    }
+                }
+            }
         }
-
     }
 
     public String toString() {
