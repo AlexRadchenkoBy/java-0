@@ -7,12 +7,19 @@ public class Main {
 
     public static void checkBank() {
         Bank bank = new Bank("Денюжка");
-        bank.createClient(29032201);
-        String accountId = bank.createAccount(29032201);
-        bank.addBalance(29032201, accountId, 400);
-        bank.addBalance(29032201, accountId, 400);
-
+        int clientId = 29032201;
+        bank.createClient(clientId);
+        String accountId1 = bank.createAccount(clientId);
+        String accountId2 = bank.createAccount(clientId);
+        String accountId3 = bank.createAccount(clientId);
+        String accountId4 = bank.createAccount(clientId);
+        bank.addBalance(clientId, accountId1, 400);
+        bank.addBalance(clientId, accountId2, 200);
+        bank.addBalance(clientId, accountId3, -65);
+        bank.addBalance(clientId, accountId4, -30);
+        bank.blockAccount(clientId, accountId1, true);
         System.out.println(bank.toString());
+        System.out.println(bank.searchAndSortAccounts(clientId));
     }
 
 }

@@ -17,8 +17,16 @@ public class Account {
         return balance;
     }
 
+    public boolean getIsBlocked() {
+        return isBlocked;
+    }
+
     public void addBalance(int balance) {
         this.balance = this.balance + balance;
+    }
+
+    public void setIsBlocked(boolean isBlocked) {
+        this.isBlocked = isBlocked;
     }
 
     public String getId() {
