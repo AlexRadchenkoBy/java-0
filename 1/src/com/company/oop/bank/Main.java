@@ -20,6 +20,9 @@ public class Main {
         bank.blockAccount(clientId, accountId1, true);
         System.out.println(bank.toString());
         System.out.println(bank.searchAndSortAccounts(clientId));
+        System.out.println(bank.sumOfAllBalances(clientId));
+        System.out.println(bank.sumAllPositiveBalances(clientId));
+        System.out.println(bank.sumAllNegativeBalances(clientId));
     }
 
 }

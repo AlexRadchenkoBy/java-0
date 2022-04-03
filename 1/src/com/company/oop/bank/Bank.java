@@ -30,9 +30,9 @@ public class Bank {
     }
 
     public Client getClient(int id) {
-        for (int i = 0; i < clients.size(); i++) {
-            if (clients.get(i).getId() == id) {
-                return clients.get(i);
+        for (Client client : clients) {
+            if (client.getId() == id) {
+                return client;
             }
         }
         return null;
@@ -42,51 +42,65 @@ public class Bank {
     // - найти счет клиента. Входные даныые client.getAccaunts, accauntId. Выходные данные accaunt;
     // - положить деньги на счет accaunt.addBalance(balance);
     public void addBalance(int clientId, String accountId, int balance) {
-        for (int i = 0; i < clients.size(); i++) {
-            if (clients.get(i).getId() == clientId) {
-                Client client = clients.get(i);
-                for (int j = 0; j < client.getAccounts().size(); j++) {
-                    if (client.getAccounts().get(j).getId() == accountId) {
-                        Account account = client.getAccounts().get(j);
-                        if (account.getIsBlocked()) {
-                            System.out.println("Аккаунт заблокирован");
-                        } else {
-                            account.addBalance(balance);
-                        }
-                    }
+        ArrayList<Account> accounts = getClient(clientId).getAccounts();
+        for (Account account : accounts) {
+            if (account.getId() == accountId) {
+                if (account.getIsBlocked()) {
+                    System.out.println("Аккаунт заблокирован");
+                } else {
+                    account.addBalance(balance);
                 }
             }
         }
     }
 
     public void blockAccount(int clientId, String accountId, boolean isBlock) {
-        for (int i = 0; i < clients.size(); i++) {
-            if (clients.get(i).getId() == clientId) {
-                Client client = clients.get(i);
-                for (int j = 0; j < client.getAccounts().size(); j++) {
-                    if (client.getAccounts().get(j).getId() == accountId) {
-                        Account account = client.getAccounts().get(j);
-                        account.setIsBlocked(isBlock);
-                    }
-                }
+        ArrayList<Account> accounts = getClient(clientId).getAccounts();
+        for (Account account : accounts) {
+            if (account.getId() == accountId) {
+                account.setIsBlocked(isBlock);
             }
         }
     }
 
     public ArrayList<Account> searchAndSortAccounts(int clientId) {
         ArrayList<Account> searchableAccounts = new ArrayList<Account>();
-        for (int i = 0; i < clients.size(); i++) {
-            if (clients.get(i).getId() == clientId) {
-                Client client = clients.get(i);
-                ArrayList<Account> accounts = clients.get(i).getAccounts();
-                searchableAccounts.addAll(accounts);
-            }
-        }
-        for (int k = 0; k < searchableAccounts.size(); k++) {
-            searchableAccounts.sort(Comparator.comparing(Account::getBalance));
-        }
+        searchableAccounts.addAll(getClient(clientId).getAccounts());
+        searchableAccounts.sort(Comparator.comparing(Account::getBalance));
         return searchableAccounts;
     }
+
+    public int sumOfAllBalances(int clientId) {
+        int sum = 0;
+        ArrayList<Account> accounts = getClient(clientId).getAccounts();
+        for (Account account : accounts) {
+            sum = sum + account.getBalance();
+        }
+        return sum;
+    }
+
+    public int sumAllPositiveBalances(int clientId) {
+        int sum = 0;
+        ArrayList<Account> accounts = getClient(clientId).getAccounts();
+        for (Account account : accounts) {
+            if (account.getBalance() > 0) {
+                sum = sum + account.getBalance();
+            }
+        }
+        return sum;
+    }
+
+    public int sumAllNegativeBalances(int clientId) {
+        int sum = 0;
+        ArrayList<Account> accounts = getClient(clientId).getAccounts();
+        for (Account account : accounts) {
+            if (account.getBalance() < 0) {
+                sum = sum + account.getBalance();
+            }
+        }
+        return sum;
+    }
+
 
     public String toString() {
         return "name " + name + " clients " + clients;
