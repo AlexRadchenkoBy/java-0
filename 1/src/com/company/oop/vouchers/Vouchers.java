@@ -20,4 +20,9 @@ public class Vouchers {
         return typeVouchers;
     }
 
+    @Override
+    public String toString() {
+        return "typeVouchers " + typeVouchers + " transport " + transport + " food " + food + " days " + days;
+    }
+
 }

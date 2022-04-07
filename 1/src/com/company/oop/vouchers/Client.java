@@ -5,13 +5,25 @@ public class Client {
     private int phoneNumber;
     private Vouchers voucher;
 
-    public Client(String name, int phoneNumber, Vouchers voucher) {
+    public Client(String name, int phoneNumber) {
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.voucher = voucher;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
     }
 
     public Vouchers getVoucher() {
         return voucher;
+    }
+
+    @Override
+    public String toString() {
+        return "name " + name + " phoneNumber " + phoneNumber + " voucher " + voucher;
     }
 }
