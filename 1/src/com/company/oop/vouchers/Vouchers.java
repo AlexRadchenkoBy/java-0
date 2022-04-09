@@ -16,8 +16,28 @@ public class Vouchers {
         this.days = days;
     }
 
+    public Vouchers(Vouchers voucher) {
+        this(voucher.getTypeVouchers(), voucher.getTransport(), voucher.getFood(), voucher.getDays());
+    }
+
     public VoucherType getTypeVouchers() {
         return typeVouchers;
+    }
+
+    public int getDays() {
+        return days;
+    }
+
+    public String getTransport() {
+        return transport;
+    }
+
+    public boolean getFood() {
+        return food;
+    }
+
+    public void setFood(boolean food) {
+        this.food = food;
     }
 
     @Override

@@ -22,6 +22,10 @@ public class Client {
         return voucher;
     }
 
+    public void setVoucher(Vouchers voucher) {
+        this.voucher = voucher;
+    }
+
     @Override
     public String toString() {
         return "name " + name + " phoneNumber " + phoneNumber + " voucher " + voucher;
