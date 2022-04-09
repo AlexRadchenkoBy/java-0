@@ -58,6 +58,10 @@ public class Agency {
 
     @Override
     public String toString() {
-        return "name " + name + " clients " + clients + " vouchers " + vouchers;
+        return "Agency{" +
+                "name='" + name + '\'' +
+                ", clients=" + clients +
+                ", vouchers=" + vouchers +
+                '}';
     }
 }
