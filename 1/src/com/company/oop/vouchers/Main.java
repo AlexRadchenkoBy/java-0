@@ -22,9 +22,10 @@ public class Main {
         agency.createVouchers(VoucherType.SHOPPING, "Поезд", false, 1);
         agency.createVouchers(VoucherType.SHOPPING, "Поезд", false, 2);
         agency.createVouchers(VoucherType.SHOPPING, "Поезд", false, 3);
-        ArrayList<Vouchers> selectedAndSorted = agency.selectingSortingVouchers(VoucherType.RELAXATION);
+        ArrayList<Voucher> selectedAndSorted = agency.selectingSortingVouchers(VoucherType.RELAXATION);
         System.out.println(selectedAndSorted);
-        agency.changeVouchersAndAddClient("Сергей", selectedAndSorted.get(0), true);
+        System.out.println(agency.toString());
+        agency.changeVoucherAndAddToClient("Сергей", selectedAndSorted.get(0), false);
         System.out.println(agency.toString());
     }
 }

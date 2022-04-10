@@ -20,6 +20,4 @@ public enum VoucherType {
     public String toString() {
          return name;
     }
-
-
 }

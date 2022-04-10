@@ -1,7 +1,5 @@
 package com.company.oop.vouchers;
 
-import com.company.oop.bank.Account;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -11,12 +9,12 @@ import java.util.Comparator;
 public class Agency {
     private String name;
     private ArrayList<Client> clients;
-    private ArrayList<Vouchers> vouchers;
+    private ArrayList<Voucher> vouchers;
 
     public Agency(String name) {
         this.name = name;
         this.clients = new ArrayList<Client>();
-        this.vouchers = new ArrayList<Vouchers>();
+        this.vouchers = new ArrayList<Voucher>();
     }
 
     public void createClient(String name, int phoneNumber) {
@@ -24,32 +22,31 @@ public class Agency {
         clients.add(client);
     }
 
-    public void createVouchers(VoucherType typeVoucher, String transport, boolean food, int days) {
-        Vouchers voucher = new Vouchers(typeVoucher, transport, food, days);
+    public void createVouchers(VoucherType voucherType, String transport, boolean food, int days) {
+        Voucher voucher = new Voucher(voucherType, transport, food, days);
         vouchers.add(voucher);
     }
 
-    public ArrayList<Vouchers> selectingSortingVouchers(VoucherType typeVouchers) {
-        ArrayList<Vouchers> sort = new ArrayList<>();
-        for (int i = 0; i < vouchers.size(); i++) {
-            if (vouchers.get(i).getTypeVouchers() == typeVouchers) {
-                sort.add(vouchers.get(i));
-                sort.sort(Comparator.comparing(Vouchers::getDays));
+    public ArrayList<Voucher> selectingSortingVouchers(VoucherType voucherType) {
+        ArrayList<Voucher> sortedVouchers = new ArrayList<>();
+        for (Voucher voucher : vouchers) {
+            if (voucher.getVoucherType() == voucherType) {
+                sortedVouchers.add(voucher);
             }
         }
-        return sort;
+        sortedVouchers.sort(Comparator.comparing(Voucher::getDays));
+        return sortedVouchers;
     }
 
-    public Vouchers changeVouchersAndAddClient(String clientName, Vouchers voucher, boolean food) {
-        Vouchers addedVoucher = new Vouchers(voucher); // todo: explain
+    public void changeVoucherAndAddToClient(String clientName, Voucher voucher, boolean food) {
+        Voucher addedVoucher = new Voucher(voucher);
         addedVoucher.setFood(food);
         getClient(clientName).setVoucher(addedVoucher);
-        return addedVoucher;
     }
 
     public Client getClient(String name) {
         for (Client client : clients) {
-            if (client.getName() == name) {
+            if (client.getName().equals(name)) {
                 return client;
             }
         }

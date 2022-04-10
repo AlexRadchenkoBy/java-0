@@ -3,25 +3,25 @@ package com.company.oop.vouchers;
 //различного типа (отдых, экскурсии, лечение, шопинг, круиз и т. д.) для оптимального выбора. Учитывать
 //возможность выбора транспорта, питания и числа дней. Реализовать выбор и сортировку путевок.
 
-public class Vouchers {
-    private VoucherType typeVouchers;
+public class Voucher {
+    private VoucherType voucherType;
     private String transport;
     private boolean food;
     private int days;
 
-    public Vouchers(VoucherType typeVouchers, String transport, boolean food, int days) {
-        this.typeVouchers = typeVouchers;
+    public Voucher(VoucherType voucherType, String transport, boolean food, int days) {
+        this.voucherType = voucherType;
         this.transport = transport;
         this.food = food;
         this.days = days;
     }
 
-    public Vouchers(Vouchers voucher) {
-        this(voucher.getTypeVouchers(), voucher.getTransport(), voucher.getFood(), voucher.getDays());
+    public Voucher(Voucher voucher) {
+        this(voucher.getVoucherType(), voucher.getTransport(), voucher.getFood(), voucher.getDays());
     }
 
-    public VoucherType getTypeVouchers() {
-        return typeVouchers;
+    public VoucherType getVoucherType() {
+        return voucherType;
     }
 
     public int getDays() {
@@ -42,7 +42,11 @@ public class Vouchers {
 
     @Override
     public String toString() {
-        return "typeVouchers " + typeVouchers + " transport " + transport + " food " + food + " days " + days;
+        return "Vouchers{" +
+                "typeVouchers=" + voucherType +
+                ", transport='" + transport + '\'' +
+                ", food=" + food +
+                ", days=" + days +
+                '}';
     }
-
 }
