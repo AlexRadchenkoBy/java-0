@@ -12,6 +12,5 @@ public class Filrrider  {
             System.out.println(scanner.nextLine());
         }
         file.close();
-
     }
 }
