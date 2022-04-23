@@ -1,0 +1,6 @@
+id,isAdmin,name,email
+1,true,Виктор,victor.com
+2,false,Дмитрий,dmitriy.com
+35e783ea-8b6d-4c2a-a8f9-e4af150a0123,true,Миша,test@test
+ab672a82-b77e-4ddf-91ab-f9856f8a31ae,true,Миша,test@test
+d2dc5e83-97aa-4b44-bcc5-2162efa3e897,false,Владимр,vladimir.com
