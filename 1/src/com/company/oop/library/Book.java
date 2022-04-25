@@ -17,6 +17,26 @@ public class Book {
         this.yearOfPublishing = yearOfPublishing;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public int getYearOfPublishing() {
+        return yearOfPublishing;
+    }
+
     public Book(String id, String type, String title, String author, int yearOfPublishing) {
         this.id = id;
         this.type = type;

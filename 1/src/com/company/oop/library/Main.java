@@ -9,6 +9,7 @@ public class Main {
         Library library = new Library();
         library.createUser(true, "Миша", "test@test");
         library.createUser(false, "Владимр", "vladimir.com");
+        library.createBook("печатный вариант", "Пагоня на Грюнвальд", "Тарасов К.", 2013);
         System.out.println(library.toString());
     }
 }

@@ -4,3 +4,5 @@ id,isAdmin,name,email
 35e783ea-8b6d-4c2a-a8f9-e4af150a0123,true,Миша,test@test
 ab672a82-b77e-4ddf-91ab-f9856f8a31ae,true,Миша,test@test
 d2dc5e83-97aa-4b44-bcc5-2162efa3e897,false,Владимр,vladimir.com
+61d62ebd-b015-447d-9d64-22b06b217237,true,Миша,test@test
+1134f991-8283-4d84-a11f-673ba33d664e,false,Владимр,vladimir.com

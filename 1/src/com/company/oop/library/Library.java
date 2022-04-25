@@ -6,10 +6,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// - прочитать текстовый файл построчно;
-// - разделить строку по запятой;
-// - парсить значеения разбитой строки в объект;
-// - сохранить объект в Library в переменную users или books;
+// - создать меню регистрации\входа;
+// - если вход, то вводим пароль и email;
+// - поиск по введенным данным пользователя;
+// - если данные введены неверно ввести данные повторно;
+// - аутентификация пользователя, записываем user  в переменную currentUser;
+// - показать меню в зависимости от статуса пользователя;
+// - если регистрация, вводит свои данные и придумывает пароль;
+// - сохраняем пользователя в базу данных и записываем его в переменную currentUser;
+// - покзать меню в зависимости от статуса пользователя;
+// - если выйти из аккаунта  засетать currentUser в Null;
 public class Library {
     private ArrayList<User> users;
     private ArrayList<Book> books;
@@ -31,6 +37,20 @@ public class Library {
         FileWriter file = new FileWriter("C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\" +
                 "company\\oop" + "\\library" + "\\resource\\user.txt", true);
         file.write("\n" + user.getId() + "," + user.getIsAdmin() + "," + user.getName() + "," + user.getEmail());
+        file.flush();
+    }
+
+    public void createBook(String type, String title, String author, int yearOfPublishing) throws IOException {
+        Book book = new Book(type, title, author, yearOfPublishing);
+        books.add(book);
+        saveBook(book);
+    }
+
+    public void saveBook(Book book) throws IOException {
+        FileWriter file =  new FileWriter("C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\" +
+                "company\\oop" + "\\library" + "\\resource\\book.txt", true);
+        file.write("\n" + book.getId() + "," + book.getType() + "," + book.getTitle() + "," + book.getAuthor() + ","
+                + book.getYearOfPublishing());
         file.flush();
     }
 
