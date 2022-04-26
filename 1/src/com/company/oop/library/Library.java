@@ -27,6 +27,10 @@ public class Library {
                 "company\\oop" + "\\library" + "\\resource\\book.txt");
     }
 
+    public void runInProgram() {
+        System.out.println("1 - Войти" + "\n" + "2 - Зарегистрироваться");
+    }
+
     public void createUser(boolean isAdmin, String name, String email) throws IOException {
         User user = new User(isAdmin, name, email);
         users.add(user);
