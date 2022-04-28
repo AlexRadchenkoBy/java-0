@@ -7,12 +7,14 @@ public class User {
     private boolean isAdmin;
     private String name;
     private String email;
+    private String password;
 
-    public User(boolean isAdmin, String name, String email) {
+    public User(boolean isAdmin, String name, String email, String password) {
         this.id = UUID.randomUUID().toString();
         this.isAdmin = isAdmin;
         this.name = name;
         this.email = email;
+        this.password = password;
     }
 
     public String getId() {
@@ -31,11 +33,16 @@ public class User {
         return email;
     }
 
-    public User(String id, boolean isAdmin, String name, String email) {
+    public String getPassword() {
+        return password;
+    }
+
+    public User(String id, boolean isAdmin, String name, String email, String password) {
         this.id = id;
         this.isAdmin = isAdmin;
         this.name = name;
         this.email = email;
+        this.password = password;
     }
 
     @Override

@@ -1,7 +1,5 @@
-id,isAdmin,name,email
-1,true,Виктор,victor.com
-2,false,Дмитрий,dmitriy.com
-8dc4668e-28d5-4294-9392-86b8c2c9deb0,true,Миша,test@test
-b7f6ff10-4d7d-4ee5-8ae8-5c9de2f7f746,false,Владимр,vladimir.com
-0ac2d963-02e8-4e2d-b1a0-81ae35b73580,true,Миша,test@test
-d55588ac-a9c1-41c0-8392-21c755da3417,false,Владимр,vladimir.com
+id,isAdmin,name,email,password
+1,true,Виктор,victor.com,123
+2,false,Дмитрий,dmitriy.com,123
+8dc4668e-28d5-4294-9392-86b8c2c9deb0,true,Миша,test@test,123
+b7f6ff10-4d7d-4ee5-8ae8-5c9de2f7f746,false,Владимр,vladimir.com,123
