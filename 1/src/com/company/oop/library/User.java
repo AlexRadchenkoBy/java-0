@@ -9,9 +9,9 @@ public class User {
     private String email;
     private String password;
 
-    public User(boolean isAdmin, String name, String email, String password) {
+    public User(String name, String email, String password) {
         this.id = UUID.randomUUID().toString();
-        this.isAdmin = isAdmin;
+        this.isAdmin = false;
         this.name = name;
         this.email = email;
         this.password = password;

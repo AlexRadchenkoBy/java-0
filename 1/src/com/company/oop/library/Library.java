@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 // - создать меню регистрации\входа;
@@ -28,38 +29,58 @@ public class Library {
                 "company\\oop" + "\\library" + "\\resource\\book.txt");
     }
 
-    public void runInProgram() {
+    public void runInProgram() throws Exception {
         System.out.println("1 - Войти" + "\n" + "2 - Зарегистрироваться");
         Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
         if (number == 1) {
-            System.out.println("Введите: " + "\n" + "Логин: " + "\n" + "Пороль:");
-            Scanner loginScanner = new Scanner(System.in);
-            Scanner passwordScanner = new Scanner(System.in);
-            loginAndPassword(loginScanner.nextLine(), passwordScanner.nextLine());
-            for (int i = 0; i < users.size(); i++) {
-                if (users.get(i).getIsAdmin()) {
-                System.out.println("1 - Добавить книгу" + "\n" + "2 - Добавить клиента" + "\n" + "3 - Поиск книг" + "\n"
-                        + "4 - Добавить описание");
+            System.out.println("""
+                    Введите:\s
+                    Логин:\s
+                    Пороль:""");
+            while (true) {
+                Scanner loginScanner = new Scanner(System.in);
+                Scanner passwordScanner = new Scanner(System.in);
+                loginAndPassword(loginScanner.nextLine(), passwordScanner.nextLine());
+                if (currentUser != null) {
+                    break;
                 } else {
-                    System.out.println("1 - Поиск книг");
+                    System.out.println("Неккоректный ввод данных! Введите данные повторно!");
                 }
             }
+            if (currentUser.getIsAdmin()) {
+                System.out.println("""
+                        1 - Добавить книгу
+                        2 - Добавить клиента
+                        3 - Поиск книг
+                        4 - Добавить описание""");
+            } else {
+                System.out.println("1 - Поиск книг");
+            }
+        } else if (number == 2) {
+            System.out.println("""
+                    Введите ваши данные
+                    Имя:\s
+                    email:\s
+                    Пароль:""");
+            Scanner saveName = new Scanner(System.in);
+            Scanner saveEmail = new Scanner(System.in);
+            Scanner savePassword = new Scanner(System.in);
+            createUser(saveName.nextLine(), saveEmail.nextLine(), savePassword.nextLine());
         }
     }
+
 
     public void loginAndPassword(String login, String password) {
         for (int i = 0; i < users.size(); i++) {
-            if (login == users.get(i).getEmail() && password == users.get(i).getPassword()) {
+            if (Objects.equals(login, users.get(i).getEmail()) && Objects.equals(password, users.get(i).getPassword())) {
                 currentUser = users.get(i);
-            } else {
-                System.out.println("Ошибка ввода данных! Введите данные еще раз!");
             }
         }
     }
 
-    public void createUser(boolean isAdmin, String name, String email, String password) throws IOException {
-        User user = new User(isAdmin, name, email, password);
+    public void createUser(String name, String email, String password) throws IOException {
+        User user = new User(name, email, password);
         users.add(user);
         saveUser(user);
     }
