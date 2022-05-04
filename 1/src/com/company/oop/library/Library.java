@@ -51,9 +51,38 @@ public class Library {
             if (currentUser.getIsAdmin()) {
                 System.out.println("""
                         1 - Добавить книгу
-                        2 - Добавить клиента
+                        2 - Добавить пользователя
                         3 - Поиск книг
                         4 - Добавить описание""");
+                Scanner scanner1 = new Scanner(System.in);
+                int number1 = scanner1.nextInt();
+                if (number1 == 1) {
+                    System.out.println("Введите данные о книге: тип книги, название, автор, год издания");
+                    Scanner saveType = new Scanner(System.in);
+                    Scanner saveTitle = new Scanner(System.in);
+                    Scanner saveAuthor = new Scanner(System.in);
+                    Scanner saveYearOfPublishing = new Scanner(System.in);
+                    createBook(saveType.nextLine(), saveTitle.nextLine(), saveAuthor.nextLine(),
+                            saveYearOfPublishing.nextInt());
+                } else if (number1 == 2) {
+                    System.out.println("""
+                            Введите данные пользователя
+                            Имя:\s
+                            email:\s
+                            Пароль:\s""");
+                    Scanner saveName = new Scanner(System.in);
+                    Scanner saveEmail = new Scanner(System.in);
+                    Scanner savePassword = new Scanner(System.in);
+                    createUser(saveName.nextLine(), saveEmail.nextLine(), savePassword.nextLine());
+                } else if (number1 == 3) {
+                    System.out.println("""
+                            Введите:\s
+                            Название книги:\s
+                            Автор:\s""");
+                    Scanner title = new Scanner(System.in);
+                    Scanner author = new Scanner(System.in);
+                    printBook(bookSearch(title.nextLine(), author.nextLine()));
+                }
             } else {
                 System.out.println("1 - Поиск книг");
             }
@@ -104,6 +133,19 @@ public class Library {
         file.write("\n" + book.getId() + "," + book.getType() + "," + book.getTitle() + "," + book.getAuthor() + ","
                 + book.getYearOfPublishing());
         file.flush();
+    }
+
+    public Book bookSearch(String title, String author) {
+        for (int i = 0; i < books.size(); i++) {
+            if (Objects.equals(author, books.get(i).getAuthor()) && Objects.equals(title, books.get(i).getTitle())) {
+                return books.get(i);
+            }
+        }
+        return null;
+    }
+
+    public void printBook(Book book) {
+        System.out.println(book.getTitle() + "," + book.getAuthor());
     }
 
     public ArrayList<Book> readBooks(String pathToFile) throws Exception {
