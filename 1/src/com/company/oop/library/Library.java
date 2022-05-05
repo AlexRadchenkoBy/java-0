@@ -84,7 +84,22 @@ public class Library {
                     printBook(bookSearch(title.nextLine(), author.nextLine()));
                 }
             } else {
-                System.out.println("1 - Поиск книг");
+                System.out.println("1 - Поиск книг" + "\n" + "2 - Просмотреть каталог книг");
+                Scanner scanner2 = new Scanner(System.in);
+                int number2 = scanner2.nextInt();
+                if (number2 == 1) {
+                    System.out.println("""
+                            Введите:\s
+                            Название книги:\s
+                            Автор:\s""");
+                    Scanner title = new Scanner(System.in);
+                    Scanner author = new Scanner(System.in);
+                    printBook(bookSearch(title.nextLine(), author.nextLine()));
+                } else if (number2 == 2) {
+                    for (int i = 0; i < books.size(); i++) {
+                        printBook(books.get(i));
+                    }
+                }
             }
         } else if (number == 2) {
             System.out.println("""
@@ -145,7 +160,8 @@ public class Library {
     }
 
     public void printBook(Book book) {
-        System.out.println(book.getTitle() + "," + book.getAuthor());
+        System.out.println("\n" + book.getId() + "," + book.getType() + "," + book.getTitle() + "," + book.getAuthor()
+                + "," + book.getYearOfPublishing());
     }
 
     public ArrayList<Book> readBooks(String pathToFile) throws Exception {
