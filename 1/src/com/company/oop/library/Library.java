@@ -53,17 +53,19 @@ public class Library {
                         1 - Добавить книгу
                         2 - Добавить пользователя
                         3 - Поиск книг
-                        4 - Добавить описание""");
+                        4 - Просмотреть каталог книг
+                        5 - Добавить описание""");
                 Scanner scanner1 = new Scanner(System.in);
                 int number1 = scanner1.nextInt();
                 if (number1 == 1) {
-                    System.out.println("Введите данные о книге: тип книги, название, автор, год издания");
+                    System.out.println("Введите данные о книге: тип книги, название, автор, год издания, описание");
                     Scanner saveType = new Scanner(System.in);
                     Scanner saveTitle = new Scanner(System.in);
                     Scanner saveAuthor = new Scanner(System.in);
                     Scanner saveYearOfPublishing = new Scanner(System.in);
+                    Scanner saveDescription = new Scanner(System.in);
                     createBook(saveType.nextLine(), saveTitle.nextLine(), saveAuthor.nextLine(),
-                            saveYearOfPublishing.nextInt());
+                            saveYearOfPublishing.nextInt(), saveDescription.nextLine());
                 } else if (number1 == 2) {
                     System.out.println("""
                             Введите данные пользователя
@@ -82,9 +84,23 @@ public class Library {
                     Scanner title = new Scanner(System.in);
                     Scanner author = new Scanner(System.in);
                     printBook(bookSearch(title.nextLine(), author.nextLine()));
+                } else if (number1 == 4) {
+                    for (int i = 0; i < books.size(); i++) {
+                        printBook(books.get(i));
+                    }
+                } else if (number1 == 5) {
+                    System.out.println("Введите название и автора книги: " + "\n" + "Добавте описание: ");
+                    Scanner nameBook = new Scanner(System.in);
+                    Scanner authorBook = new Scanner(System.in);
+                    Scanner description = new Scanner(System.in);
+                    addDescription(bookSearch(nameBook.nextLine(), authorBook.nextLine()), description.nextLine());
+
                 }
             } else {
-                System.out.println("1 - Поиск книг" + "\n" + "2 - Просмотреть каталог книг");
+                System.out.println("""
+                        1 - Поиск книг
+                        2 - Просмотреть каталог книг
+                        3 - Предложить книгу""");
                 Scanner scanner2 = new Scanner(System.in);
                 int number2 = scanner2.nextInt();
                 if (number2 == 1) {
@@ -114,7 +130,6 @@ public class Library {
         }
     }
 
-
     public void loginAndPassword(String login, String password) {
         for (int i = 0; i < users.size(); i++) {
             if (Objects.equals(login, users.get(i).getEmail()) && Objects.equals(password, users.get(i).getPassword())) {
@@ -136,8 +151,9 @@ public class Library {
         file.flush();
     }
 
-    public void createBook(String type, String title, String author, int yearOfPublishing) throws IOException {
-        Book book = new Book(type, title, author, yearOfPublishing);
+    public void createBook(String type, String title, String author, int yearOfPublishing,
+                           String description) throws IOException {
+        Book book = new Book(type, title, author, yearOfPublishing, description);
         books.add(book);
         saveBook(book);
     }
@@ -148,6 +164,12 @@ public class Library {
         file.write("\n" + book.getId() + "," + book.getType() + "," + book.getTitle() + "," + book.getAuthor() + ","
                 + book.getYearOfPublishing());
         file.flush();
+    }
+    // - найти книгу, передать ее в addDescription;
+    // - добавить текст в поле description;
+    // - презаписать запись в текстовом файле;
+    public void addDescription(Book book, String description) {
+        book.getDescription();
     }
 
     public Book bookSearch(String title, String author) {
@@ -174,7 +196,7 @@ public class Library {
         ArrayList<Book> books = new ArrayList<>();
         for (int i = 1; i < rows.size(); i++) {
             String[] fields = rows.get(i).split(",");
-            Book book = new Book(fields[0], fields[1], fields[2], fields[3], Integer.parseInt(fields[4]));
+            Book book = new Book(fields[0], fields[1], fields[2], fields[3], Integer.parseInt(fields[4]), fields[5]);
             books.add(book);
         }
         return books;
