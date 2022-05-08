@@ -1,5 +1,6 @@
 package com.company.oop.library;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -155,21 +156,33 @@ public class Library {
                            String description) throws IOException {
         Book book = new Book(type, title, author, yearOfPublishing, description);
         books.add(book);
-        saveBook(book);
+        saveBook(book, true);
     }
 
-    public void saveBook(Book book) throws IOException {
+    public void saveBook(Book book, boolean append) throws IOException {
         FileWriter file = new FileWriter("C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\" +
-                "company\\oop" + "\\library" + "\\resource\\book.txt", true);
+                "company\\oop" + "\\library" + "\\resource\\book.txt", append);
         file.write("\n" + book.getId() + "," + book.getType() + "," + book.getTitle() + "," + book.getAuthor() + ","
-                + book.getYearOfPublishing());
+                + book.getYearOfPublishing() + "," + book.getDescription());
         file.flush();
     }
     // - найти книгу, передать ее в addDescription;
     // - добавить текст в поле description;
-    // - презаписать запись в текстовом файле;
-    public void addDescription(Book book, String description) {
-        book.getDescription();
+    // - перезаписать запись в текстовом файле;
+    public void addDescription(Book book, String description) throws IOException {
+        book.setDescription(description);
+        saveAllBooks();
+    }
+
+    public void saveAllBooks() throws IOException {
+        FileWriter fileWriter = new FileWriter("C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\" +
+                "company\\oop" + "\\library" + "\\resource\\book.txt", false);
+        fileWriter.write("id,type,title,author,yearOfPublishing,description");
+        for (Book book : books) {
+            fileWriter.write("\n" + book.getId() + "," + book.getType() + "," + book.getTitle() + "," + book.getAuthor() + ","
+                    + book.getYearOfPublishing() + "," + book.getDescription());
+        }
+        fileWriter.flush();
     }
 
     public Book bookSearch(String title, String author) {

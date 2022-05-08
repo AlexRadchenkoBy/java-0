@@ -44,6 +44,10 @@ public class Book {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Book(String id, String type, String title, String author, int yearOfPublishing, String description) {
         this.id = id;
         this.type = type;
