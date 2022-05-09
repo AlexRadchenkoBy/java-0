@@ -31,110 +31,135 @@ public class Library {
     }
 
     public void runInProgram() throws Exception {
-        System.out.println("1 - Войти" + "\n" + "2 - Зарегистрироваться");
+        System.out.println("""
+                0 - Выйти
+                1 - Войти
+                2 - Зарегистрироваться""");
         Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
-        if (number == 1) {
-            System.out.println("""
-                    Введите:\s
-                    Логин:\s
-                    Пороль:""");
+        if (number == 0) {
+            System.exit(0);
+        } else if (number == 1) {
             while (true) {
                 Scanner loginScanner = new Scanner(System.in);
                 Scanner passwordScanner = new Scanner(System.in);
-                loginAndPassword(loginScanner.nextLine(), passwordScanner.nextLine());
+                System.out.println("Введите: ");
+                System.out.print("Логин: ");
+                String login = loginScanner.nextLine();
+                System.out.print("Пароль: ");
+                String password = passwordScanner.nextLine();
+                loginAndPassword(login, password);
                 if (currentUser != null) {
                     break;
                 } else {
                     System.out.println("Неккоректный ввод данных! Введите данные повторно!");
                 }
             }
-            if (currentUser.getIsAdmin()) {
-                System.out.println("""
-                        1 - Добавить книгу
-                        2 - Добавить пользователя
-                        3 - Поиск книг
-                        4 - Просмотреть каталог книг
-                        5 - Добавить описание""");
-                Scanner scanner1 = new Scanner(System.in);
-                int number1 = scanner1.nextInt();
-                if (number1 == 1) {
-                    System.out.println("Введите данные о книге: тип книги, название, автор, год издания, описание");
-                    Scanner saveType = new Scanner(System.in);
-                    Scanner saveTitle = new Scanner(System.in);
-                    Scanner saveAuthor = new Scanner(System.in);
-                    Scanner saveYearOfPublishing = new Scanner(System.in);
-                    Scanner saveDescription = new Scanner(System.in);
-                    createBook(saveType.nextLine(), saveTitle.nextLine(), saveAuthor.nextLine(),
-                            saveYearOfPublishing.nextInt(), saveDescription.nextLine());
-                } else if (number1 == 2) {
+            while (true) {
+                if (currentUser.getIsAdmin()) {
                     System.out.println("""
-                            Введите данные пользователя
-                            Имя:\s
-                            email:\s
-                            Пароль:\s""");
-                    Scanner saveName = new Scanner(System.in);
-                    Scanner saveEmail = new Scanner(System.in);
-                    Scanner savePassword = new Scanner(System.in);
-                    createUser(saveName.nextLine(), saveEmail.nextLine(), savePassword.nextLine());
-                } else if (number1 == 3) {
-                    System.out.println("""
-                            Введите:\s
-                            Название книги:\s
-                            Автор:\s""");
-                    Scanner title = new Scanner(System.in);
-                    Scanner author = new Scanner(System.in);
-                    printBook(bookSearch(title.nextLine(), author.nextLine()));
-                } else if (number1 == 4) {
-                    for (int i = 0; i < books.size(); i++) {
-                        printBook(books.get(i));
+                            0 - Выйти
+                            1 - Добавить книгу
+                            2 - Добавить пользователя
+                            3 - Поиск книг
+                            4 - Просмотреть каталог книг
+                            5 - Добавить описание""");
+                    Scanner scanner1 = new Scanner(System.in);
+                    int number1 = scanner1.nextInt();
+                    if (number1 == 0) {
+                        System.exit(0);
+                    } else if (number1 == 1) {
+                        System.out.println("Введите данные о книге: тип книги, название, автор, год издания, описание");
+                        Scanner saveType = new Scanner(System.in);
+                        Scanner saveTitle = new Scanner(System.in);
+                        Scanner saveAuthor = new Scanner(System.in);
+                        Scanner saveYearOfPublishing = new Scanner(System.in);
+                        Scanner saveDescription = new Scanner(System.in);
+                        createBook(saveType.nextLine(), saveTitle.nextLine(), saveAuthor.nextLine(),
+                                saveYearOfPublishing.nextInt(), saveDescription.nextLine());
+                    } else if (number1 == 2) {
+                        Scanner saveName = new Scanner(System.in);
+                        Scanner saveEmail = new Scanner(System.in);
+                        Scanner savePassword = new Scanner(System.in);
+                        System.out.println(" Введите данные пользователя: ");
+                        System.out.print("Имя: ");
+                        String name = saveName.nextLine();
+                        System.out.print("Email: ");
+                        String email = saveEmail.nextLine();
+                        System.out.print("Пароль: ");
+                        String password = savePassword.nextLine();
+                        createUser(name, email, password);
+                    } else if (number1 == 3) {
+                        Scanner title = new Scanner(System.in);
+                        Scanner author = new Scanner(System.in);
+                        System.out.println("Введите: ");
+                        System.out.print("Название книги ");
+                        String title1 = title.nextLine();
+                        System.out.print("Автор: ");
+                        String author1 = author.nextLine();
+                        printBook(bookSearch(title1, author1));
+                    } else if (number1 == 4) {
+                        for (Book book : books) {
+                            printBook(book);
+                        }
+                    } else if (number1 == 5) {
+                        Scanner nameBook = new Scanner(System.in);
+                        Scanner authorBook = new Scanner(System.in);
+                        Scanner description = new Scanner(System.in);
+                        System.out.println("Введите: ");
+                        System.out.print("Название книги: ");
+                        String name = nameBook.nextLine();
+                        System.out.print("Автор книги: ");
+                        String author = authorBook.nextLine();
+                        System.out.print("Добавить описание: ");
+                        String description1 = description.nextLine();
+                        addDescription(bookSearch(name, author), description1);
                     }
-                } else if (number1 == 5) {
-                    System.out.println("Введите название и автора книги: " + "\n" + "Добавте описание: ");
-                    Scanner nameBook = new Scanner(System.in);
-                    Scanner authorBook = new Scanner(System.in);
-                    Scanner description = new Scanner(System.in);
-                    addDescription(bookSearch(nameBook.nextLine(), authorBook.nextLine()), description.nextLine());
-
-                }
-            } else {
-                System.out.println("""
-                        1 - Поиск книг
-                        2 - Просмотреть каталог книг
-                        3 - Предложить книгу""");
-                Scanner scanner2 = new Scanner(System.in);
-                int number2 = scanner2.nextInt();
-                if (number2 == 1) {
+                } else {
                     System.out.println("""
-                            Введите:\s
-                            Название книги:\s
-                            Автор:\s""");
-                    Scanner title = new Scanner(System.in);
-                    Scanner author = new Scanner(System.in);
-                    printBook(bookSearch(title.nextLine(), author.nextLine()));
-                } else if (number2 == 2) {
-                    for (int i = 0; i < books.size(); i++) {
-                        printBook(books.get(i));
+                            0 - Выйти
+                            1 - Поиск книг
+                            2 - Просмотреть каталог книг
+                            3 - Предложить книгу""");
+                    Scanner scanner2 = new Scanner(System.in);
+                    int number2 = scanner2.nextInt();
+                    if (number2 == 0) {
+                        System.exit(0);
+                    } else if (number2 == 1) {
+                        Scanner title = new Scanner(System.in);
+                        Scanner author = new Scanner(System.in);
+                        System.out.println("Введите: ");
+                        System.out.print("Название книги ");
+                        String title1 = title.nextLine();
+                        System.out.print("Автор: ");
+                        String author1 = author.nextLine();
+                        printBook(bookSearch(title1, author1));
+                    } else if (number2 == 2) {
+                        for (Book book : books) {
+                            printBook(book);
+                        }
                     }
                 }
             }
         } else if (number == 2) {
-            System.out.println("""
-                    Введите ваши данные
-                    Имя:\s
-                    email:\s
-                    Пароль:""");
             Scanner saveName = new Scanner(System.in);
             Scanner saveEmail = new Scanner(System.in);
             Scanner savePassword = new Scanner(System.in);
-            createUser(saveName.nextLine(), saveEmail.nextLine(), savePassword.nextLine());
+            System.out.println(" Введите данные пользователя: ");
+            System.out.print("Имя: ");
+            String name = saveName.nextLine();
+            System.out.print("Email: ");
+            String email = saveEmail.nextLine();
+            System.out.print("Пароль: ");
+            String password = savePassword.nextLine();
+            createUser(name, email, password);
         }
     }
 
     public void loginAndPassword(String login, String password) {
-        for (int i = 0; i < users.size(); i++) {
-            if (Objects.equals(login, users.get(i).getEmail()) && Objects.equals(password, users.get(i).getPassword())) {
-                currentUser = users.get(i);
+        for (User user : users) {
+            if (Objects.equals(login, user.getEmail()) && Objects.equals(password, user.getPassword())) {
+                currentUser = user;
             }
         }
     }
@@ -186,9 +211,9 @@ public class Library {
     }
 
     public Book bookSearch(String title, String author) {
-        for (int i = 0; i < books.size(); i++) {
-            if (Objects.equals(author, books.get(i).getAuthor()) && Objects.equals(title, books.get(i).getTitle())) {
-                return books.get(i);
+        for (Book book : books) {
+            if (Objects.equals(author, book.getAuthor()) && Objects.equals(title, book.getTitle())) {
+                return book;
             }
         }
         return null;
