@@ -8,16 +8,9 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-// - создать меню регистрации\входа;
-// - если вход, то вводим пароль и email;
-// - поиск по введенным данным пользователя;
-// - аутентификация пользователя, записываем user  в переменную currentUser;
-// - показать меню в зависимости от статуса пользователя;
-// - если данные введены неверно ввести данные повторно;
-// - если регистрация, вводит свои данные и придумывает пароль;
-// - сохраняем пользователя в базу данных и записываем его в переменную currentUser;
-// - покзать меню в зависимости от статуса пользователя;
-// - если выйти из аккаунта  засетать currentUser в Null;
+// - заменить добавить пользователя на сделать администратором другого пользователя;
+// - хэшировать пароли (использвать sha-256);
+// - создать класс в котором будут функции по отправке сообщения на email (класс не должен быть привязан к заданию);
 public class Library {
     private User currentUser;
     private ArrayList<User> users;
@@ -60,7 +53,7 @@ public class Library {
                     System.out.println("""
                             0 - Выйти
                             1 - Добавить книгу
-                            2 - Добавить пользователя
+                            2 - Сделать администратором
                             3 - Поиск книг
                             4 - Просмотреть каталог книг
                             5 - Добавить описание""");
@@ -78,17 +71,13 @@ public class Library {
                         createBook(saveType.nextLine(), saveTitle.nextLine(), saveAuthor.nextLine(),
                                 saveYearOfPublishing.nextInt(), saveDescription.nextLine());
                     } else if (number1 == 2) {
-                        Scanner saveName = new Scanner(System.in);
-                        Scanner saveEmail = new Scanner(System.in);
-                        Scanner savePassword = new Scanner(System.in);
-                        System.out.println(" Введите данные пользователя: ");
-                        System.out.print("Имя: ");
-                        String name = saveName.nextLine();
-                        System.out.print("Email: ");
-                        String email = saveEmail.nextLine();
-                        System.out.print("Пароль: ");
-                        String password = savePassword.nextLine();
-                        createUser(name, email, password);
+                        Scanner emailScanner = new Scanner(System.in);
+                        Scanner isAdminScanner = new Scanner(System.in);
+                        System.out.print("Введите email пользователя: ");
+                        String email = emailScanner.nextLine();
+                        System.out.print("Введите true или false: ");
+                        String isAdmin = isAdminScanner.nextLine();
+                        makeAdministrator(email, isAdmin);
                     } else if (number1 == 3) {
                         Scanner title = new Scanner(System.in);
                         Scanner author = new Scanner(System.in);
@@ -164,6 +153,26 @@ public class Library {
         }
     }
 
+    public void makeAdministrator(String email, String isAdmin) throws IOException {
+        for (User user : users) {
+            if (Objects.equals(email, user.getName())) {
+                user.setIsAdmin(Boolean.parseBoolean(isAdmin));
+            }
+        }
+        saveAllUsers();
+    }
+
+    public void saveAllUsers() throws IOException {
+        FileWriter fileWriter = new FileWriter("C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\" +
+                "company\\oop" + "\\library" + "\\resource\\user.txt", false);
+        fileWriter.write("id,isAdmin,name,email,password");
+        for (User user : users) {
+            fileWriter.write("\n" + user.getId() + "," + user.getIsAdmin() + "," + user.getName() + ","
+                    + user.getEmail());
+        }
+        fileWriter.flush();
+    }
+
     public void createUser(String name, String email, String password) throws IOException {
         User user = new User(name, email, password);
         users.add(user);
@@ -191,6 +200,7 @@ public class Library {
                 + book.getYearOfPublishing() + "," + book.getDescription());
         file.flush();
     }
+
     // - найти книгу, передать ее в addDescription;
     // - добавить текст в поле description;
     // - перезаписать запись в текстовом файле;

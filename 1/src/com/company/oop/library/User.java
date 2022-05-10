@@ -37,6 +37,10 @@ public class User {
         return password;
     }
 
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
     public User(String id, boolean isAdmin, String name, String email, String password) {
         this.id = id;
         this.isAdmin = isAdmin;
