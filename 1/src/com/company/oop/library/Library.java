@@ -1,6 +1,5 @@
 package com.company.oop.library;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -168,7 +167,7 @@ public class Library {
         fileWriter.write("id,isAdmin,name,email,password");
         for (User user : users) {
             fileWriter.write("\n" + user.getId() + "," + user.getIsAdmin() + "," + user.getName() + ","
-                    + user.getEmail());
+                    + user.getEmail() + "," + user.getPassword());
         }
         fileWriter.flush();
     }
