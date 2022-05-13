@@ -9,7 +9,7 @@ public class Hash {
     public static String hashPassword(String password) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] encodedhash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
-        return encodedhash;
+        return bytesToHex(encodedhash);
     }
 
     private static String bytesToHex(byte[] hash) {

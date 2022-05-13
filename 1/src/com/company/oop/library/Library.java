@@ -15,11 +15,15 @@ public class Library {
     private ArrayList<User> users;
     private ArrayList<Book> books;
 
+    private static final String USER_PATH = "C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\" +
+            "company\\oop" + "\\library" + "\\resource\\user.txt";
+
+    private static final String BOOK_PATH = "C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\" +
+            "company\\oop" + "\\library" + "\\resource\\book.txt";
+
     public Library() throws Exception {
-        this.users = readUser("C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\" +
-                "company\\oop" + "\\library" + "\\resource\\user.txt");
-        this.books = readBooks("C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\" +
-                "company\\oop" + "\\library" + "\\resource\\book.txt");
+        this.users = readUser(USER_PATH);
+        this.books = readBooks(BOOK_PATH);
     }
 
     public void runInProgram() throws Exception {
@@ -162,8 +166,7 @@ public class Library {
     }
 
     public void saveAllUsers() throws IOException {
-        FileWriter fileWriter = new FileWriter("C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\" +
-                "company\\oop" + "\\library" + "\\resource\\user.txt", false);
+        FileWriter fileWriter = new FileWriter(USER_PATH, false);
         fileWriter.write("id,isAdmin,name,email,password");
         for (User user : users) {
             fileWriter.write("\n" + user.getId() + "," + user.getIsAdmin() + "," + user.getName() + ","
@@ -179,8 +182,7 @@ public class Library {
     }
 
     public void saveUser(User user) throws IOException {
-        FileWriter file = new FileWriter("C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\" +
-                "company\\oop" + "\\library" + "\\resource\\user.txt", true);
+        FileWriter file = new FileWriter(USER_PATH, true);
         file.write("\n" + user.getId() + "," + user.getIsAdmin() + "," + user.getName() + "," + user.getEmail());
         file.flush();
     }
@@ -193,8 +195,7 @@ public class Library {
     }
 
     public void saveBook(Book book, boolean append) throws IOException {
-        FileWriter file = new FileWriter("C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\" +
-                "company\\oop" + "\\library" + "\\resource\\book.txt", append);
+        FileWriter file = new FileWriter(BOOK_PATH, append);
         file.write("\n" + book.getId() + "," + book.getType() + "," + book.getTitle() + "," + book.getAuthor() + ","
                 + book.getYearOfPublishing() + "," + book.getDescription());
         file.flush();
@@ -209,8 +210,7 @@ public class Library {
     }
 
     public void saveAllBooks() throws IOException {
-        FileWriter fileWriter = new FileWriter("C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\" +
-                "company\\oop" + "\\library" + "\\resource\\book.txt", false);
+        FileWriter fileWriter = new FileWriter(BOOK_PATH, false);
         fileWriter.write("id,type,title,author,yearOfPublishing,description");
         for (Book book : books) {
             fileWriter.write("\n" + book.getId() + "," + book.getType() + "," + book.getTitle() + "," + book.getAuthor() + ","
