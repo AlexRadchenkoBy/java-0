@@ -7,14 +7,14 @@ public class User {
     private boolean isAdmin;
     private String name;
     private String email;
-    private String password;
+    private String passwordHash;
 
-    public User(String name, String email, String password) {
+    public User(String name, String email, String passwordHash) {
         this.id = UUID.randomUUID().toString();
         this.isAdmin = false;
         this.name = name;
         this.email = email;
-        this.password = password;
+        this.passwordHash = passwordHash;
     }
 
     public String getId() {
@@ -33,20 +33,20 @@ public class User {
         return email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
     public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
 
-    public User(String id, boolean isAdmin, String name, String email, String password) {
+    public User(String id, boolean isAdmin, String name, String email, String passwordHash) {
         this.id = id;
         this.isAdmin = isAdmin;
         this.name = name;
         this.email = email;
-        this.password = password;
+        this.passwordHash = passwordHash;
     }
 
     @Override

@@ -44,7 +44,7 @@ public class Library {
                 String login = loginScanner.nextLine();
                 System.out.print("Пароль: ");
                 String password = passwordScanner.nextLine();
-                loginAndPassword(login, password);
+                loginAndPassword(login, Hash.hashPassword(password));
                 if (currentUser != null) {
                     break;
                 } else {
@@ -144,13 +144,13 @@ public class Library {
             String email = saveEmail.nextLine();
             System.out.print("Пароль: ");
             String password = savePassword.nextLine();
-            createUser(name, email, password);
+            createUser(name, email, Hash.hashPassword(password));
         }
     }
 
     public void loginAndPassword(String login, String password) {
         for (User user : users) {
-            if (Objects.equals(login, user.getEmail()) && Objects.equals(password, user.getPassword())) {
+            if (Objects.equals(login, user.getEmail()) && Objects.equals(password, user.getPasswordHash())) {
                 currentUser = user;
             }
         }
@@ -170,7 +170,7 @@ public class Library {
         fileWriter.write("id,isAdmin,name,email,password");
         for (User user : users) {
             fileWriter.write("\n" + user.getId() + "," + user.getIsAdmin() + "," + user.getName() + ","
-                    + user.getEmail() + "," + user.getPassword());
+                    + user.getEmail() + "," + user.getPasswordHash());
         }
         fileWriter.flush();
     }
@@ -183,7 +183,8 @@ public class Library {
 
     public void saveUser(User user) throws IOException {
         FileWriter file = new FileWriter(USER_PATH, true);
-        file.write("\n" + user.getId() + "," + user.getIsAdmin() + "," + user.getName() + "," + user.getEmail());
+        file.write("\n" + user.getId() + "," + user.getIsAdmin() + "," + user.getName() + "," + user.getEmail() +
+                "," + user.getPasswordHash());
         file.flush();
     }
 

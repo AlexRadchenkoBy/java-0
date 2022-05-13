@@ -1,6 +1,7 @@
 id,isAdmin,name,email,password
-1,true,Виктор,victor.com,123
-2,false,Дмитрий,dmitriy.com,123
-8dc4668e-28d5-4294-9392-86b8c2c9deb0,true,Миша,test@test,123
-b7f6ff10-4d7d-4ee5-8ae8-5c9de2f7f746,false,Владимр,vladimir.com,123
-e9088bb3-7af5-487e-a801-019b78bdba42,true,Александр,alex.com,123
+1,false,Виктор,victor.com,a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3
+2,false,Дмитрий,dmitriy.com,a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3
+8dc4668e-28d5-4294-9392-86b8c2c9deb0,true,Миша,test@test,a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3
+b7f6ff10-4d7d-4ee5-8ae8-5c9de2f7f746,false,Владимр,vladimir.com,a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3
+e9088bb3-7af5-487e-a801-019b78bdba42,false,Александр,alex.com,a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3
+2014fca5-0045-423a-a228-51e2c3c10e19,false,Дмитрий,dima.com,a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3
