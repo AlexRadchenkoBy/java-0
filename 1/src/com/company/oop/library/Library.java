@@ -65,14 +65,23 @@ public class Library {
                     if (number1 == 0) {
                         System.exit(0);
                     } else if (number1 == 1) {
-                        System.out.println("Введите данные о книге: тип книги, название, автор, год издания, описание");
                         Scanner saveType = new Scanner(System.in);
                         Scanner saveTitle = new Scanner(System.in);
                         Scanner saveAuthor = new Scanner(System.in);
                         Scanner saveYearOfPublishing = new Scanner(System.in);
                         Scanner saveDescription = new Scanner(System.in);
-                        createBook(saveType.nextLine(), saveTitle.nextLine(), saveAuthor.nextLine(),
-                                saveYearOfPublishing.nextInt(), saveDescription.nextLine());
+                        System.out.println("Введите данные о книге: ");
+                        System.out.print("Тип книги: ");
+                        String type = saveType.nextLine();
+                        System.out.print("Название: ");
+                        String title = saveTitle.nextLine();
+                        System.out.print("Автор: ");
+                        String author = saveAuthor.nextLine();
+                        System.out.print("Год издания: ");
+                        String year = saveYearOfPublishing.nextLine();
+                        System.out.print("Описание: ");
+                        String description = saveDescription.nextLine();
+                        createBook(type, title, author, Integer.parseInt(year), description);
                     } else if (number1 == 2) {
                         Scanner emailScanner = new Scanner(System.in);
                         Scanner isAdminScanner = new Scanner(System.in);
@@ -130,6 +139,10 @@ public class Library {
                         for (Book book : books) {
                             printBook(book);
                         }
+                    } else if (number2 == 3) {
+                        Scanner text = new Scanner(System.in);
+                        System.out.println("Введите вариант книги, название книги, автора, год издания, описание");
+                        Mailer.send(text.nextLine());
                     }
                 }
             }

@@ -6,12 +6,10 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class Mailer {
-    public static void send(String email, String text) {
+    public static void send(String text) {
         String from = "alex.radchenko.by@gmail.com";
-        String password = "ВСТАВИТЬ ПАРОЛЬ";
+        String password = "Введите пароль";
         String to = "alex.radchenko.by@gmail.com";
-
-        final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
         Properties properties = System.getProperties();
         properties.setProperty("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.ssl.enable", true);
@@ -28,8 +26,6 @@ public class Mailer {
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(from, password);
                     }});
-
-
         try {
             MimeMessage message = new MimeMessage(session); // email message
 
@@ -45,7 +41,6 @@ public class Mailer {
             // Send message
             Transport.send(message); System.out.println("Email Sent successfully....");
         } catch (MessagingException mex){ mex.printStackTrace(); }
-
     }
 }
 
