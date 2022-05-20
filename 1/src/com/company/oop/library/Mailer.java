@@ -7,9 +7,12 @@ import java.util.Properties;
 
 public class Mailer {
     public static void send(String text) {
+        send("alex.radchenko.by@gmail.com", text);
+    }
+
+    public static void send(String to, String text) {
         String from = "alex.radchenko.by@gmail.com";
         String password = "Введите пароль";
-        String to = "alex.radchenko.by@gmail.com";
         Properties properties = System.getProperties();
         properties.setProperty("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.ssl.enable", true);

@@ -91,14 +91,7 @@ public class Library {
                         String isAdmin = isAdminScanner.nextLine();
                         makeAdministrator(email, isAdmin);
                     } else if (number1 == 3) {
-                        Scanner title = new Scanner(System.in);
-                        Scanner author = new Scanner(System.in);
-                        System.out.println("Введите: ");
-                        System.out.print("Название книги ");
-                        String title1 = title.nextLine();
-                        System.out.print("Автор: ");
-                        String author1 = author.nextLine();
-                        printBook(bookSearch(title1, author1));
+                        scannerBookSearch();
                     } else if (number1 == 4) {
                         for (Book book : books) {
                             printBook(book);
@@ -115,6 +108,17 @@ public class Library {
                         System.out.print("Добавить описание: ");
                         String description1 = description.nextLine();
                         addDescription(bookSearch(name, author), description1);
+                        Scanner to = new Scanner(System.in);
+                        Scanner text = new Scanner(System.in);
+                        System.out.println("Введите: ");
+                        System.out.print("Адресс отправки уведомления: ");
+                        String toEmail = to.nextLine();
+                        System.out.print("Текст: ");
+                        String textEmail = text.nextLine();
+                        for (User user : users) {
+                            user.getEmail();
+                            Mailer.send(toEmail, textEmail);
+                        }
                     }
                 } else {
                     System.out.println("""
@@ -127,14 +131,7 @@ public class Library {
                     if (number2 == 0) {
                         System.exit(0);
                     } else if (number2 == 1) {
-                        Scanner title = new Scanner(System.in);
-                        Scanner author = new Scanner(System.in);
-                        System.out.println("Введите: ");
-                        System.out.print("Название книги ");
-                        String title1 = title.nextLine();
-                        System.out.print("Автор: ");
-                        String author1 = author.nextLine();
-                        printBook(bookSearch(title1, author1));
+                        scannerBookSearch();
                     } else if (number2 == 2) {
                         for (Book book : books) {
                             printBook(book);
@@ -161,6 +158,16 @@ public class Library {
         }
     }
 
+    public void scannerBookSearch() {
+        Scanner title = new Scanner(System.in);
+        Scanner author = new Scanner(System.in);
+        System.out.println("Введите: ");
+        System.out.print("Название книги ");
+        String title1 = title.nextLine();
+        System.out.print("Автор: ");
+        String author1 = author.nextLine();
+        printBook(bookSearch(title1, author1));
+    }
     public void loginAndPassword(String login, String password) {
         for (User user : users) {
             if (Objects.equals(login, user.getEmail()) && Objects.equals(password, user.getPasswordHash())) {
