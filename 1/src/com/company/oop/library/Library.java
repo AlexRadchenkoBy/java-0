@@ -168,6 +168,7 @@ public class Library {
         String author1 = author.nextLine();
         printBook(bookSearch(title1, author1));
     }
+
     public void loginAndPassword(String login, String password) {
         for (User user : users) {
             if (Objects.equals(login, user.getEmail()) && Objects.equals(password, user.getPasswordHash())) {
@@ -250,8 +251,14 @@ public class Library {
     }
 
     public void printBook(Book book) {
-        System.out.println("\n" + book.getId() + "," + book.getType() + "," + book.getTitle() + "," + book.getAuthor()
-                + "," + book.getYearOfPublishing());
+        for (Book book1 : books) {
+            System.out.println("\n" + book.getId() + "," + book.getType() + "," + book.getTitle() + "," + book.getAuthor()
+                    + "," + book.getYearOfPublishing());
+        }
+    }
+
+    public int countNumberOfPages() {
+        return (int) Math.ceil(books.size() / 2.0);
     }
 
     public ArrayList<Book> readBooks(String pathToFile) throws Exception {
