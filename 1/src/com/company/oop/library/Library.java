@@ -93,9 +93,12 @@ public class Library {
                     } else if (number1 == 3) {
                         scannerBookSearch();
                     } else if (number1 == 4) {
-                        for (Book book : books) {
-                            printBook(book);
-                        }
+                        // - вывести первую страницу;
+                        // - сколько страниц и на какой странице пользователь, предложить ввести номер новой страницы;
+                        // - получить номер страницы от пользователя и показать нужную страницу по формуле;
+                        // - обработать ошибку (одна строка на второй странице);
+                        // - зациклить и сделать выход в меню;
+
                     } else if (number1 == 5) {
                         Scanner nameBook = new Scanner(System.in);
                         Scanner authorBook = new Scanner(System.in);
@@ -223,9 +226,6 @@ public class Library {
         file.flush();
     }
 
-    // - найти книгу, передать ее в addDescription;
-    // - добавить текст в поле description;
-    // - перезаписать запись в текстовом файле;
     public void addDescription(Book book, String description) throws IOException {
         book.setDescription(description);
         saveAllBooks();
@@ -251,10 +251,8 @@ public class Library {
     }
 
     public void printBook(Book book) {
-        for (Book book1 : books) {
             System.out.println("\n" + book.getId() + "," + book.getType() + "," + book.getTitle() + "," + book.getAuthor()
                     + "," + book.getYearOfPublishing());
-        }
     }
 
     public int countNumberOfPages() {
