@@ -98,7 +98,11 @@ public class Library {
                         // - получить номер страницы от пользователя и показать нужную страницу по формуле;
                         // - обработать ошибку (одна строка на второй странице);
                         // - зациклить и сделать выход в меню;
-
+                        for (int i = 0; i < books.size() - 1; i++) {
+                            System.out.println("\n" + books.get(i).getId() + "," + books.get(i).getType() + "," +
+                                    books.get(i).getTitle() + "," + books.get(i).getAuthor()
+                                    + "," + books.get(i).getYearOfPublishing());
+                        }
                     } else if (number1 == 5) {
                         Scanner nameBook = new Scanner(System.in);
                         Scanner authorBook = new Scanner(System.in);
