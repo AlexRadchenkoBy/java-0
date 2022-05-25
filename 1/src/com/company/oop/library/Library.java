@@ -98,11 +98,13 @@ public class Library {
                         // - получить номер страницы от пользователя и показать нужную страницу по формуле;
                         // - обработать ошибку (одна строка на второй странице);
                         // - зациклить и сделать выход в меню;
-                        for (int i = 0; i < books.size() - 1; i++) {
-                            System.out.println("\n" + books.get(i).getId() + "," + books.get(i).getType() + "," +
-                                    books.get(i).getTitle() + "," + books.get(i).getAuthor()
-                                    + "," + books.get(i).getYearOfPublishing());
+                        for (int i = 0; i < 2; i++) {
+                          printBook(books.get(i));
                         }
+                        Scanner pageNumber = new Scanner(System.in);
+                        System.out.println("\n" + "Количество страниц: " + countNumberOfPages() + " " +
+                                "Введите номер страницы: ");
+                        goToNextPage(pageNumber.nextInt());
                     } else if (number1 == 5) {
                         Scanner nameBook = new Scanner(System.in);
                         Scanner authorBook = new Scanner(System.in);
@@ -255,12 +257,21 @@ public class Library {
     }
 
     public void printBook(Book book) {
-            System.out.println("\n" + book.getId() + "," + book.getType() + "," + book.getTitle() + "," + book.getAuthor()
-                    + "," + book.getYearOfPublishing());
+        System.out.println(book.getId() + "," + book.getType() + "," + book.getTitle() + "," + book.getAuthor()
+                + "," + book.getYearOfPublishing());
     }
 
     public int countNumberOfPages() {
         return (int) Math.ceil(books.size() / 2.0);
+    }
+
+    public void goToNextPage(int pageNumber) {
+        int numberOfLines = 2;
+        int from = (pageNumber - 1) * numberOfLines;
+        int to =  + numberOfLines;
+        for (int i = from ; i < to; i++) {
+            printBook(books.get(i));
+        }
     }
 
     public ArrayList<Book> readBooks(String pathToFile) throws Exception {
