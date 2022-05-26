@@ -101,10 +101,14 @@ public class Library {
                         for (int i = 0; i < 2; i++) {
                           printBook(books.get(i));
                         }
-                        Scanner pageNumber = new Scanner(System.in);
-                        System.out.println("\n" + "Количество страниц: " + countNumberOfPages() + " " +
-                                "Введите номер страницы: ");
-                        goToNextPage(pageNumber.nextInt());
+                        int pageNumber = 1;
+                        for (; ;) {
+                            System.out.println("Количество страниц: " + countNumberOfPages() + " " +
+                                    "Страница: " + pageNumber +
+                                    "Введите номер страницы: ");
+                            pageNumber = scanner.nextInt();
+                            goToNextPage(pageNumber);
+                        }
                     } else if (number1 == 5) {
                         Scanner nameBook = new Scanner(System.in);
                         Scanner authorBook = new Scanner(System.in);
@@ -268,7 +272,7 @@ public class Library {
     public void goToNextPage(int pageNumber) {
         int numberOfLines = 2;
         int from = (pageNumber - 1) * numberOfLines;
-        int to =  + numberOfLines;
+        int to = from + numberOfLines;
         for (int i = from ; i < to; i++) {
             printBook(books.get(i));
         }
