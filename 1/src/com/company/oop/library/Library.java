@@ -103,8 +103,7 @@ public class Library {
                         }
                         int pageNumber = 1;
                         for (; ;) {
-                            System.out.println("Количество страниц: " + countNumberOfPages() + " " +
-                                    "Страница: " + pageNumber +
+                            System.out.print("Страница: " + pageNumber + "/" + countNumberOfPages() + " " +
                                     "Введите номер страницы: ");
                             pageNumber = scanner.nextInt();
                             goToNextPage(pageNumber);
@@ -273,7 +272,10 @@ public class Library {
         int numberOfLines = 2;
         int from = (pageNumber - 1) * numberOfLines;
         int to = from + numberOfLines;
-        for (int i = from ; i < to; i++) {
+        if (pageNumber == countNumberOfPages()) {
+            to = from + (books.size() - (numberOfLines * (countNumberOfPages() - 1)));
+        }
+        for (int i = from; i < to; i++) {
             printBook(books.get(i));
         }
     }
