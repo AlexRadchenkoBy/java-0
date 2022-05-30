@@ -99,13 +99,17 @@ public class Library {
                         // - обработать ошибку (одна строка на второй странице);
                         // - зациклить и сделать выход в меню;
                         for (int i = 0; i < 2; i++) {
-                          printBook(books.get(i));
+                            printBook(books.get(i));
                         }
                         int pageNumber = 1;
-                        for (; ;) {
+                        for (; ; ) {
+                            System.out.println("Для возврата в меню введите - 0 ");
                             System.out.print("Страница: " + pageNumber + "/" + countNumberOfPages() + " " +
                                     "Введите номер страницы: ");
                             pageNumber = scanner.nextInt();
+                            if (pageNumber == 0) {
+                                break;
+                            }
                             goToNextPage(pageNumber);
                         }
                     } else if (number1 == 5) {
@@ -120,16 +124,12 @@ public class Library {
                         System.out.print("Добавить описание: ");
                         String description1 = description.nextLine();
                         addDescription(bookSearch(name, author), description1);
-                        Scanner to = new Scanner(System.in);
                         Scanner text = new Scanner(System.in);
                         System.out.println("Введите: ");
-                        System.out.print("Адресс отправки уведомления: ");
-                        String toEmail = to.nextLine();
                         System.out.print("Текст: ");
                         String textEmail = text.nextLine();
                         for (User user : users) {
-                            user.getEmail();
-                            Mailer.send(toEmail, textEmail);
+                            Mailer.send(user.getEmail(), textEmail);
                         }
                     }
                 } else {
