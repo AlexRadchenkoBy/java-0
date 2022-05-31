@@ -7,9 +7,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-// - заменить добавить пользователя на сделать администратором другого пользователя;
-// - хэшировать пароли (использвать sha-256);
-// - создать класс в котором будут функции по отправке сообщения на email (класс не должен быть привязан к заданию);
 public class Library {
     private User currentUser;
     private ArrayList<User> users;
@@ -32,18 +29,16 @@ public class Library {
                 1 - Войти
                 2 - Зарегистрироваться""");
         Scanner scanner = new Scanner(System.in);
-        int number = scanner.nextInt();
+        int number = Integer.parseInt(scanner.nextLine());
         if (number == 0) {
             System.exit(0);
         } else if (number == 1) {
             while (true) {
-                Scanner loginScanner = new Scanner(System.in);
-                Scanner passwordScanner = new Scanner(System.in);
                 System.out.println("Введите: ");
                 System.out.print("Логин: ");
-                String login = loginScanner.nextLine();
+                String login = scanner.nextLine();
                 System.out.print("Пароль: ");
-                String password = passwordScanner.nextLine();
+                String password = scanner.nextLine();
                 loginAndPassword(login, Hash.hashPassword(password));
                 if (currentUser != null) {
                     break;
@@ -60,44 +55,31 @@ public class Library {
                             3 - Поиск книг
                             4 - Просмотреть каталог книг
                             5 - Добавить описание""");
-                    Scanner scanner1 = new Scanner(System.in);
-                    int number1 = scanner1.nextInt();
+                    int number1 = Integer.parseInt(scanner.nextLine());
                     if (number1 == 0) {
                         System.exit(0);
                     } else if (number1 == 1) {
-                        Scanner saveType = new Scanner(System.in);
-                        Scanner saveTitle = new Scanner(System.in);
-                        Scanner saveAuthor = new Scanner(System.in);
-                        Scanner saveYearOfPublishing = new Scanner(System.in);
-                        Scanner saveDescription = new Scanner(System.in);
                         System.out.println("Введите данные о книге: ");
                         System.out.print("Тип книги: ");
-                        String type = saveType.nextLine();
+                        String type = scanner.nextLine();
                         System.out.print("Название: ");
-                        String title = saveTitle.nextLine();
+                        String title = scanner.nextLine();
                         System.out.print("Автор: ");
-                        String author = saveAuthor.nextLine();
+                        String author = scanner.nextLine();
                         System.out.print("Год издания: ");
-                        String year = saveYearOfPublishing.nextLine();
+                        String year = scanner.nextLine();
                         System.out.print("Описание: ");
-                        String description = saveDescription.nextLine();
+                        String description = scanner.nextLine();
                         createBook(type, title, author, Integer.parseInt(year), description);
                     } else if (number1 == 2) {
-                        Scanner emailScanner = new Scanner(System.in);
-                        Scanner isAdminScanner = new Scanner(System.in);
                         System.out.print("Введите email пользователя: ");
-                        String email = emailScanner.nextLine();
+                        String email = scanner.nextLine();
                         System.out.print("Введите true или false: ");
-                        String isAdmin = isAdminScanner.nextLine();
+                        String isAdmin = scanner.nextLine();
                         makeAdministrator(email, isAdmin);
                     } else if (number1 == 3) {
                         scannerBookSearch();
                     } else if (number1 == 4) {
-                        // - вывести первую страницу;
-                        // - сколько страниц и на какой странице пользователь, предложить ввести номер новой страницы;
-                        // - получить номер страницы от пользователя и показать нужную страницу по формуле;
-                        // - обработать ошибку (одна строка на второй странице);
-                        // - зациклить и сделать выход в меню;
                         for (int i = 0; i < 2; i++) {
                             printBook(books.get(i));
                         }
@@ -113,21 +95,17 @@ public class Library {
                             goToNextPage(pageNumber);
                         }
                     } else if (number1 == 5) {
-                        Scanner nameBook = new Scanner(System.in);
-                        Scanner authorBook = new Scanner(System.in);
-                        Scanner description = new Scanner(System.in);
                         System.out.println("Введите: ");
                         System.out.print("Название книги: ");
-                        String name = nameBook.nextLine();
+                        String name = scanner.nextLine();
                         System.out.print("Автор книги: ");
-                        String author = authorBook.nextLine();
+                        String author = scanner.nextLine();
                         System.out.print("Добавить описание: ");
-                        String description1 = description.nextLine();
+                        String description1 = scanner.nextLine();
                         addDescription(bookSearch(name, author), description1);
-                        Scanner text = new Scanner(System.in);
                         System.out.println("Введите: ");
                         System.out.print("Текст: ");
-                        String textEmail = text.nextLine();
+                        String textEmail = scanner.nextLine();
                         for (User user : users) {
                             Mailer.send(user.getEmail(), textEmail);
                         }
@@ -138,8 +116,7 @@ public class Library {
                             1 - Поиск книг
                             2 - Просмотреть каталог книг
                             3 - Предложить книгу""");
-                    Scanner scanner2 = new Scanner(System.in);
-                    int number2 = scanner2.nextInt();
+                    int number2 = Integer.parseInt(scanner.nextLine());
                     if (number2 == 0) {
                         System.exit(0);
                     } else if (number2 == 1) {
@@ -156,16 +133,13 @@ public class Library {
                 }
             }
         } else if (number == 2) {
-            Scanner saveName = new Scanner(System.in);
-            Scanner saveEmail = new Scanner(System.in);
-            Scanner savePassword = new Scanner(System.in);
             System.out.println(" Введите данные пользователя: ");
             System.out.print("Имя: ");
-            String name = saveName.nextLine();
+            String name = scanner.nextLine();
             System.out.print("Email: ");
-            String email = saveEmail.nextLine();
+            String email = scanner.nextLine();
             System.out.print("Пароль: ");
-            String password = savePassword.nextLine();
+            String password = scanner.nextLine();
             createUser(name, email, Hash.hashPassword(password));
         }
     }

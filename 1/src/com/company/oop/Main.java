@@ -67,7 +67,7 @@ public class Main {
         while (!isSorted) {
             isSorted = true;
             for (int i = 0; i < trains.length - 1; i++) {
-                if(trains[i].getTrainNumber() > trains[i + 1].getTrainNumber()) {
+                if (trains[i].getTrainNumber() > trains[i + 1].getTrainNumber()) {
                     isSorted = false;
                     temp = trains[i];
                     trains[i] = trains[i + 1];
