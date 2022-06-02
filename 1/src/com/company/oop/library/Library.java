@@ -3,6 +3,7 @@ package com.company.oop.library;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -33,19 +34,7 @@ public class Library {
         if (number == 0) {
             System.exit(0);
         } else if (number == 1) {
-            while (true) {
-                System.out.println("Введите: ");
-                System.out.print("Логин: ");
-                String login = scanner.nextLine();
-                System.out.print("Пароль: ");
-                String password = scanner.nextLine();
-                loginAndPassword(login, Hash.hashPassword(password));
-                if (currentUser != null) {
-                    break;
-                } else {
-                    System.out.println("Неккоректный ввод данных! Введите данные повторно!");
-                }
-            }
+            enterProgram();
             while (true) {
                 if (currentUser.getIsAdmin()) {
                     System.out.println("""
@@ -59,56 +48,15 @@ public class Library {
                     if (number1 == 0) {
                         System.exit(0);
                     } else if (number1 == 1) {
-                        System.out.println("Введите данные о книге: ");
-                        System.out.print("Тип книги: ");
-                        String type = scanner.nextLine();
-                        System.out.print("Название: ");
-                        String title = scanner.nextLine();
-                        System.out.print("Автор: ");
-                        String author = scanner.nextLine();
-                        System.out.print("Год издания: ");
-                        String year = scanner.nextLine();
-                        System.out.print("Описание: ");
-                        String description = scanner.nextLine();
-                        createBook(type, title, author, Integer.parseInt(year), description);
+                        addBook();
                     } else if (number1 == 2) {
-                        System.out.print("Введите email пользователя: ");
-                        String email = scanner.nextLine();
-                        System.out.print("Введите true или false: ");
-                        String isAdmin = scanner.nextLine();
-                        makeAdministrator(email, isAdmin);
+                        installAdmin();
                     } else if (number1 == 3) {
-                        scannerBookSearch();
+                        executeBookSearch();
                     } else if (number1 == 4) {
-                        for (int i = 0; i < 2; i++) {
-                            printBook(books.get(i));
-                        }
-                        int pageNumber = 1;
-                        for (; ; ) {
-                            System.out.println("Для возврата в меню введите - 0 ");
-                            System.out.print("Страница: " + pageNumber + "/" + countNumberOfPages() + " " +
-                                    "Введите номер страницы: ");
-                            pageNumber = scanner.nextInt();
-                            if (pageNumber == 0) {
-                                break;
-                            }
-                            goToNextPage(pageNumber);
-                        }
+                        viewCatalog();
                     } else if (number1 == 5) {
-                        System.out.println("Введите: ");
-                        System.out.print("Название книги: ");
-                        String name = scanner.nextLine();
-                        System.out.print("Автор книги: ");
-                        String author = scanner.nextLine();
-                        System.out.print("Добавить описание: ");
-                        String description1 = scanner.nextLine();
-                        addDescription(bookSearch(name, author), description1);
-                        System.out.println("Введите: ");
-                        System.out.print("Текст: ");
-                        String textEmail = scanner.nextLine();
-                        for (User user : users) {
-                            Mailer.send(user.getEmail(), textEmail);
-                        }
+                        changeDescription();
                     }
                 } else {
                     System.out.println("""
@@ -120,31 +68,51 @@ public class Library {
                     if (number2 == 0) {
                         System.exit(0);
                     } else if (number2 == 1) {
-                        scannerBookSearch();
+                        executeBookSearch();
                     } else if (number2 == 2) {
                         for (Book book : books) {
                             printBook(book);
                         }
                     } else if (number2 == 3) {
-                        Scanner text = new Scanner(System.in);
-                        System.out.println("Введите вариант книги, название книги, автора, год издания, описание");
-                        Mailer.send(text.nextLine());
+                       suggestBook();
                     }
                 }
             }
         } else if (number == 2) {
-            System.out.println(" Введите данные пользователя: ");
-            System.out.print("Имя: ");
-            String name = scanner.nextLine();
-            System.out.print("Email: ");
-            String email = scanner.nextLine();
-            System.out.print("Пароль: ");
-            String password = scanner.nextLine();
-            createUser(name, email, Hash.hashPassword(password));
+            registerInLibrary();
         }
     }
 
-    public void scannerBookSearch() {
+    public void enterProgram() throws NoSuchAlgorithmException {
+        while (true) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Введите: ");
+            System.out.print("Логин: ");
+            String login = scanner.nextLine();
+            System.out.print("Пароль: ");
+            String password = scanner.nextLine();
+            loginAndPassword(login, Hash.hashPassword(password));
+            if (currentUser != null) {
+                break;
+            } else {
+                System.out.println("Неккоректный ввод данных! Введите данные повторно!");
+            }
+        }
+    }
+
+    public void registerInLibrary() throws NoSuchAlgorithmException, IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(" Введите данные пользователя: ");
+        System.out.print("Имя: ");
+        String name = scanner.nextLine();
+        System.out.print("Email: ");
+        String email = scanner.nextLine();
+        System.out.print("Пароль: ");
+        String password = scanner.nextLine();
+        createUser(name, email, Hash.hashPassword(password));
+    }
+
+    public void executeBookSearch() {
         Scanner title = new Scanner(System.in);
         Scanner author = new Scanner(System.in);
         System.out.println("Введите: ");
@@ -153,6 +121,72 @@ public class Library {
         System.out.print("Автор: ");
         String author1 = author.nextLine();
         printBook(bookSearch(title1, author1));
+    }
+    public void addBook() throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите данные о книге: ");
+        System.out.print("Тип книги: ");
+        String type = scanner.nextLine();
+        System.out.print("Название: ");
+        String title = scanner.nextLine();
+        System.out.print("Автор: ");
+        String author = scanner.nextLine();
+        System.out.print("Год издания: ");
+        String year = scanner.nextLine();
+        System.out.print("Описание: ");
+        String description = scanner.nextLine();
+        createBook(type, title, author, Integer.parseInt(year), description);
+    }
+
+    public void installAdmin() throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите email пользователя: ");
+        String email = scanner.nextLine();
+        System.out.print("Введите true или false: ");
+        String isAdmin = scanner.nextLine();
+        makeAdministrator(email, isAdmin);
+    }
+
+    public void viewCatalog() {
+        for (int i = 0; i < 2; i++) {
+            printBook(books.get(i));
+        }
+        int pageNumber = 1;
+        for (; ; ) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Для возврата в меню введите - 0 ");
+            System.out.print("Страница: " + pageNumber + "/" + countNumberOfPages() + " " +
+                    "Введите номер страницы: ");
+            pageNumber = scanner.nextInt();
+            if (pageNumber == 0) {
+                break;
+            }
+            goToNextPage(pageNumber);
+        }
+    }
+
+    public void changeDescription() throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите: ");
+        System.out.print("Название книги: ");
+        String name = scanner.nextLine();
+        System.out.print("Автор книги: ");
+        String author = scanner.nextLine();
+        System.out.print("Добавить описание: ");
+        String description1 = scanner.nextLine();
+        addDescription(bookSearch(name, author), description1);
+        System.out.println("Введите: ");
+        System.out.print("Текст: ");
+        String textEmail = scanner.nextLine();
+        for (User user : users) {
+            Mailer.send(user.getEmail(), textEmail);
+        }
+    }
+
+    public void suggestBook() {
+        Scanner text = new Scanner(System.in);
+        System.out.println("Введите вариант книги, название книги, автора, год издания, описание");
+        Mailer.send(text.nextLine());
     }
 
     public void loginAndPassword(String login, String password) {
