@@ -8,11 +8,8 @@ import java.util.Scanner;
 public class Notebook {
     private ArrayList<Note> notes;
 
-    public Notebook(ArrayList<Note> notes) {
+    public Notebook() {
         this.notes = notes;
-    }
-
-    public Notebook(String s, String s1) {
     }
 
     public void runProgram() {
@@ -25,7 +22,7 @@ public class Notebook {
 
     }
 
-    public void addNote(String topic, String dateOfCreation, String email, Message message) throws IOException {
+    public void addNote(String topic, String dateOfCreation, String email, String message) throws IOException {
         String fileData = "Some Test";
         FileOutputStream fos = new FileOutputStream("C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\" +
                 "company\\oop" + "\\notebook" + "\\resource\\note1.txt");

@@ -1,13 +1,13 @@
 package com.company.oop.notebook;
 
-public enum MessageType {
+public enum NoteType {
     WORK("Работа"),
     RELAXATION("Отдых"),
     MEETING("Встреча");
 
 
     private String name;
-    MessageType(String name) {
+    NoteType(String name) {
         this.name = name;
     }
 

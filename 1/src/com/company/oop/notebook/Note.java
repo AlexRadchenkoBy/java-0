@@ -2,13 +2,14 @@ package com.company.oop.notebook;
 
 public class Note {
     private String topic;
-    private String dateOfCreation;
+    private String creationDate;
     private String email;
-    private Message message;
+    private String message;
+    private NoteType noteType;
 
-    public Note(String topic, String dateOfCreation, String email, Message message) {
+    public Note(String topic, String creationDate, String email, String message) {
         this.topic = topic;
-        this.dateOfCreation = dateOfCreation;
+        this.creationDate = creationDate;
         this.email = email;
         this.message = message;
     }
