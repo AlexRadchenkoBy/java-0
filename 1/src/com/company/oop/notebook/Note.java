@@ -13,4 +13,19 @@ public class Note {
         this.email = email;
         this.message = message;
     }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public String getCreationDate() {
+        return creationDate;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    public String getMessage() {
+        return message;
+    }
 }
