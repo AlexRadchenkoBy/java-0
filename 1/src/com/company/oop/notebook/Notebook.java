@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class Notebook {
     private ArrayList<Note> notes;
@@ -66,6 +67,11 @@ public class Notebook {
         return record;
     }
 
+    public ArrayList<Note> searchRecord1(String date) {
+        Pattern pattern = Pattern.compile(date);
+
+    }
+
     public ArrayList<Note> searchRecord(String date) {
         ArrayList<Note> record = new ArrayList<>();
         for (Note note : notes) {
@@ -97,7 +103,7 @@ public class Notebook {
             createNote(topic, date, email, message);
         }
 
-        public void createNote (String topic, String creationDate, String email, String message) throws IOException {
+        public void createNote (String topic, Date creationDate, String email, String message) throws IOException {
             Note note = new Note(topic, creationDate, email, message);
             notes.add(note);
             saveNote(note, true);
