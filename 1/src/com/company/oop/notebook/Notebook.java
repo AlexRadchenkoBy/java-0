@@ -7,6 +7,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Notebook {
@@ -36,6 +37,7 @@ public class Notebook {
             } else if (number == 3) {
                 System.out.print("Введите ключевое слово: ");
                 String word = scanner.nextLine();
+                printNote(wordSearch(word));
                 System.out.print("Измменить запись : ");
                 String note = scanner.nextLine();
                 changeMessage(wordSearch(word), note);
@@ -69,11 +71,7 @@ public class Notebook {
         }
         return record;
     }
-
-    // public ArrayList<Note> searchRecord1(String date) {
-    //   Pattern pattern = Pattern.compile(date);
-    // }
-
+    // ^[0-9]{2} [0-9]{2} [0-9]{4}$
     public ArrayList<Note> searchRecord(String date) throws ParseException {
         ArrayList<Note> record = new ArrayList<>();
         for (Note note : notes) {
