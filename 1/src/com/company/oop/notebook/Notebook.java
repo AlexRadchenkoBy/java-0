@@ -37,14 +37,14 @@ public class Notebook {
             } else if (number == 3) {
                 System.out.print("Введите ключевое слово: ");
                 String word = scanner.nextLine();
-                printNote(wordSearch(word));
+                ArrayList<Note> search = wordSearch(word);
+                printNote(search);
                 System.out.print("Измменить запись : ");
                 String note = scanner.nextLine();
-                changeMessage(wordSearch(word), note);
+                changeMessage(search, note);
             }
         }
     }
-
 
     public void changeMessage(ArrayList<Note> notes, String message) throws IOException {
         for (Note note : notes) {
@@ -55,8 +55,11 @@ public class Notebook {
 
     public void saveAllMessage() throws IOException {
         FileWriter fileWriter = new FileWriter(NOTE_PATH, false);
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("dd MM yyyy");
+        String strDate = dateFormat.format(date);
         for (Note note : notes) {
-            fileWriter.write(note.getTopic() + "," + note.getCreationDate() + "," + note.getEmail() + "," +
+            fileWriter.write(note.getTopic() + "," + strDate + "," + note.getEmail() + "," +
                     note.getMessage() + "\n");
         }
         fileWriter.flush();
@@ -74,18 +77,25 @@ public class Notebook {
     // ^[0-9]{2} [0-9]{2} [0-9]{4}$
     public ArrayList<Note> searchRecord(String date) throws ParseException {
         ArrayList<Note> record = new ArrayList<>();
-        for (Note note : notes) {
-            if (Objects.equals(new SimpleDateFormat("dd MM yyyy").parse(date), note.getCreationDate())) {
-                record.add(note);
+        String regex = "^[0-9]{2} [0-9]{2} [0-9]{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(date);
+        if (matcher.matches()) {
+            for (Note note : notes) {
+                if (Objects.equals(new SimpleDateFormat("dd MM yyyy").parse(date), note.getCreationDate())) {
+                    record.add(note);
+                }
             }
+            record.sort(Comparator.comparing(Note::getTopic));
+        } else {
+            System.out.println("Некорректный формат! Ведите - dd MM yyyy");
         }
-        record.sort(Comparator.comparing(Note::getTopic));
         return record;
     }
 
     public void printNote(ArrayList<Note> notes) {
         for (Note note : notes) {
-            System.out.println(note.getTopic() + "," + note.getCreationDate() + "," + note.getEmail() + "," +
+            System.out.println(note.getTopic() + "," + note.getCreationDate()+ "," + note.getEmail() + "," +
                     note.getMessage());
         }
     }

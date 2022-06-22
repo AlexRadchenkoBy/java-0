@@ -1,6 +1,5 @@
 package com.company.oop.notebook;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Note {
