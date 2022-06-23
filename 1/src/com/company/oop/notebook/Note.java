@@ -7,7 +7,6 @@ public class Note {
     private Date creationDate;
     private String email;
     private String message;
-    private NoteType noteType;
 
     public Note(String topic, Date creationDate, String email, String message) {
         this.topic = topic;
