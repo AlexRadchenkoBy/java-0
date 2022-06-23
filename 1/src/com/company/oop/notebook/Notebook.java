@@ -12,17 +12,18 @@ import java.util.regex.Pattern;
 
 public class Notebook {
     private ArrayList<Note> notes;
+    private Scanner scanner;
 
     private static final String NOTE_PATH = "C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\" +
             "company\\oop" + "\\notebook" + "\\resource\\Notes.txt";
 
     public Notebook() throws Exception {
         this.notes = readNote(NOTE_PATH);
+        scanner = new Scanner(System.in);
     }
 
     public void runProgram() throws Exception {
         while (true) {
-            Scanner scanner = new Scanner(System.in);
             System.out.println("""
                     0 - Завершить работу
                     1 - Создать заметку
@@ -45,7 +46,6 @@ public class Notebook {
     }
 
     public void addNote() throws Exception {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Тема: ");
         String topic = scanner.nextLine();
         System.out.print("Email: ");
@@ -56,14 +56,12 @@ public class Notebook {
     }
 
     public void scannerSearchDate() throws ParseException {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Введите дату создания записи: ");
         String date = scanner.nextLine();
         printNote(searchRecord(date));
     }
 
     public void scannerSearchWord() throws IOException {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Введите ключевое слово: ");
         String word = scanner.nextLine();
         ArrayList<Note> search = wordSearch(word);
@@ -82,10 +80,14 @@ public class Notebook {
 
     public void saveAllMessage() throws IOException {
         FileWriter fileWriter = new FileWriter(NOTE_PATH, false);
-        for (Note note : notes) {
-            fileWriter.write(note.getTopic() + "," +
-                    new SimpleDateFormat("dd MM yyyy").format(note.getCreationDate()) + "," + note.getEmail() +
-                    "," + note.getMessage());
+        for (int i = 0; i < notes.size(); i++) {
+            String noteString = notes.get(i).getTopic() + "," +
+                    new SimpleDateFormat("dd MM yyyy").format(notes.get(i).getCreationDate()) + "," + notes.get(i).getEmail() +
+                    "," + notes.get(i).getMessage();
+            if (i != 0) {
+                noteString = "\n" + noteString;
+            }
+            fileWriter.write(noteString);
         }
         fileWriter.flush();
     }
@@ -100,12 +102,16 @@ public class Notebook {
         return record;
     }
 
-    public ArrayList<Note> searchRecord(String date) throws ParseException {
-        ArrayList<Note> record = new ArrayList<>();
+    public boolean isValidDate(String date) {
         String regex = "^[0-9]{2} [0-9]{2} [0-9]{4}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(date);
-        if (matcher.matches()) {
+        return matcher.matches();
+    }
+
+    public ArrayList<Note> searchRecord(String date) throws ParseException {
+        ArrayList<Note> record = new ArrayList<>();
+        if (isValidDate(date)) {
             for (Note note : notes) {
                 if (Objects.equals(new SimpleDateFormat("dd MM yyyy").parse(date), note.getCreationDate())) {
                     record.add(note);
@@ -126,12 +132,16 @@ public class Notebook {
         }
     }
 
-    public void createNote(String topic, String email, String message) throws IOException {
-        Note note = new Note(topic, email, message);
+    public boolean isValidEmail(String email) {
         String regex = "^[a-zA-Z_0-9+.-]+@(.+)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
-        if (matcher.matches()) {
+        return matcher.matches();
+    }
+
+    public void createNote(String topic, String email, String message) throws IOException {
+        Note note = new Note(topic, email, message);
+        if (isValidEmail(email)) {
             notes.add(note);
             saveNote(note, true);
         } else {
