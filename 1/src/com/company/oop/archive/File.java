@@ -16,4 +16,24 @@ public class File {
         this.yearOfBirth = yearOfBirth;
         this.faculty = faculty;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public int getYearOfBirth() {
+        return yearOfBirth;
+    }
+
+    public String getFaculty() {
+        return faculty;
+    }
 }
