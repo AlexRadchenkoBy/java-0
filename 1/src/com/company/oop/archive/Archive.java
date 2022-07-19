@@ -37,34 +37,39 @@ public class Archive {
     }
 
     public void addUser(String emailUser, String passwordHashUser) throws ParserConfigurationException, TransformerException {
+        User user = new User(emailUser, passwordHashUser);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);
         Document document = factory.newDocumentBuilder().newDocument();
-        Element user = document.createElement("User");
-        document.appendChild(user);
+        Element userElement = document.createElement("User");
+        document.appendChild(userElement);
 
         Element id = document.createElement("Id");
-        user.appendChild(id);
+        id.setTextContent(user.getId());
+        userElement.appendChild(id);
+
         Element isAdmin = document.createElement("isAdmin");
-        user.appendChild(isAdmin);
+        isAdmin.setTextContent(String.valueOf(Boolean.valueOf(user.getIsAdmin())));
+        userElement.appendChild(isAdmin);
 
         Element email = document.createElement("Email");
-        user.setTextContent(emailUser);
+        email.setTextContent(user.getEmail());
 
         Element passwordHash = document.createElement("passwordHash");
-        user.setTextContent(passwordHashUser);
+        passwordHash.setTextContent(user.getPasswordHash());
 
-        user.appendChild(email);
-        user.appendChild(passwordHash);
+        userElement.appendChild(email);
+        userElement.appendChild(passwordHash);
 
         File file = new File(USER_PATH);
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-        transformer.transform(new DOMSource(document), new StreamResult(String.valueOf(user)));
+        transformer.transform(new DOMSource(document), new StreamResult(String.valueOf(file)));
     }
 
     public void addCase(String nameCase, String surnameCase, int yearOfBirthCase, String facultyCase)
             throws ParserConfigurationException, TransformerException {
+        Case caseElment = new Case(nameCase, surnameCase, yearOfBirthCase, facultyCase);
        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
        factory.setNamespaceAware(true);
        Document document = factory.newDocumentBuilder().newDocument();
@@ -72,20 +77,21 @@ public class Archive {
        document.appendChild(file);
 
        Element id = document.createElement("Id");
-       file.appendChild(id);
+       id.setTextContent(caseElment.getId());
+
 
        Element name = document.createElement("name");
-       name.setTextContent(nameCase);
+       name.setTextContent(caseElment.getName());
 
        Element surname = document.createElement("surname");
-       surname.setTextContent(surnameCase);
+       surname.setTextContent(caseElment.getSurname());
 
        Element yearOfBirth = document.createElement("year-of-birth");
-       yearOfBirth.setTextContent(String.valueOf(yearOfBirthCase));
+       yearOfBirth.setTextContent(String.valueOf(caseElment.getYearOfBirth()));
 
        Element faculty = document.createElement("faculty");
-       faculty.setTextContent(facultyCase);
-
+       faculty.setTextContent(caseElment.getFaculty());
+       file.appendChild(id);
        file.appendChild(name);
        file.appendChild(surname);
        file.appendChild(yearOfBirth);
@@ -94,7 +100,7 @@ public class Archive {
         File file1 = new File(ARCHIVE_PATH);
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-        transformer.transform(new DOMSource(document), new StreamResult(String.valueOf(file)));
+        transformer.transform(new DOMSource(document), new StreamResult(String.valueOf(file1)));
     }
 
 }

@@ -13,6 +13,21 @@ public class User {
         this.isAdmin = false;
         this.email = email;
         this.passwordHash = passwordHash;
+    }
 
+    public String getId() {
+        return id;
+    }
+
+    public boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
     }
 }

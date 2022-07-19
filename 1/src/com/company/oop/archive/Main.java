@@ -4,6 +4,6 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Archive archive = new Archive();
        // archive.runInProgram();
-        archive.addUser("test@test","123");
+        archive.addCase("Виктор", "Баринов", 1995, "исторический");
     }
 }

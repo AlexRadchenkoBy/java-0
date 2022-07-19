@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<User>
+    <Id>1f30b8f4-74e7-4d00-bd0f-d27d504d3b7a</Id>
+    <isAdmin>false</isAdmin>
+    <Email>test@test</Email>
+    <passwordHash>123</passwordHash>
+</User>
