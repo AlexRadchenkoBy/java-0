@@ -9,13 +9,16 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
 public class Archive {
     private ArrayList<Case> cases;
@@ -27,6 +30,7 @@ public class Archive {
 
     public Archive() throws ParserConfigurationException, IOException, SAXException {
         this.cases = readCase(CASE_PATH);
+        this.users = readUser(USER_PATH);
     }
 
     public void runInProgram() {
@@ -41,13 +45,15 @@ public class Archive {
         }
     }
 
-    public void addUser(String emailUser, String passwordHashUser) throws ParserConfigurationException, TransformerException {
+    public void addUser(String emailUser, String passwordHashUser) throws ParserConfigurationException, TransformerException, IOException, SAXException {
         User user = new User(emailUser, passwordHashUser);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);
-        Document document = factory.newDocumentBuilder().newDocument();
+        DocumentBuilder documentBuilder = factory.newDocumentBuilder();
+        Document document = documentBuilder.parse(USER_PATH);
+        Node root = document.getDocumentElement();
         Element userElement = document.createElement("User");
-        document.appendChild(userElement);
+        root.appendChild(userElement);
 
         Element id = document.createElement("Id");
         id.setTextContent(user.getId());
@@ -73,34 +79,39 @@ public class Archive {
     }
 
     public void addCase(String nameCase, String surnameCase, int yearOfBirthCase, String facultyCase)
-            throws ParserConfigurationException, TransformerException {
+            throws ParserConfigurationException, TransformerException, IOException, SAXException {
         Case caseElement = new Case(nameCase, surnameCase, yearOfBirthCase, facultyCase);
-       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-       factory.setNamespaceAware(true);
-       Document document = factory.newDocumentBuilder().newDocument();
-       Element file = document.createElement("File");
-       document.appendChild(file);
 
-       Element id = document.createElement("Id");
-       id.setTextContent(caseElement.getId());
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);
+        DocumentBuilder documentBuilder = factory.newDocumentBuilder();
+        Document document = documentBuilder.parse(CASE_PATH);
+
+        Node root = document.getDocumentElement();
+
+        Element file = document.createElement("File");
+        root.appendChild(file);
+
+        Element id = document.createElement("Id");
+        id.setTextContent(caseElement.getId());
 
 
-       Element name = document.createElement("name");
-       name.setTextContent(caseElement.getName());
+        Element name = document.createElement("name");
+        name.setTextContent(caseElement.getName());
 
-       Element surname = document.createElement("surname");
-       surname.setTextContent(caseElement.getSurname());
+        Element surname = document.createElement("surname");
+        surname.setTextContent(caseElement.getSurname());
 
-       Element yearOfBirth = document.createElement("year-of-birth");
-       yearOfBirth.setTextContent(String.valueOf(caseElement.getYearOfBirth()));
+        Element yearOfBirth = document.createElement("year-of-birth");
+        yearOfBirth.setTextContent(String.valueOf(caseElement.getYearOfBirth()));
 
-       Element faculty = document.createElement("faculty");
-       faculty.setTextContent(caseElement.getFaculty());
-       file.appendChild(id);
-       file.appendChild(name);
-       file.appendChild(surname);
-       file.appendChild(yearOfBirth);
-       file.appendChild(faculty);
+        Element faculty = document.createElement("faculty");
+        faculty.setTextContent(caseElement.getFaculty());
+        file.appendChild(id);
+        file.appendChild(name);
+        file.appendChild(surname);
+        file.appendChild(yearOfBirth);
+        file.appendChild(faculty);
 
         File file1 = new File(CASE_PATH);
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
@@ -108,28 +119,62 @@ public class Archive {
         transformer.transform(new DOMSource(document), new StreamResult(String.valueOf(file1)));
     }
 
-    public ArrayList<Case> readCase(String PathToFile) throws ParserConfigurationException, IOException, SAXException {
-        DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        Document document = documentBuilder.parse(CASE_PATH);
-        Node file = document.getDocumentElement();
-        System.out.println("Список личных дел: ");
-        System.out.println();
-        NodeList cases = file.getChildNodes();
-        for(int i = 0; i < cases.getLength(); i++) {
-            Node caseElement = cases.item(i);
-            if (caseElement.getNodeType() != Node.TEXT_NODE) {
-                NodeList caseProps = caseElement.getChildNodes();
-                for (int j = 0; j < caseProps.getLength(); i++) {
-                    Node caseProp = caseProps.item(j);
-                    if (caseProp.getNodeType() != Node.TEXT_NODE) {
-                        System.out.println(caseProp.getNodeName() + ":" +
-                                caseProp.getChildNodes().item(0).getTextContent());
-                    }
+    public ArrayList<Case> readCase(String pathToFile) throws ParserConfigurationException, IOException, SAXException {
+        try {
+            ArrayList<Case> cases = new ArrayList<>();
+            DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            Document document = documentBuilder.parse(CASE_PATH);
+            Node root = document.getDocumentElement();
+            NodeList files = root.getChildNodes();
+            for (int i = 0; i < files.getLength(); i++) {
+                Node file = files.item(i);
+                if (file.getNodeType() != Node.TEXT_NODE) {
+                    NodeList fileProps = file.getChildNodes();
+                    Case caseElement = new Case(
+                            fileProps.item(1).getTextContent(),
+                            fileProps.item(3).getTextContent(),
+                            fileProps.item(5).getTextContent(),
+                            Integer.parseInt(fileProps.item(7).getTextContent()),
+                            fileProps.item(9).getTextContent());
+                    cases.add(caseElement);
                 }
             }
+            return cases;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
         }
-        return caseProp.getNodeName() + ":" +
-                caseProp.getChildNodes().item(0).getTextContent();
     }
 
+    public ArrayList<User> readUser(String pathToFile) {
+        ArrayList<User> users = new ArrayList<>();
+        try {
+            DocumentBuilder documentBuilder = DocumentBuilderFactory.newDefaultInstance().newDocumentBuilder();
+            Document document = documentBuilder.parse(USER_PATH);
+            Node root = document.getDocumentElement();
+            NodeList usersElement = root.getChildNodes();
+            for (int i = 0; i < usersElement.getLength(); i++) {
+                Node userElement = usersElement.item(i);
+                if (userElement.getNodeType() != Node.TEXT_NODE) {
+                    NodeList userProps = userElement.getChildNodes();
+                    User user = new User(userProps.item(1).getTextContent(),
+                            Boolean.parseBoolean(userProps.item(3).getTextContent()),
+                            userProps.item(5).getTextContent(), userProps.item(7).getTextContent());
+                    users.add(user);
+                }
+            }
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        return users;
+    }
+
+    @Override
+    public String toString() {
+        return "Archive{" +
+                "cases=" + cases +
+                ", users=" + users +
+                '}';
+    }
 }

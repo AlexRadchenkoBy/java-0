@@ -17,6 +17,14 @@ public class Case {
         this.faculty = faculty;
     }
 
+    public Case(String id, String name, String surname, int yearOfBirth, String faculty) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.yearOfBirth = yearOfBirth;
+        this.faculty = faculty;
+    }
+
     public String getId() {
         return id;
     }
@@ -35,5 +43,16 @@ public class Case {
 
     public String getFaculty() {
         return faculty;
+    }
+
+    @Override
+    public String toString() {
+        return "Case{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", yearOfBirth=" + yearOfBirth +
+                ", faculty='" + faculty + '\'' +
+                '}';
     }
 }

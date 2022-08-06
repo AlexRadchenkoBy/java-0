@@ -15,6 +15,13 @@ public class User {
         this.passwordHash = passwordHash;
     }
 
+    public User(String id, boolean isAdmin, String email, String passwordHash) {
+        this.id = id;
+        this.isAdmin = isAdmin;
+        this.email = email;
+        this.passwordHash = passwordHash;
+    }
+
     public String getId() {
         return id;
     }
@@ -29,5 +36,15 @@ public class User {
 
     public String getPasswordHash() {
         return passwordHash;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", isAdmin=" + isAdmin +
+                ", email='" + email + '\'' +
+                ", passwordHash='" + passwordHash + '\'' +
+                '}';
     }
 }
