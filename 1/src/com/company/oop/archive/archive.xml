@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <files>
-  <File>
-    <Id>333a63fe-400b-4ff5-addc-67ea4ee39c38</Id>
-    <name>name</name>
-    <surname>surname</surname>
-    <year-of-birth>1900</year-of-birth>
-    <faculty>faculty</faculty>
-  </File>
+    <File>
+        <Id>333a63fe-400b-4ff5-addc-67ea4ee39c38</Id>
+        <name>name</name>
+        <surname>surname</surname>
+        <year-of-birth>1900</year-of-birth>
+        <faculty>faculty</faculty>
+    </File>
+    
+    <File>
+        <Id>f196d6d4-dcbd-4cae-87f6-e95c01a2121c</Id>
+        <name>Иван</name>
+        <surname>Иванов</surname>
+        <year-of-birth>2000</year-of-birth>
+        <faculty>математический</faculty>
+    </File>
 </files>
