@@ -9,10 +9,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
@@ -81,12 +78,34 @@ public class Archive {
                        System.out.print("Факультет: ");
                        String faculty = scanner.nextLine();
                        addCase(name, surname, yearOfBirth, faculty);
+                   } else if (number1 == 4) {
+                       System.out.println("Введите данные студента: ");
+                       System.out.print("Имя: ");
+                       String name = scanner.nextLine();
+                       System.out.print("Фамилия: ");
+                       String surname = scanner.nextLine();
+                       System.out.print("Год рождения: ");
+                       int yearOfBirth = Integer.parseInt(scanner.nextLine());
+                       printCase(searchCase(name, surname, yearOfBirth));
                    }
                } else {
                    System.out.println("""
                            0 - Выйти
                            1 - Поиск личного дела
                            """);
+                   int number2 = Integer.parseInt(scanner.nextLine());
+                   if (number2 == 0) {
+                       System.exit(0);
+                   } else if (number2 == 1) {
+                       System.out.println("Введите данные студента: ");
+                       System.out.print("Имя: ");
+                       String name = scanner.nextLine();
+                       System.out.print("Фамилия: ");
+                       String surname = scanner.nextLine();
+                       System.out.print("Год рождения: ");
+                       int yearOfBirth = Integer.parseInt(scanner.nextLine());
+                       printCase(searchCase(name, surname, yearOfBirth));
+                   }
                }
             }
         } else if (number == 2) {
@@ -98,6 +117,65 @@ public class Archive {
             addUser(email, password);
         }
     }
+
+        public void changeTheCase(String name, String surname, int yearOfBirth, String faculty) {
+            File xmlFile = new File(CASE_PATH);
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder;
+            try {
+                builder = factory.newDocumentBuilder();
+                Document document = builder.parse(xmlFile);
+                document.getDocumentElement().normalize();
+
+                NodeList cases = document.getElementsByTagName("File");
+                Element element = null;
+                for (int i = 0; i < cases.getLength(); i++) {
+                element = (Element) cases.item(i);
+                Node nameElement = element.getElementsByTagName("name").item(0).getFirstChild();
+                nameElement.setNodeValue(name);
+                Node surnameElement = element.getElementsByTagName("surname").item(0).getFirstChild();
+                surnameElement.setNodeValue(surname);
+                Node yearElement = element.getElementsByTagName("year-of-birth").item(0).getFirstChild();
+                yearElement.setNodeValue(String.valueOf(yearOfBirth));
+                Node facultyElement = element.getElementsByTagName("faculty").item(0).getFirstChild();
+                facultyElement.setNodeValue(faculty);
+
+                document.getDocumentElement().normalize();
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                Transformer transformer = transformerFactory.newTransformer();
+                DOMSource domSource = new DOMSource(document);
+                StreamResult result = new StreamResult(CASE_PATH);
+                transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+                transformer.transform(domSource, result);
+                }
+            } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SAXException e) {
+                e.printStackTrace();
+            } catch (TransformerConfigurationException e) {
+                e.printStackTrace();
+            } catch (TransformerException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public void printCase(Case caseElement) {
+            System.out.println("ID: " + caseElement.getId() + "\n" + "Имя: " + caseElement.getName() + "\n" +
+                    "Фамилия: " + caseElement.getSurname() + "\n" + "Год рождения: " + caseElement.getYearOfBirth() +
+                    "\n" + "Факультет: " + caseElement.getFaculty());
+        }
+
+        public Case searchCase(String name, String surname, int yearOfBirth) {
+            for (Case caseElement : cases) {
+                if (Objects.equals(name, caseElement.getName()) && Objects.equals(surname, caseElement.getSurname()) &&
+                        yearOfBirth == caseElement.getYearOfBirth()) {
+                    return caseElement;
+                }
+            }
+            return null;
+        }
 
         public void loginAndPassword (String login, String password){
             for (User user : users) {
