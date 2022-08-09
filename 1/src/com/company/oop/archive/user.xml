@@ -1,41 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <users>
-            
-    
     <User>
-                        
-        
-        <Id>1f30b8f4-74e7-4d00-bd0f-d27d504d3b7a</Id>
-                        
-        
+        <Id>c790b7f6-57dc-43c9-885a-01880a12d87c</Id>
         <isAdmin>false</isAdmin>
-                        
-        
-        <Email>test@test</Email>
-                        
-        
-        <passwordHash>123</passwordHash>
-                    
-    
+        <Email>tom@tom</Email>
+        <passwordHash>a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3</passwordHash>
     </User>
-        
     
     <User>
-                
-        <Id>60eb1348-069f-4669-adca-04c190db8c61</Id>
-                
+        <Id>94189dd1-5e34-43c7-8361-daeaaf5e2d56</Id>
         <isAdmin>true</isAdmin>
-                
         <Email>sasha@sasha</Email>
-                
-        <passwordHash>123</passwordHash>
-            
-    </User>
-    
-    <User>
-        <Id>57a0dcd2-2103-4676-bac4-7164707be7d4</Id>
-        <isAdmin>false</isAdmin>
-        <Email>test@test</Email>
-        <passwordHash>123</passwordHash>
+        <passwordHash>a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3</passwordHash>
     </User>
 </users>

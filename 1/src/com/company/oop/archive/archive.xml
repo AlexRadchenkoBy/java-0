@@ -5,14 +5,20 @@
         <name>name</name>
         <surname>surname</surname>
         <year-of-birth>1900</year-of-birth>
-        <faculty>faculty</faculty>
+        <faculty>физический</faculty>
     </File>
-    
     <File>
         <Id>f196d6d4-dcbd-4cae-87f6-e95c01a2121c</Id>
         <name>Иван</name>
         <surname>Иванов</surname>
         <year-of-birth>2000</year-of-birth>
         <faculty>математический</faculty>
+    </File>
+    <File>
+        <Id>164dc1c8-2179-41e3-b7ac-32bdca482564</Id>
+        <name>Сергей</name>
+        <surname>Сергеев</surname>
+        <year-of-birth>2000</year-of-birth>
+        <faculty>экономический</faculty>
     </File>
 </files>

@@ -45,6 +45,10 @@ public class Case {
         return faculty;
     }
 
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
+    }
+
     @Override
     public String toString() {
         return "Case{" +
