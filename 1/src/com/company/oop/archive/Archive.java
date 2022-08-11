@@ -97,14 +97,7 @@ public class Archive {
                             System.out.println("____________________");
                         }
                     } else if (number1 == 4) {
-                        System.out.println("Введите данные студента: ");
-                        System.out.print("Имя: ");
-                        String name = scanner.nextLine();
-                        System.out.print("Фамилия: ");
-                        String surname = scanner.nextLine();
-                        System.out.print("Год рождения: ");
-                        int yearOfBirth = Integer.parseInt(scanner.nextLine());
-                        printCase(searchCase(name, surname, yearOfBirth));
+                        caseSearch();
                     }
                 } else {
                     System.out.println("""
@@ -115,14 +108,7 @@ public class Archive {
                     if (number2 == 0) {
                         System.exit(0);
                     } else if (number2 == 1) {
-                        System.out.println("Введите данные студента: ");
-                        System.out.print("Имя: ");
-                        String name = scanner.nextLine();
-                        System.out.print("Фамилия: ");
-                        String surname = scanner.nextLine();
-                        System.out.print("Год рождения: ");
-                        int yearOfBirth = Integer.parseInt(scanner.nextLine());
-                        printCase(searchCase(name, surname, yearOfBirth));
+                        caseSearch();
                     }
                 }
             }
@@ -134,6 +120,18 @@ public class Archive {
             String password = scanner.nextLine();
             addUser(email, Hash.hashPassword(password));
         }
+    }
+
+    public void caseSearch() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите данные студента: ");
+        System.out.print("Имя: ");
+        String name = scanner.nextLine();
+        System.out.print("Фамилия: ");
+        String surname = scanner.nextLine();
+        System.out.print("Год рождения: ");
+        int yearOfBirth = Integer.parseInt(scanner.nextLine());
+        printCase(searchCase(name, surname, yearOfBirth));
     }
 
     public void changeTheCase(String faculty, Case caseToChange) {
