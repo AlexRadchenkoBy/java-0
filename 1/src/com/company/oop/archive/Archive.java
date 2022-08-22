@@ -9,12 +9,14 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.*;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -24,101 +26,15 @@ public class Archive {
     private ArrayList<Case> cases;
     private ArrayList<User> users;
 
-    private static final String CASE_PATH = "C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\company\\oop\\archive" +
-            "\\archive.xml";
-    private static final String USER_PATH = "C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\company\\oop\\archive\\user.xml";
+    private static final String CASE_PATH = "C:\\Users\\antho\\IdeaProjects\\java-0\\1\\src\\com\\company\\oop\\archive\\archive.xml";
+    private static final String USER_PATH = "C:\\Users\\antho\\IdeaProjects\\java-0\\1\\src\\com\\company\\oop\\archive\\user.xml";
 
-    public Archive() throws ParserConfigurationException, IOException, SAXException {
-        this.cases = readCase(CASE_PATH);
-        this.users = readUser(USER_PATH);
-    }
-
-    public void runInProgram() throws ParserConfigurationException, IOException, TransformerException, SAXException, NoSuchAlgorithmException {
-        System.out.println("""
-                0 - Выйти
-                1 - Войти
-                2 - Зарегистрироваться""");
-        Scanner scanner = new Scanner(System.in);
-        int number = Integer.parseInt(scanner.nextLine());
-        if (number == 0) {
-            System.exit(0);
-        } else if (number == 1) {
-            while (true) {
-                System.out.println("Введите: ");
-                System.out.print("Логин: ");
-                String login = scanner.nextLine();
-                System.out.print("Пароль: ");
-                String password = scanner.nextLine();
-                loginAndPassword(login, Hash.hashPassword(password));
-                if (currentUser != null) {
-                    break;
-                } else {
-                    System.out.println("Неккоректный ввод данных! Введите данные повторно!");
-                }
-            }
-            while (true) {
-                if (currentUser.getIsAdmin()) {
-                    System.out.println("""
-                            0 - Выйти
-                            1 - Добавить личное дело
-                            2 - Изменить личное дело
-                            3 - Просмотр личных дел
-                            4 - Поиск личного дела
-                            """);
-                    int number1 = Integer.parseInt(scanner.nextLine());
-                    if (number1 == 0) {
-                        System.exit(0);
-                    } else if (number1 == 1) {
-                        System.out.println("Введите: ");
-                        System.out.print("Имя: ");
-                        String name = scanner.nextLine();
-                        System.out.print("Фамилия: ");
-                        String surname = scanner.nextLine();
-                        System.out.print("Год рождения: ");
-                        int yearOfBirth = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Факультет: ");
-                        String faculty = scanner.nextLine();
-                        addCase(name, surname, yearOfBirth, faculty);
-                    } else if (number1 == 2) {
-                        System.out.println("Введите: ");
-                        System.out.print("Имя: ");
-                        String name = scanner.nextLine();
-                        System.out.print("Фамилия: ");
-                        String surname = scanner.nextLine();
-                        System.out.print("Год рождения: ");
-                        int yearOfBirth = Integer.parseInt(scanner.nextLine());
-                        printCase(searchCase(name, surname, yearOfBirth));
-                        System.out.print("Изменить факультет: ");
-                        String faculty = scanner.nextLine();
-                        changeTheCase(faculty, searchCase(name, surname, yearOfBirth));
-                    } else if (number1 == 3) {
-                        for (Case caseElement : cases) {
-                            printCase(caseElement);
-                            System.out.println("____________________");
-                        }
-                    } else if (number1 == 4) {
-                        caseSearch();
-                    }
-                } else {
-                    System.out.println("""
-                            0 - Выйти
-                            1 - Поиск личного дела
-                            """);
-                    int number2 = Integer.parseInt(scanner.nextLine());
-                    if (number2 == 0) {
-                        System.exit(0);
-                    } else if (number2 == 1) {
-                        caseSearch();
-                    }
-                }
-            }
-        } else if (number == 2) {
-            System.out.println("Введите: ");
-            System.out.print("Email: ");
-            String email = scanner.nextLine();
-            System.out.print("Пароль: ");
-            String password = scanner.nextLine();
-            addUser(email, Hash.hashPassword(password));
+    public Archive() {
+        try {
+            this.cases = readCase(CASE_PATH);
+            this.users = readUser(USER_PATH);
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -182,12 +98,14 @@ public class Archive {
         return null;
     }
 
-    public void loginAndPassword(String login, String password) {
+    public User loginAndPassword(String login, String password) {
+        String hashPassword = Hash.hashPassword(password);
         for (User user : users) {
-            if (Objects.equals(login, user.getEmail()) && Objects.equals(password, user.getPasswordHash())) {
-                currentUser = user;
+            if (Objects.equals(login, user.getEmail()) && Objects.equals(hashPassword, user.getPasswordHash())) {
+                return user;
             }
         }
+        return null;
     }
 
     public void addUser(String emailUser, String passwordHashUser) throws

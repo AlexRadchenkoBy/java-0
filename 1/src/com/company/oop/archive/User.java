@@ -22,6 +22,11 @@ public class User {
         this.passwordHash = passwordHash;
     }
 
+    public User(String id, boolean isAdmin) {
+        this.id = id;
+        this.isAdmin = isAdmin;
+    }
+
     public String getId() {
         return id;
     }
