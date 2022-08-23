@@ -30,7 +30,7 @@ public class Mapper {
     }
 
     public static Request toRequest(String str) {
-        final var strings = Mapper.toParams(str);
+        List<String> strings = Mapper.toParams(str);
         return new Request(RequestType.valueOf(strings.get(0)), strings.subList(1, strings.size()));
     }
 

@@ -22,12 +22,12 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Archive {
-    private User currentUser;
     private ArrayList<Case> cases;
     private ArrayList<User> users;
 
-    private static final String CASE_PATH = "C:\\Users\\antho\\IdeaProjects\\java-0\\1\\src\\com\\company\\oop\\archive\\archive.xml";
-    private static final String USER_PATH = "C:\\Users\\antho\\IdeaProjects\\java-0\\1\\src\\com\\company\\oop\\archive\\user.xml";
+    private static final String CASE_PATH = "C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\company\\oop\\archive" +
+            "\\archive.xml";
+    private static final String USER_PATH = "C:\\Users\\alexr\\Dev\\java-0\\1\\src\\com\\company\\oop\\archive\\user.xml";
 
     public Archive() {
         try {
