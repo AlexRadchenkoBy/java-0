@@ -11,4 +11,9 @@ public class ApiService {
         return Mapper.toUser(response);
     }
 
+    public static User add(Client client, String emailUser, String passwordHashUser) {
+        String response = client.sendMessage(Mapper.toString(RequestType.ADDUSER.toString(), emailUser, passwordHashUser));
+        return Mapper.toUser(response);
+    }
+
 }

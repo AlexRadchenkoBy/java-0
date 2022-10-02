@@ -1,5 +1,6 @@
 package com.company.oop.archive.client;
 
+import com.company.oop.archive.Hash;
 import com.company.oop.archive.User;
 
 import java.util.Scanner;
@@ -90,12 +91,13 @@ public class Menu {
                 }
             }
         } else if (number == 2) {
-//            System.out.println("Введите: ");
-//            System.out.print("Email: ");
-//            String email = scanner.nextLine();
-//            System.out.print("Пароль: ");
-//            String password = scanner.nextLine();
-//            addUser(email, Hash.hashPassword(password));
+            System.out.println("Введите: ");
+            System.out.print("Email: ");
+            String email = scanner.nextLine();
+            System.out.print("Пароль: ");
+            String password = scanner.nextLine();
+
+            currentUser = ApiService.add(client, email, Hash.hashPassword(password));
         }
     }
 
