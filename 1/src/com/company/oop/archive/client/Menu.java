@@ -1,5 +1,6 @@
 package com.company.oop.archive.client;
 
+import com.company.oop.archive.Case;
 import com.company.oop.archive.Hash;
 import com.company.oop.archive.User;
 
@@ -8,6 +9,7 @@ import java.util.Scanner;
 public class Menu {
 
     private User currentUser;
+    private Case currentCase;
 
     public void runInProgram(Client client) {
         System.out.println("""
@@ -47,15 +49,17 @@ public class Menu {
                     if (number1 == 0) {
                         System.exit(0);
                     } else if (number1 == 1) {
-//                        System.out.println("Введите: ");
-//                        System.out.print("Имя: ");
-//                        String name = scanner.nextLine();
-//                        System.out.print("Фамилия: ");
-//                        String surname = scanner.nextLine();
-//                        System.out.print("Год рождения: ");
-//                        int yearOfBirth = Integer.parseInt(scanner.nextLine());
-//                        System.out.print("Факультет: ");
-//                        String faculty = scanner.nextLine();
+                        System.out.println("Введите: ");
+                        System.out.print("Имя: ");
+                        String name = scanner.nextLine();
+                        System.out.print("Фамилия: ");
+                        String surname = scanner.nextLine();
+                        System.out.print("Год рождения: ");
+                        int yearOfBirth = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Факультет: ");
+                        String faculty = scanner.nextLine();
+
+                        currentCase = ApiService.aCase(client, name, surname, String.valueOf(yearOfBirth), faculty);
 //                        addCase(name, surname, yearOfBirth, faculty);
                     } else if (number1 == 2) {
 //                        System.out.println("Введите: ");
@@ -97,7 +101,7 @@ public class Menu {
             System.out.print("Пароль: ");
             String password = scanner.nextLine();
 
-            currentUser = ApiService.add(client, email, Hash.hashPassword(password));
+            currentUser = ApiService.user(client, email, Hash.hashPassword(password));
         }
     }
 

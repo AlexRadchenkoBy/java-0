@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <users>
-        
+            
+    
     <User>
                 
         <Id>c790b7f6-57dc-43c9-885a-01880a12d87c</Id>
@@ -9,10 +10,11 @@
                 
         <Email>tom@tom</Email>
                 
-        <passwordHash>a665a45920422f9d417e4867effect4fb8a04a1f3fff1fa07e998e86f7f7a27ae3</passwordHash>
+        <passwordHash>a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3</passwordHash>
             
     </User>
-        
+            
+    
     
     <User>
                 
@@ -22,14 +24,28 @@
                 
         <Email>sasha@sasha</Email>
                 
-        <passwordHash>a665a45920422f9d417e4867effect4fb8a04a1f3fff1fa07e998e86f7f7a27ae3</passwordHash>
+        <passwordHash>a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3</passwordHash>
+                    
+    
+    </User>
+        
+    
+    <User>
+                
+        <Id>0982730e-28dc-4757-a646-c28913534f07</Id>
+                
+        <isAdmin>true</isAdmin>
+                
+        <Email>cat@cat</Email>
+                
+        <passwordHash>173af653133d964efdc16cafe0aba33c8f500a07f3ba3f81943916910c257705</passwordHash>
             
     </User>
     
     <User>
-        <Id>0982730e-28dc-4757-a646-c28913534f07</Id>
-        <isAdmin>false</isAdmin>
-        <Email>cat@cat</Email>
-        <passwordHash>173af653133d964educ16cafe0aba33c8f500a07f3ba3f81943916910c257705</passwordHash>
+        <Id>5cd22e36-a802-4093-a706-7828a52e44e7</Id>
+        <isAdmin>true</isAdmin>
+        <Email>tort@tort</Email>
+        <passwordHash>a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3</passwordHash>
     </User>
 </users>

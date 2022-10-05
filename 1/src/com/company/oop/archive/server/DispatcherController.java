@@ -24,6 +24,8 @@ public class DispatcherController {
         return switch (request.getRequestType()) {
             case LOGIN -> loginAndPassword(request.getParameters().get(0), request.getParameters().get(1));
             case ADDUSER -> addUser(request.getParameters().get(0),request.getParameters().get(1));
+            case ADDCASE -> addCase(request.getParameters().get(0), request.getParameters().get(1),
+                    Integer.parseInt(request.getParameters().get(2)), request.getParameters().get(3));
         };
     }
 
@@ -35,6 +37,12 @@ public class DispatcherController {
     private String addUser(String emailUser, String passwordHashUser) throws ParserConfigurationException, IOException,
             TransformerException, SAXException {
         archive.addUser(emailUser, passwordHashUser);
+        return null;
+    }
+
+    private String addCase(String nameCase, String surnameCase, int yearOfBirthCase, String facultyCase) throws
+            ParserConfigurationException, IOException, TransformerException, SAXException {
+        archive.addCase(nameCase, surnameCase, yearOfBirthCase, facultyCase);
         return null;
     }
 
