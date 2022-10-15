@@ -47,4 +47,10 @@ public class Mapper {
         return Arrays.asList(str.split(DELIMITER));
     }
 
+    public static String toString(Case caseItem) {
+        if (caseItem == null) {
+            return null;
+        }
+        return String.join(DELIMITER, caseItem.getId(), caseItem.getFaculty());
+    }
 }

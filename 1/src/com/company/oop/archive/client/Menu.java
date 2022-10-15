@@ -60,7 +60,7 @@ public class Menu {
                         String faculty = scanner.nextLine();
 
                         currentCase = ApiService.aCase(client, name, surname, String.valueOf(yearOfBirth), faculty);
-//                        addCase(name, surname, yearOfBirth, faculty);
+//
                     } else if (number1 == 2) {
 //                        System.out.println("Введите: ");
 //                        System.out.print("Имя: ");

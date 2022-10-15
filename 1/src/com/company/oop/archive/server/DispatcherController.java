@@ -1,6 +1,7 @@
 package com.company.oop.archive.server;
 
 import com.company.oop.archive.Archive;
+import com.company.oop.archive.Case;
 import com.company.oop.archive.Hash;
 import com.company.oop.archive.User;
 import com.company.oop.archive.common.Mapper;
@@ -9,6 +10,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
+import java.util.Objects;
 
 public class DispatcherController {
 
@@ -18,14 +20,17 @@ public class DispatcherController {
         archive = new Archive();
     }
 
+
     public String handle(String requestStr) throws ParserConfigurationException, IOException,
             TransformerException, SAXException {
         Request request = Mapper.toRequest(requestStr);
         return switch (request.getRequestType()) {
             case LOGIN -> loginAndPassword(request.getParameters().get(0), request.getParameters().get(1));
-            case ADDUSER -> addUser(request.getParameters().get(0),request.getParameters().get(1));
+            case ADDUSER -> addUser(request.getParameters().get(0), request.getParameters().get(1));
             case ADDCASE -> addCase(request.getParameters().get(0), request.getParameters().get(1),
                     Integer.parseInt(request.getParameters().get(2)), request.getParameters().get(3));
+            case SEARCHCASE -> searchCase(request.getParameters().get(0), request.getParameters().get(1),
+                    Integer.parseInt(request.getParameters().get(2)));
         };
     }
 
@@ -44,6 +49,11 @@ public class DispatcherController {
             ParserConfigurationException, IOException, TransformerException, SAXException {
         archive.addCase(nameCase, surnameCase, yearOfBirthCase, facultyCase);
         return null;
+    }
+
+    public String searchCase(String name, String surname, int yearOfBirth) {
+        Case caseItem = archive.searchCase(name, surname, yearOfBirth);
+        return Mapper.toString(caseItem);
     }
 
 }
