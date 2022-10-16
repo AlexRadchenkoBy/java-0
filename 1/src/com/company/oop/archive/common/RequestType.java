@@ -4,5 +4,6 @@ public enum RequestType {
     LOGIN,
     ADDUSER,
     ADDCASE,
-    SEARCHCASE
+    SEARCHCASE,
+    GETALLCASE
 }

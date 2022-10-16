@@ -4,8 +4,7 @@ import com.company.oop.archive.Case;
 import com.company.oop.archive.User;
 import com.company.oop.archive.server.Request;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Mapper {
 
@@ -24,11 +23,24 @@ public class Mapper {
     }
 
     public static Case toCase(String str) {
-        if("null".equals(str)) {
+        if ("null".equals(str)) {
             return null;
         }
         List<String> params = Mapper.toParams(str);
-        return new Case(params.get(0), params.get(1), Integer.parseInt(params.get(2)), params.get(3));
+        return new Case(params.get(0), params.get(1), params.get(2), Integer.parseInt(params.get(3)), params.get(4));
+    }
+
+    public static List<Case> toCases(String string) {
+        List<String> caseStrList = Arrays.asList(string.split("\t"));
+        return toCases(caseStrList);
+    }
+
+    public static List<Case> toCases(List<String> caseStrList) {
+        List<Case> savesCase = new ArrayList<Case>();
+        for (String str : caseStrList) {
+            savesCase.add(toCase(str));
+        }
+        return savesCase;
     }
 
     public static String toString(User user) {
@@ -51,6 +63,18 @@ public class Mapper {
         if (caseItem == null) {
             return null;
         }
-        return String.join(DELIMITER, caseItem.getId(), caseItem.getFaculty());
+        return String.join(DELIMITER, caseItem.getId(), caseItem.getName(), caseItem.getSurname(),
+                String.valueOf(caseItem.getYearOfBirth()), caseItem.getFaculty());
+    }
+
+    public static String toString(List<Case> cases) {
+        if (cases == null) {
+            return null;
+        }
+        List<String> strings = new ArrayList<>();
+        for (Case caseItem : cases) {
+            strings.add(toString(caseItem));
+        }
+        return String.join("\t", strings);
     }
 }

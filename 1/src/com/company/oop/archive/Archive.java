@@ -18,6 +18,7 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -38,16 +39,20 @@ public class Archive {
         }
     }
 
+    public List<Case> getCases() {
+        return cases;
+    }
+
     public void caseSearch() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите данные студента: ");
-        System.out.print("Имя: ");
-        String name = scanner.nextLine();
-        System.out.print("Фамилия: ");
-        String surname = scanner.nextLine();
-        System.out.print("Год рождения: ");
-        int yearOfBirth = Integer.parseInt(scanner.nextLine());
-        printCase(searchCase(name, surname, yearOfBirth));
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Введите данные студента: ");
+//        System.out.print("Имя: ");
+//        String name = scanner.nextLine();
+//        System.out.print("Фамилия: ");
+//        String surname = scanner.nextLine();
+//        System.out.print("Год рождения: ");
+//        int yearOfBirth = Integer.parseInt(scanner.nextLine());
+//        printCase(searchCase(name, surname, yearOfBirth));
     }
 
     public void changeTheCase(String faculty, Case caseToChange) {

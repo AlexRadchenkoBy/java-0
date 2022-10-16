@@ -4,6 +4,7 @@ import com.company.oop.archive.Archive;
 import com.company.oop.archive.Case;
 import com.company.oop.archive.Hash;
 import com.company.oop.archive.User;
+import com.company.oop.archive.client.Client;
 import com.company.oop.archive.common.Mapper;
 import org.xml.sax.SAXException;
 
@@ -31,6 +32,8 @@ public class DispatcherController {
                     Integer.parseInt(request.getParameters().get(2)), request.getParameters().get(3));
             case SEARCHCASE -> searchCase(request.getParameters().get(0), request.getParameters().get(1),
                     Integer.parseInt(request.getParameters().get(2)));
+            case GETALLCASE -> getAllCases();
+
         };
     }
 
@@ -55,5 +58,10 @@ public class DispatcherController {
         Case caseItem = archive.searchCase(name, surname, yearOfBirth);
         return Mapper.toString(caseItem);
     }
+
+    public String getAllCases() {
+       return Mapper.toString(archive.getCases());
+    }
+
 
 }

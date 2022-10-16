@@ -1,15 +1,22 @@
 package com.company.oop.archive.client;
 
+import com.company.oop.archive.Archive;
 import com.company.oop.archive.Case;
 import com.company.oop.archive.Hash;
 import com.company.oop.archive.User;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
 
     private User currentUser;
-    private Case currentCase;
+
+    private Archive archive;
+
+    public Menu() {
+        archive = new Archive();
+    }
 
     public void runInProgram(Client client) {
         System.out.println("""
@@ -59,7 +66,7 @@ public class Menu {
                         System.out.print("Факультет: ");
                         String faculty = scanner.nextLine();
 
-                        currentCase = ApiService.aCase(client, name, surname, String.valueOf(yearOfBirth), faculty);
+                       ApiService.addCase(client, name, surname, String.valueOf(yearOfBirth), faculty);
 //
                     } else if (number1 == 2) {
 //                        System.out.println("Введите: ");
@@ -74,12 +81,22 @@ public class Menu {
 //                        String faculty = scanner.nextLine();
 //                        changeTheCase(faculty, searchCase(name, surname, yearOfBirth));
                     } else if (number1 == 3) {
-//                        for (Case caseElement : cases) {
-//                            printCase(caseElement);
-//                            System.out.println("____________________");
-//                        }
+                        List<Case> cases = ApiService.getAllCases(client);
+                        for (Case caseElement : cases) {
+                            archive.printCase(caseElement);
+                            System.out.println("____________________");
+                        }
+
                     } else if (number1 == 4) {
-//                        caseSearch();
+                        System.out.println("Введите данные студента: ");
+                        System.out.print("Имя: ");
+                        String name = scanner.nextLine();
+                        System.out.print("Фамилия: ");
+                        String surname = scanner.nextLine();
+                        System.out.print("Год рождения: ");
+                        int yearOfBirth = Integer.parseInt(scanner.nextLine());
+                        Case caseItem = ApiService.search(client, name, surname, yearOfBirth);
+                        archive.printCase(caseItem);
                     }
                 } else {
 //                    System.out.println("""

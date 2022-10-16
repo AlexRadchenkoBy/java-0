@@ -6,6 +6,8 @@ import com.company.oop.archive.User;
 import com.company.oop.archive.common.Mapper;
 import com.company.oop.archive.common.RequestType;
 
+import java.util.List;
+
 public class ApiService {
 
     public static User login(Client client, String login, String password) {
@@ -18,10 +20,20 @@ public class ApiService {
         return Mapper.toUser(response);
     }
 
-    public static Case aCase(Client client, String nameCase, String surnameCase, String yearOfBirthCase, String facultyCase) {
+    public static void addCase(Client client, String nameCase, String surnameCase, String yearOfBirthCase, String facultyCase) {
         String response = client.sendMessage(Mapper.toString(RequestType.ADDCASE.toString(), nameCase, surnameCase,
                 String.valueOf(yearOfBirthCase), facultyCase));
+    }
+
+    public static Case search(Client client, String name, String surname, int yearOfBirth) {
+        String response = client.sendMessage(Mapper.toString(RequestType.SEARCHCASE.toString(), name, surname,
+                String.valueOf(yearOfBirth)));
         return Mapper.toCase(response);
+    }
+
+    public static List<Case> getAllCases(Client client) {
+        String response = client.sendMessage(RequestType.GETALLCASE.toString());
+        return Mapper.toCases(response);
     }
 
 }
