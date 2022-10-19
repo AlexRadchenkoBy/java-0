@@ -5,5 +5,6 @@ public enum RequestType {
     ADDUSER,
     ADDCASE,
     SEARCHCASE,
-    GETALLCASE
+    GETALLCASE,
+    CHANGETHECASE
 }

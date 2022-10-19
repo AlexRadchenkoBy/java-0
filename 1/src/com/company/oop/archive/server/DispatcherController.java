@@ -33,6 +33,7 @@ public class DispatcherController {
             case SEARCHCASE -> searchCase(request.getParameters().get(0), request.getParameters().get(1),
                     Integer.parseInt(request.getParameters().get(2)));
             case GETALLCASE -> getAllCases();
+            case CHANGETHECASE -> changeTheCase(request.getParameters().get(0), request.getParameters().get(1));
 
         };
     }
@@ -61,6 +62,11 @@ public class DispatcherController {
 
     public String getAllCases() {
        return Mapper.toString(archive.getCases());
+    }
+
+    public String changeTheCase(String faculty, Case caseToChange) {
+        archive.changeTheCase(faculty, caseToChange);
+        return null;
     }
 
 
