@@ -65,8 +65,8 @@ public class DispatcherController {
     }
 
     public String changeTheCase(String faculty, Case caseToChange) {
-        archive.changeTheCase(faculty, caseToChange);
-        return null;
+        Case caseItem = archive.changeTheCase(faculty, caseToChange);
+        return Mapper.toString(caseItem);
     }
 
 

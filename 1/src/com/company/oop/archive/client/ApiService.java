@@ -36,4 +36,8 @@ public class ApiService {
         return Mapper.toCases(response);
     }
 
+    public static Case changeTheCase(Client client, String faculty, Case caseToChange) {
+        String response = client.sendMessage(RequestType.CHANGETHECASE.toString(), faculty, caseToChange);
+    }
+
 }
