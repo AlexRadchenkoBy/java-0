@@ -61,12 +61,12 @@ public class DispatcherController {
     }
 
     public String getAllCases() {
-       return Mapper.toString(archive.getCases());
+        return Mapper.toString(archive.getCases());
     }
 
-    public String changeTheCase(String faculty, Case caseToChange) {
-        Case caseItem = archive.changeTheCase(faculty, caseToChange);
-        return Mapper.toString(caseItem);
+    public String changeTheCase(String faculty, String id) {
+        archive.changeTheCase(faculty, id);
+        return null;
     }
 
 

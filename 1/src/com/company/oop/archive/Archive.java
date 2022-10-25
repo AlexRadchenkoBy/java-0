@@ -55,7 +55,17 @@ public class Archive {
 //        printCase(searchCase(name, surname, yearOfBirth));
     }
 
-    public void changeTheCase(String faculty, Case caseToChange) {
+    public Case getCaseById(String id) {
+        for (Case caseItem : cases) {
+            if (Objects.equals(id, caseItem.getId())) {
+                return caseItem;
+            }
+        }
+        return null;
+    }
+
+    public void changeTheCase(String faculty, String id) {
+        Case caseToChange = getCaseById(id);
         File xmlFile = new File(CASE_PATH);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder;

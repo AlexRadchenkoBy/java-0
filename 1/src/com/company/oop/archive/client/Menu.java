@@ -67,28 +67,9 @@ public class Menu {
                         String faculty = scanner.nextLine();
 
                        ApiService.addCase(client, name, surname, String.valueOf(yearOfBirth), faculty);
-//
-                    } else if (number1 == 2) {
-//                        System.out.println("Введите: ");
-//                        System.out.print("Имя: ");
-//                        String name = scanner.nextLine();
-//                        System.out.print("Фамилия: ");
-//                        String surname = scanner.nextLine();
-//                        System.out.print("Год рождения: ");
-//                        int yearOfBirth = Integer.parseInt(scanner.nextLine());
-//                        printCase(searchCase(name, surname, yearOfBirth));
-//                        System.out.print("Изменить факультет: ");
-//                        String faculty = scanner.nextLine();
-//                        changeTheCase(faculty, searchCase(name, surname, yearOfBirth));
-                    } else if (number1 == 3) {
-                        List<Case> cases = ApiService.getAllCases(client);
-                        for (Case caseElement : cases) {
-                            archive.printCase(caseElement);
-                            System.out.println("____________________");
-                        }
 
-                    } else if (number1 == 4) {
-                        System.out.println("Введите данные студента: ");
+                    } else if (number1 == 2) {
+                        System.out.println("Введите: ");
                         System.out.print("Имя: ");
                         String name = scanner.nextLine();
                         System.out.print("Фамилия: ");
@@ -97,18 +78,30 @@ public class Menu {
                         int yearOfBirth = Integer.parseInt(scanner.nextLine());
                         Case caseItem = ApiService.search(client, name, surname, yearOfBirth);
                         archive.printCase(caseItem);
+                        System.out.print("Изменить факультет: ");
+                        String faculty = scanner.nextLine();
+                        ApiService.changeTheCase(client, faculty, caseItem.getId());
+                    } else if (number1 == 3) {
+                        List<Case> cases = ApiService.getAllCases(client);
+                        for (Case caseElement : cases) {
+                            archive.printCase(caseElement);
+                            System.out.println("____________________");
+                        }
+
+                    } else if (number1 == 4) {
+                        searchCase(client, scanner);
                     }
                 } else {
-//                    System.out.println("""
-//                            0 - Выйти
-//                            1 - Поиск личного дела
-//                            """);
-//                    int number2 = Integer.parseInt(scanner.nextLine());
-//                    if (number2 == 0) {
-//                        System.exit(0);
-//                    } else if (number2 == 1) {
-//                        caseSearch();
-//                    }
+                    System.out.println("""
+                            0 - Выйти
+                            1 - Поиск личного дела
+                            """);
+                    int number2 = Integer.parseInt(scanner.nextLine());
+                    if (number2 == 0) {
+                        System.exit(0);
+                    } else if (number2 == 1) {
+                        searchCase(client, scanner);
+                    }
                 }
             }
         } else if (number == 2) {
@@ -122,4 +115,15 @@ public class Menu {
         }
     }
 
+    public void searchCase(Client client, Scanner scanner) {
+        System.out.println("Введите данные студента: ");
+        System.out.print("Имя: ");
+        String name = scanner.nextLine();
+        System.out.print("Фамилия: ");
+        String surname = scanner.nextLine();
+        System.out.print("Год рождения: ");
+        int yearOfBirth = Integer.parseInt(scanner.nextLine());
+        Case caseItem = ApiService.search(client, name, surname, yearOfBirth);
+        archive.printCase(caseItem);
+    }
 }

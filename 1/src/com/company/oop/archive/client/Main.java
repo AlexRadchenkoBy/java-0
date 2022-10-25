@@ -10,5 +10,4 @@ public class Main {
         new Menu().runInProgram(client);
         client.stopConnection();
     }
-
 }

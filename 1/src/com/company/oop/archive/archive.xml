@@ -1,34 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <files>
+        
     <File>
+                
         <Id>333a63fe-400b-4ff5-addc-67ea4ee39c38</Id>
+                
         <name>name</name>
+                
         <surname>surname</surname>
+                
         <year-of-birth>1900</year-of-birth>
+                
         <faculty>физический</faculty>
+            
     </File>
-        
-    <File>
-        <Id>f196d6d4-dcbd-4cae-87f6-e95c01a2121c</Id>
-        <name>Иван</name>
-        <surname>Иванов</surname>
-        <year-of-birth>2000</year-of-birth>
-        <faculty>математический</faculty>
-    </File>
-        
-    <File>
-        <Id>164dc1c8-2179-41e3-b7ac-32bdca482564</Id>
-        <name>Сергей</name>
-        <surname>Сергеев</surname>
-        <year-of-birth>2000</year-of-birth>
-        <faculty>экономический</faculty>
-    </File>
+            
     
     <File>
-        <Id>f782dbe4-c4a3-4808-a4f0-e83e2f2353b6</Id>
-        <name>Сергей</name>
-        <surname>Зарецкий</surname>
-        <year-of-birth>1999</year-of-birth>
-        <faculty>юридический</faculty>
+                
+        <Id>f196d6d4-dcbd-4cae-87f6-e95c01a2121c</Id>
+                
+        <name>Иван</name>
+                
+        <surname>Иванов</surname>
+                
+        <year-of-birth>2000</year-of-birth>
+                
+        <faculty>математический</faculty>
+            
     </File>
+            
+    
+    <File>
+                
+        <Id>164dc1c8-2179-41e3-b7ac-32bdca482564</Id>
+                
+        <name>Сергей</name>
+                
+        <surname>Сергеев</surname>
+                
+        <year-of-birth>2000</year-of-birth>
+                
+        <faculty>экономический</faculty>
+            
+    </File>
+        
+    
+    <File>
+                
+        <Id>f782dbe4-c4a3-4808-a4f0-e83e2f2353b6</Id>
+                
+        <name>Сергей</name>
+                
+        <surname>Зарецкий</surname>
+                
+        <year-of-birth>1999</year-of-birth>
+                
+        <faculty>физический</faculty>
+            
+    </File>
+    
 </files>
